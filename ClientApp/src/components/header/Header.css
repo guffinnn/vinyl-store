@@ -1,0 +1,144 @@
+header.header {
+    width: 100%;
+}
+
+nav.header__nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 40px 60px;
+    gap: 20px;
+}
+
+li.header__list {
+    display: flex;
+    position: relative;
+}
+
+a.header__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: #000000;
+
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    transition: background-size .3s;
+}
+
+a.header__link:hover {
+    background-size: 100% 2px;
+}
+
+.notify {}
+
+.notify__text {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 4px 1px 4px;
+    gap: 10px;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: -4px -5px 0 0;
+
+    background: #C52E2B;
+    border-radius: 90px;
+    z-index: 1;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 5px;
+    line-height: 6px;
+
+    color: #FFFFFF;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 40px;
+}
+
+h1.h1 {
+    width: 100%;
+    font-family: 'Orith Display', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11rem;
+    text-align: justify;
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, #000000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+p.info__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: #000000;
+
+    margin-top: -20px;
+}
+
+@media(max-width: 1500px) {
+    h1.h1 {
+        font-size: 8rem;
+    }
+}
+
+@media(max-width: 1120px) {
+    h1.h1 {
+        font-size: 5rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width: 834px) {
+    nav.header__nav ul {
+        padding: 20px 40px 40px;
+    }
+}
+
+@media(max-width: 720px) {
+    h1.h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    p.info__text {
+        font-size: 6px;
+        line-height: 7px;
+    }
+
+    .heading {
+        padding: 0 20px;
+    }
+}
+
+@media(max-width: 350px) {
+    nav.header__nav ul {
+        padding: 20px;
+    }
+
+    h1.h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+}
