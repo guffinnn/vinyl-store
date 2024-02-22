@@ -70,6 +70,7 @@ a.header__link:hover {
     flex-direction: column;
     align-items: flex-start;
     padding: 0 40px;
+    margin-bottom: 100px;
 }
 
 h1.h1 {
@@ -108,6 +109,10 @@ p.info__text {
         font-size: 5rem;
         margin-bottom: 10px;
     }
+
+    .heading {
+        margin-bottom: 200px;
+    }
 }
 
 @media(max-width: 834px) {
@@ -129,10 +134,11 @@ p.info__text {
 
     .heading {
         padding: 0 20px;
+        margin-bottom: 100px;
     }
 }
 
-@media(max-width: 350px) {
+@media(max-width: 360px) {
     nav.header__nav ul {
         padding: 20px;
     }

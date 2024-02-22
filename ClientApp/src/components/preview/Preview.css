@@ -1,0 +1,273 @@
+section.section {
+    width: 1300px;
+    margin: auto;
+
+    background: radial-gradient(29.49% 50% at 73.44% 50%, rgba(39, 39, 39, 0.8) 0%, rgba(39, 39, 39, 0.11) 100%);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+}
+
+.section__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 55px 30px;
+    gap: 60px;
+    align-items: stretch;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.content__text {
+    width: 530px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 24px;
+}
+
+.preview__head {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+
+    color: #000000;
+}
+
+.preview__title {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px 0;
+    gap: 10px;
+
+    border-width: 2px 0;
+    border-style: solid;
+    border-color: #8C1F28;
+}
+
+.title__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+
+    color: #000000;
+}
+
+.preview__info {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+
+    color: #000000;
+}
+
+.preview__cost {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+
+    color: #000000;
+}
+
+.content__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 50px;
+    gap: 10px;
+
+    background: #8C1F28;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.content__button:hover {
+    background: rgba(140, 31, 40, 0.6);
+}
+
+.add_to_cart {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+
+    color: #FFFFFF;
+}
+
+.vinyl {
+    width: 700px;
+    height: auto;
+
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0;
+
+    border-radius: 4px;
+}
+
+.content__button:hover .vinyl {
+    filter: drop-shadow(2px 2px 4px black);
+}
+
+.vinyl:hover {
+    filter: drop-shadow(2px 2px 4px black);
+}
+
+.vinyl__image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;
+}
+
+@media(max-width: 1380px) {
+    section.section {
+        width: 1000px;
+    }
+
+    .content__text {
+        width: 375px;
+    }
+
+    .vinyl {
+        scale: 0.7;
+        top: 50%;
+        right: 0;
+        transform: translate(10%, -75%);
+    }
+
+    .vinyl__image {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media(max-width: 1120px) {
+    section.section {
+        width: 834px;
+
+        background: rgba(39, 39, 39, 0.11);
+        box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        border-radius: 20px;
+    }
+
+    .content__text {
+        width: 100%;
+        padding-top: 260px;
+    }
+
+    .vinyl {
+        scale: 1;
+        width: 700px;
+        height: auto;
+
+        top: -50%;
+        transform: translate(50%, 50%);
+        right: 50%;
+    }
+}
+
+@media(max-width: 800px) {
+    section.section {
+        width: 650px;
+    }
+
+    .vinyl {
+        scale: 0.8;
+        width: max-content;
+        height: auto;
+
+        top: -50%;
+        transform: translate(58%, 50%);
+        right: 50%;
+    }
+}
+
+@media(max-width: 720px) {
+    section.section {
+        width: 500px;
+    }
+
+    .content__text {
+        width: 100%;
+        padding-top: 150px;
+        gap: 24px;
+    }
+
+    .vinyl {
+        scale: 0.5;
+        width: max-content;
+        height: auto;
+        top: -50%;
+        transform: translate(-30%, 0%);
+        right: -50%;
+    }
+
+    .preview__head {
+        font-size: 25px;
+    }
+
+    .preview__title {
+        padding: 10px 0px;
+        gap: 10px;
+
+        border-width: 2px 0;
+
+    }
+
+    .title__text {
+        font-size: 15px;
+    }
+
+    .preview__info {
+        font-size: 10px;
+    }
+
+    .preview__cost {
+        font-size: 25px;
+    }
+
+    .content__button {
+        padding: 12px 50px;
+        gap: 10px;
+
+        border-radius: 10px;
+    }
+
+    .add_to_cart {
+        font-size: 15px;
+    }
+
+    .section__content {
+        padding: 20px;
+        gap: 30px;
+    }
+}
+
+@media(max-width: 576px) {
+    section.section {
+        width: 310px;
+    }
+
+    .content__text {
+        padding-top: 125px;
+    }
+
+    .vinyl {
+        scale: 0.38;
+        width: max-content;
+        height: auto;
+        top: -50%;
+        transform: translate(25%, 0%);
+        right: -50%;
+    }
+}
