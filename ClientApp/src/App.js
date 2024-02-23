@@ -6,7 +6,7 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/vinyl-store" element={<HomePage />} />
             </Routes>
         </Router>
     );

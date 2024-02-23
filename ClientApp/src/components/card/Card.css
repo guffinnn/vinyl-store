@@ -1,0 +1,281 @@
+.service__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 20px;
+
+    width: 400px;
+    height: 573px;
+}
+
+.image__group {
+    width: 400px;
+    height: 300px;
+
+    position: relative;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.record__image {
+    width: 100%;
+    height: 100%;
+}
+
+.record__image:hover {
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+.heart__frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 3px;
+    gap: 10px;
+
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 0;
+    top: 0;
+
+    cursor: pointer;
+}
+
+.content__info {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 20px;
+    gap: 8px;
+
+    width: 400px;
+    height: 123px;
+
+    border-bottom: 2px solid rgba(39, 39, 39, 0.2);
+}
+
+.content__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.vinyls__name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+
+    color: #000000;
+}
+
+.vinyls__author {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.vinyls__cost {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+
+    color: #000000;
+}
+
+.spotify__link {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+.music__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+
+    color: rgba(0, 0, 0, 0.6);
+
+    text-decoration: none;
+    background-image: linear-gradient(rgba(39, 39, 39, 0.2), rgba(0, 0, 0, 0.6));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    transition: background-size .3s;
+}
+
+.spotify__link:hover .music__link {
+    background-size: 100% 2px;
+}
+
+.play__frame {
+    position: relative;
+
+    width: 24px;
+    height: 24px;
+}
+
+.play__icon {
+    position: absolute;
+    left: 33.33%;
+    right: 18.34%;
+    top: 18.48%;
+    bottom: 18.48%;
+}
+
+.add_to_cart__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 50px;
+    gap: 10px;
+
+    background: #272727;
+    border-radius: 10px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+
+    cursor: pointer;
+}
+
+.add_to_cart__button:hover {
+    background: rgba(39, 39, 39, 0.6);
+}
+
+.button__text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: #FFFFFF;
+}
+
+@media(max-width: 1120px) {
+    h2.h2 {
+        font-size: 55.62px;
+    }
+}
+
+@media(max-width: 720px) {
+    h2.h2 {
+        font-weight: 600;
+        font-size: 34.3758px;
+        line-height: 42px;
+    }
+
+    .service__card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 20px;
+
+        width: 310px;
+        height: 432.5px;
+    }
+
+    .image__group {
+        width: 310px;
+        height: 232.5px;
+    }
+
+    .content__info {
+        box-sizing: border-box;
+
+        /* Auto layout */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0 20px;
+        gap: 8px;
+
+        width: 310px;
+        height: 89px;
+    }
+
+    .vinyls__name {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 150%;
+    }
+
+    .vinyls__author {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 150%;
+    }
+
+    .vinyls__cost {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 150%;
+    }
+
+    .music__link {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 150%;
+    }
+
+    .music__link {
+        gap: 10px;
+    }
+
+    .play__frame {
+        width: 12px;
+        height: 12px;
+    }
+
+    .play__icon {
+        width: 100%;
+        height: 100%;
+
+        left: 33.33%;
+        right: 18.34%;
+        top: 18.48%;
+        bottom: 18.47%;
+    }
+
+    .add_to_cart__button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 50px;
+        gap: 10px;
+    }
+
+    .button__text {
+        font-size: 10px;
+        line-height: 12px;
+    }
+}
