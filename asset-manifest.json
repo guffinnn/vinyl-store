@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vinyl-store/static/css/main.2e6cb70b.css",
-    "main.js": "/vinyl-store/static/js/main.126231e4.js",
+    "main.css": "/vinyl-store/static/css/main.ebad8054.css",
+    "main.js": "/vinyl-store/static/js/main.569549ad.js",
     "static/media/BTW.png": "/vinyl-store/static/media/BTW.ff5eaad87c80f229e499.png",
     "static/media/OrithDisplay-Regular.otf": "/vinyl-store/static/media/OrithDisplay-Regular.850104e391a0ebc4c3a1.otf",
     "service-worker.js": "/vinyl-store/service-worker.js",
@@ -10,11 +10,11 @@
     "static/media/catalog-icon.svg": "/vinyl-store/static/media/catalog-icon.e667b05ff9fc7b0af1da044b09b3c463.svg",
     "static/media/account-icon.svg": "/vinyl-store/static/media/account-icon.692f4d31445121d9b68823b0680f11d3.svg",
     "index.html": "/vinyl-store/index.html",
-    "main.2e6cb70b.css.map": "/vinyl-store/static/css/main.2e6cb70b.css.map",
-    "main.126231e4.js.map": "/vinyl-store/static/js/main.126231e4.js.map"
+    "main.ebad8054.css.map": "/vinyl-store/static/css/main.ebad8054.css.map",
+    "main.569549ad.js.map": "/vinyl-store/static/js/main.569549ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e6cb70b.css",
-    "static/js/main.126231e4.js"
+    "static/css/main.ebad8054.css",
+    "static/js/main.569549ad.js"
   ]
 }
