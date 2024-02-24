@@ -168,6 +168,12 @@
     background: rgba(39, 39, 39, 0.6);
 }
 
+.add_to_cart__button:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+    transition: none;
+}
+
 .button__text {
     font-style: normal;
     font-weight: 300;
@@ -175,6 +181,12 @@
     line-height: 18px;
 
     color: #FFFFFF;
+}
+
+.button__text:active .add_to_cart__button {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+    transition: none;
 }
 
 @media(max-width: 1120px) {

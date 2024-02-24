@@ -117,6 +117,12 @@ section.section {
     filter: drop-shadow(2px 2px 4px black);
 }
 
+.content__button:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px rgba(140, 31, 40, 0.6), inset -4px -4px 12px rgba(140, 31, 40, 0.3);
+    transition: none;
+}
+
 .vinyl:hover {
     filter: drop-shadow(2px 2px 4px black);
 }
