@@ -82,6 +82,7 @@ h1.h1 {
     font-weight: 400;
     font-size: 11rem;
     text-align: justify;
+    text-transform: uppercase;
 
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, #000000 100%);
     -webkit-background-clip: text;

@@ -8,7 +8,7 @@ import Footer from "../../components/footer/Footer";
 function HomePage() {
     return(
         <>
-            <Header />
+            <Header>Vinyl records</Header>
             <main className="main">
                 <Preview />
                 <section className="catalog__section">

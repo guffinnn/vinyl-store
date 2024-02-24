@@ -1,4 +1,5 @@
 main.main {
+    min-height: 700px;
     display: flex;
     flex-wrap: wrap;
     gap: 100px;
