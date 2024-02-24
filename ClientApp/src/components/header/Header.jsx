@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import './Header.css';
 import catalog from '../../assets/catalog-icon.svg';
 import cart from '../../assets/cart-icon.svg';
@@ -27,28 +28,36 @@ function Header({ children }) {
             <header className="header">
                 <nav className="header__nav">
                     <ul>
-                        <li className="header__list">
-                            <a className="header__link" href="/vinyl-store">О нас</a>
-                        </li>
-                        <li className="header__list">
-                            <a className="header__link" href="/catalog">Каталог</a>
-                        </li>
-                        <li className="header__list">
-                            <a className="header__link" href="/cart">Корзина</a>
-                            {!notification && (
-                                <div className="notify">
-                                    <p className="notify__text">1</p>
-                                </div>
-                            )}
-                        </li>
-                        <li className="header__list">
-                            <a className="header__link" href="/account">Аккаунт</a>
-                        </li>
+                        <Link to="/vinyl-store">
+                            <li className="header__list">
+                                <a className="header__link" href="/vinyl-store">О нас</a>
+                            </li>
+                        </Link>
+                        <Link to="/catalog">
+                            <li className="header__list">
+                                <a className="header__link" href="/catalog">Каталог</a>
+                            </li>
+                        </Link>
+                        <Link to="/cart">
+                            <li className="header__list">
+                                <a className="header__link" href="/cart">Корзина</a>
+                                {!notification && (
+                                    <div className="notify">
+                                        <p className="notify__text">1</p>
+                                    </div>
+                                )}
+                            </li>
+                        </Link>
+                        <Link to="/account">
+                            <li className="header__list">
+                                <a className="header__link" href="/account">Аккаунт</a>
+                            </li>
+                        </Link>
                     </ul>
                 </nav>
             </header>
             <div className="heading">
-                <h1 className="h1">{children}</h1>
+            <h1 className="h1">{children}</h1>
                 <p className="info__text">МУЗЫКА ВСЕХ ВРЕМЕН НА ЛЮБОЙ ВКУС.</p>
             </div>
         </>
@@ -58,32 +67,38 @@ function Header({ children }) {
             <header className="header">
                 <nav className="header__nav">
                     <ul>
-                        <li className="header__list">
-                            <a className="header__link" href="/catalog">
-                                <div className="icon">
-                                    <img className="icon__image" src={catalog} alt="Catalog"/>
-                                </div>
-                            </a>
-                        </li>
-                        <li className="header__list">
-                            <a className="header__link" href="/cart">
-                                <div className="icon">
-                                    <img className="icon__image" src={cart} alt="Cart"/>
-                                </div>
-                            </a>
-                            {!notification && (
-                                <div className="notify">
-                                    <p className="notify__text">1</p>
-                                </div>
-                            )}
-                        </li>
-                        <li className="header__list">
-                            <a className="header__link" href="/account">
-                                <div className="icon">
-                                    <img className="icon__image" src={account} alt="Account"/>
-                                </div>
-                            </a>
-                        </li>
+                        <Link to="/catalog">
+                            <li className="header__list">
+                                <a className="header__link" href="/catalog">
+                                    <div className="icon">
+                                        <img className="icon__image" src={catalog} alt="Catalog"/>
+                                    </div>
+                                </a>
+                            </li>
+                        </Link>
+                        <Link to="/cart">
+                            <li className="header__list">
+                                <a className="header__link" href="/cart">
+                                    <div className="icon">
+                                        <img className="icon__image" src={cart} alt="Cart"/>
+                                    </div>
+                                </a>
+                                {!notification && (
+                                    <div className="notify">
+                                        <p className="notify__text">1</p>
+                                    </div>
+                                )}
+                            </li>
+                        </Link>
+                        <Link to="/account">
+                            <li className="header__list">
+                                <a className="header__link" href="/account">
+                                    <div className="icon">
+                                        <img className="icon__image" src={account} alt="Account"/>
+                                    </div>
+                                </a>
+                            </li>
+                        </Link>
                     </ul>
                 </nav>
             </header>

@@ -5,7 +5,7 @@ import Preview from "../../components/preview/Preview";
 import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
 
-function HomePage() {
+function Home() {
     return(
         <>
             <Header>Vinyl records</Header>
@@ -28,4 +28,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default Home;
