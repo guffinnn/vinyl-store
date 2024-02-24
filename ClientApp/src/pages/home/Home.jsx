@@ -3,6 +3,7 @@ import './Home.css';
 import Header from "../../components/header/Header";
 import Preview from "../../components/preview/Preview";
 import Card from "../../components/card/Card";
+import Footer from "../../components/footer/Footer";
 
 function HomePage() {
     return(
@@ -22,6 +23,7 @@ function HomePage() {
                     </div>
                 </section>
             </main>
+            <Footer />
         </>
     );
 }

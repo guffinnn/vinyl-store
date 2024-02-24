@@ -31,6 +31,8 @@ a.header__link {
     background-repeat: no-repeat;
     background-size: 0 2px;
     transition: background-size .3s;
+
+    padding-bottom: 5px;
 }
 
 a.header__link:hover {
