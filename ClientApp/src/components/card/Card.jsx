@@ -1,17 +1,14 @@
 import React from "react";
 import './Card.css';
 import chromatica from '../../assets/records/Chromatica.png';
-import heart from '../../assets/heart-icon.svg';
 import play from '../../assets/play-icon.svg';
 
-function Card() {
+function Card({ children }) {
     return(
         <div className="service__card">
             <div className="image__group">
                 <img className="record__image" src={chromatica} alt="Изображение"/>
-                <div className="heart__frame">
-                    <img className="heart__icon" src={heart} alt="В избранное"/>
-                </div>
+                {children}
             </div>
             <div className="content__info">
                 <div className="content__heading">

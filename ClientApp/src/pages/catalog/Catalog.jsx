@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import SearchBox from "../../components/searchBox/SearchBox";
 import Card from "../../components/card/Card";
+import Heart from "../../components/heart/Heart";
 
 function Catalog() {
     return (
@@ -15,10 +16,10 @@ function Catalog() {
                     <SearchBox/>
                     <div className="catalog__group">
                         <div className="catalog__group__fluid">
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
+                            <Card><Heart status={0} /></Card>
+                            <Card><Heart status={1} /></Card>
+                            <Card><Heart status={1} /></Card>
+                            <Card><Heart status={1} /></Card>
                         </div>
                     </div>
                 </section>

@@ -28,24 +28,8 @@
 }
 
 .record__image:hover {
+    scale: 1.05;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
-}
-
-.heart__frame {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 3px;
-    gap: 10px;
-
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    right: 0;
-    top: 0;
-
-    cursor: pointer;
 }
 
 .content__info {
@@ -165,13 +149,13 @@
 }
 
 .add_to_cart__button:hover {
-    background: rgba(39, 39, 39, 0.6);
+    scale: 1.05;
+    margin: 0 10px;
 }
 
 .add_to_cart__button:active {
-    color: #666;
-    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-    transition: none;
+    scale: 0.95;
+    transition: all 0.1s ease-in-out;
 }
 
 .button__text {

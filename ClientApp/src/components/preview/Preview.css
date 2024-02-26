@@ -91,7 +91,13 @@ section.section {
 }
 
 .content__button:hover {
-    background: rgba(140, 31, 40, 0.6);
+    scale: 1.05;
+    margin: 0 10px;
+}
+
+.content__button:active {
+    scale: 0.95;
+    transition: all 0.1s ease-in-out;
 }
 
 .add_to_cart {
@@ -116,12 +122,6 @@ section.section {
 
 .content__button:hover .vinyl {
     filter: drop-shadow(2px 2px 4px black);
-}
-
-.content__button:active {
-    color: #666;
-    box-shadow: inset 4px 4px 12px rgba(140, 31, 40, 0.6), inset -4px -4px 12px rgba(140, 31, 40, 0.3);
-    transition: none;
 }
 
 .vinyl:hover {
@@ -248,6 +248,10 @@ section.section {
         gap: 10px;
 
         border-radius: 10px;
+    }
+
+    .content__button:hover .add_to_cart {
+        font-size: 14px;
     }
 
     .add_to_cart {
