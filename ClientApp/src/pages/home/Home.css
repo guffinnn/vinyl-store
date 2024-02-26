@@ -1,5 +1,4 @@
 main.main {
-    min-height: 700px;
     display: flex;
     flex-wrap: wrap;
     gap: 100px;
@@ -99,6 +98,7 @@ h2.h2 {
 
     main.main {
         gap: 70px;
+        margin-bottom: -50px;
     }
 }
 
