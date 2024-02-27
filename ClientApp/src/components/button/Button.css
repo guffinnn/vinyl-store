@@ -1,0 +1,43 @@
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
+    padding: 10px 0;
+    gap: 10px;
+
+    width: 100%;
+    height: auto;
+
+    background: #272727;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.button:hover {
+    scale: 1.05;
+    margin: 0 10px;
+}
+
+.button:active {
+    scale: 0.95;
+    transition: all 0.1s ease-in-out;
+}
+
+.buttons__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 150%;
+    /* identical to box height, or 22px */
+
+    color: #FFFFFF;
+}
+
+.buttons__text:active .add_to_cart__button {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+    transition: none;
+}

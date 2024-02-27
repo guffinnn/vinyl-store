@@ -1,0 +1,147 @@
+#cart {
+    width: auto;
+
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+
+    margin: 0 40px;
+}
+
+section.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px 30px;
+    gap: 50px;
+
+    width: 100%;
+    min-width: 650px;
+
+    background: rgba(47, 48, 61, 0.11);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 15px;
+}
+
+.cart__frame {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 0;
+    gap: 40px 20px;
+
+    width: 100%;
+    overflow-y: auto;
+}
+
+.cart__fluid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 0 1px 0 0;
+    gap: 40px 20px;
+
+    width: 100%;
+    height: auto
+}
+
+aside.cart {
+    width: 100%;
+    max-width: 552px;
+    height: auto;
+
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: stretch;
+}
+
+article.payments {
+    width: 100%;
+    height: auto;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px 30px;
+    gap: 20px;
+
+    background: rgba(47, 48, 61, 0.11);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 15px;
+}
+
+.cart__heading {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 150%;
+
+    color: #000000;
+}
+
+article.cart__price {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px 30px;
+    gap: 20px;
+
+    width: 100%;
+    height: auto;
+
+    background: rgba(47, 48, 61, 0.11);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 15px;
+}
+
+.cart__status {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    gap: 50px;
+}
+
+.objects__count {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    /* identical to box height, or 27px */
+
+    color: #000000;
+}
+
+.final__price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 150%;
+    /* identical to box height, or 27px */
+
+    color: #000000;
+}
