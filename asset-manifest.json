@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vinyl-store/static/css/main.26fa4459.css",
-    "main.js": "/vinyl-store/static/js/main.14a04382.js",
+    "main.css": "/vinyl-store/static/css/main.dc217199.css",
+    "main.js": "/vinyl-store/static/js/main.e36eb9c0.js",
     "static/media/BTW.png": "/vinyl-store/static/media/BTW.ff5eaad87c80f229e499.png",
     "static/media/Chromatica.png": "/vinyl-store/static/media/Chromatica.d9db39c971d5fb4c1d71.png",
     "static/media/Joanne.png": "/vinyl-store/static/media/Joanne.3bf20d7affb93bf5e0f6.png",
@@ -13,15 +13,16 @@
     "static/media/catalog-icon.svg": "/vinyl-store/static/media/catalog-icon.e667b05ff9fc7b0af1da044b09b3c463.svg",
     "static/media/account-icon.svg": "/vinyl-store/static/media/account-icon.692f4d31445121d9b68823b0680f11d3.svg",
     "static/media/search-icon.svg": "/vinyl-store/static/media/search-icon.35d1946c7cceb32ea93965ab202d22b9.svg",
+    "static/media/card-icon.svg": "/vinyl-store/static/media/card-icon.516929899cbe5d21e89e91e964e59f69.svg",
     "index.html": "/vinyl-store/index.html",
     "static/media/play-icon.svg": "/vinyl-store/static/media/play-icon.25015385825e15c9a48edfcab4c39cd1.svg",
     "static/media/heart-active-icon.svg": "/vinyl-store/static/media/heart-active-icon.42c30f676de5dc28847ef10284150d1e.svg",
     "static/media/heart-icon.svg": "/vinyl-store/static/media/heart-icon.d4a991a50025ca873a71f2b97d1377f2.svg",
-    "main.26fa4459.css.map": "/vinyl-store/static/css/main.26fa4459.css.map",
-    "main.14a04382.js.map": "/vinyl-store/static/js/main.14a04382.js.map"
+    "main.dc217199.css.map": "/vinyl-store/static/css/main.dc217199.css.map",
+    "main.e36eb9c0.js.map": "/vinyl-store/static/js/main.e36eb9c0.js.map"
   },
   "entrypoints": [
-    "static/css/main.26fa4459.css",
-    "static/js/main.14a04382.js"
+    "static/css/main.dc217199.css",
+    "static/js/main.e36eb9c0.js"
   ]
 }
