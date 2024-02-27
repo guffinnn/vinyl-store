@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import Preview from "../../components/preview/Preview";
 import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
+import {RECORDS} from "../../assets/records/records.";
 
 function Home() {
     return(
@@ -15,10 +16,9 @@ function Home() {
                     <h2 className="h2">НОВИНКИ</h2>
                     <div className="catalog__frame">
                         <div className="catalog__frame__fluid">
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
+                            {RECORDS.map((item, index) => (
+                                <Card record={item} image={index} />
+                            ))}
                         </div>
                     </div>
                 </section>

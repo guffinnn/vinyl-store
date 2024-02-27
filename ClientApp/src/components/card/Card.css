@@ -25,6 +25,7 @@
 .record__image {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .record__image:hover {
