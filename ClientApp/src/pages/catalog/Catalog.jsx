@@ -6,7 +6,7 @@ import Footer from "../../components/footer/Footer";
 import SearchBox from "../../components/searchBox/SearchBox";
 import Card from "../../components/card/Card";
 import Heart from "../../components/heart/Heart";
-import {RECORDS} from "../../assets/records/records.";
+import {RECORDS} from "../../assets/records/records";
 
 function Catalog() {
     return (

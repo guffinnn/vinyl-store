@@ -4,6 +4,9 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Payments from "../../components/payments/Payments";
 import Button from "../../components/button/Button";
+import Position from "../../components/position/Position";
+import Heart from "../../components/heart/Heart";
+import {RECORDS} from "../../assets/records/records";
 
 function Cart() {
     return (
@@ -13,7 +16,11 @@ function Cart() {
                 <section className="cart">
                     <div className="cart__frame">
                         <div className="cart__fluid">
-
+                            {RECORDS.map((item, index) => (
+                                <Position record={item} image={index}>
+                                    <Heart status={1} />
+                                </Position>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -24,7 +31,7 @@ function Cart() {
                             <p className="objects__count">Товары (4)</p>
                             <p className="final__price">$336</p>
                         </div>
-                        <Button content={"Перейти к оформлению"} />
+                        <Button id="success" content={"Перейти к оформлению"} />
                     </article>
                     <article className="payments">
                         <p className="cart__heading">Платежные средства</p>

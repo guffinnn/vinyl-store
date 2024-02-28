@@ -1,9 +1,9 @@
 import React from "react";
 import './Button.css';
 
-function Button({ content }) {
+function Button({ id, content }) {
     return (
-        <div className="button">
+        <div className="button" id={id}>
             <a className="buttons__text" href={{}}>{content}</a>
         </div>
     );

@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import Preview from "../../components/preview/Preview";
 import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
-import {RECORDS} from "../../assets/records/records.";
+import {RECORDS} from "../../assets/records/records";
 
 function Home() {
     return(

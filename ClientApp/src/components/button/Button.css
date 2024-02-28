@@ -28,7 +28,7 @@
 
 .buttons__text {
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 15px;
     line-height: 150%;
     /* identical to box height, or 22px */
@@ -40,4 +40,10 @@
     color: #666;
     box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
     transition: none;
+}
+
+@media(max-width: 570px) {
+    .buttons__text {
+        font-size: 10px;
+    }
 }

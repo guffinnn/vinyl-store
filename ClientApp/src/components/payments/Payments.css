@@ -147,3 +147,52 @@ div.card-icon__frame {
 
     color: #FFFFFF;
 }
+
+@media(max-width: 750px) {
+    .add_card__frame, .card__frame {
+        width: 165px;
+        height: 110px;
+    }
+
+    .add_card__background, .card__background {
+        width: 165px;
+        height: 110px;
+    }
+
+    .add_card__content {
+        height: 36px;
+    }
+
+    div.card-icon__frame {
+        width: 18px;
+        height: 18px;
+    }
+
+    .card-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+
+    .add_card__text {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 150%;
+
+    }
+
+    .card__number {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+    }
+
+    .card__user {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 150%;
+    }
+}

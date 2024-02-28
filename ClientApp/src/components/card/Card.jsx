@@ -1,7 +1,7 @@
 import React from "react";
 import './Card.css';
 import play from '../../assets/play-icon.svg';
-import * as Img from "../../assets/records/records.";
+import * as Img from "../../assets/records/records";
 
 function Card({ record, image, children }) {
     return(
