@@ -1,10 +1,11 @@
 #cart {
     width: auto;
+    height: 50vh;
 
     display: flex;
     gap: 20px;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-wrap: nowrap;
     align-content: flex-start;
 
@@ -171,6 +172,48 @@ article.cart__price {
     /* identical to box height, or 27px */
 
     color: #000000;
+}
+
+.error__container {
+    width: auto;
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.error__image {}
+
+.image__content {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    margin: 4px 0;
+}
+
+.error__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 10px;
+}
+
+.error__head {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    color: #000000;
+}
+
+.error__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14.8331px;
+    line-height: 130%;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 @media(max-width: 1300px) {

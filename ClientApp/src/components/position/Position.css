@@ -102,6 +102,18 @@
     cursor: pointer;
 }
 
+.minus__icon {
+    transition: transform 0.1s;
+}
+
+.minus__button:hover .minus__icon {
+    transform: scale(1.05);
+}
+
+.minus__button:active .minus__icon {
+    transform: scale(0.95);
+}
+
 .plus__button {
     display: flex;
     flex-direction: row;
@@ -111,11 +123,26 @@
 
     width: 38px;
     height: 38px;
+    transition: transform 0.1s;
 
     background: #272727;
     border-radius: 5px;
 
     cursor: pointer;
+}
+
+.plus__icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.1s;
+}
+
+.plus__button:hover .plus__icon {
+    transform: scale(1.05);
+}
+
+.plus__button:active .plus__icon {
+    transform: scale(0.95);
 }
 
 .counter__frame {

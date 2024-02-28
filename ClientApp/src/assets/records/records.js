@@ -30,4 +30,6 @@ export const RECORDS = [
     }
 ];
 
+export const CART = [];
+
 export { img1, img2, img3, img4 };
