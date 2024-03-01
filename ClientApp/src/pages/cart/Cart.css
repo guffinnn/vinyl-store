@@ -1,6 +1,6 @@
 #cart {
     width: auto;
-    height: 50vh;
+    min-height: 50vh;
 
     display: flex;
     gap: 20px;
