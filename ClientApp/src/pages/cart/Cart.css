@@ -29,6 +29,7 @@ section.cart {
     backdrop-filter: blur(4px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 15px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
 }
 
 .cart__frame {
@@ -112,6 +113,7 @@ article.payments {
     backdrop-filter: blur(4px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 15px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
 }
 
 .cart__heading {
@@ -140,6 +142,7 @@ article.cart__price {
     backdrop-filter: blur(4px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 15px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
 }
 
 .cart__status {
@@ -231,6 +234,7 @@ article.cart__price {
         backdrop-filter: blur(4px);
         /* Note: backdrop-filter has minimal browser support */
         border-radius: 15px;
+        border: rgba(150, 150, 150, 0.22) 1px solid;
         gap: 20px;
 
         display: flex;
@@ -248,6 +252,7 @@ article.cart__price {
         backdrop-filter: none;
         /* Note: backdrop-filter has minimal browser support */
         border-radius: 0;
+        border: none;
     }
 
     #success {
@@ -299,6 +304,7 @@ article.cart__price {
     aside.cart {
         height: fit-content;
         gap: 0;
+        border: rgba(150, 150, 150, 0.22) 1px solid;
     }
 
     article.payments {

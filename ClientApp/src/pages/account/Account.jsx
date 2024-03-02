@@ -5,8 +5,17 @@ import './Account.css';
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import AuthSelect from "../../components/authSelect/AuthSelect";
-import Button from "../../components/button/Button";
 import ModalStatus from "../../components/modalStatus/ModalStatus";
+import * as Img from '../../assets/data';
+import account from "../../assets/account-image.png";
+import exit from "../../assets/exit-icon.svg";
+
+const ROWS = {
+        data: "Данные",
+        orders: "Заказы",
+        payments: "Оплата",
+        likes: "Лайки"
+};
 
 function Account() {
     // Storage user login status
@@ -44,14 +53,39 @@ function Account() {
             <main className="main" id="account">
                 {user ? (
                     <>
-                        <h1>{user.email}</h1>
-                        <div className="button__frame">
-                            <Button content="Выйти из аккаунта" onEvent={e => logOut(e)}/>
-                        </div>
-                        <ModalStatus isOpen={isOpen}
+                        <aside className="account__aside">
+                            <nav className="account__nav">
+                                <ul id="acc__ul">
+                                    {Object.keys(ROWS).map((item, index) => (
+                                        <li className="account__list" key={index}>
+                                            <div className="list__icon">
+                                                <img className="list__image" src={Img[`${item}`]} alt="Иконка"/>
+                                            </div>
+                                            <p className="list__text">{ROWS[item]}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </aside>
+                        <section className="account__section">
+                            <div className="register__frame">
+                                <div className="left__content">
+                                    <img className="user__icon" id="user80" src={account} alt="Пользователь"/>
+                                    <div className="user__content">
+                                        <p className="user__initials">{user.uid}</p>
+                                        <p className="user__email">{user.email}</p>
+                                    </div>
+                                </div>
+                                <div className="exit__icon" onClick={e => logOut(e)}>
+                                    <img className="exit__image" src={exit} alt="Выйти" />
+                                </div>
+                            </div>
+                        </section>
+
+                        {/*<ModalStatus isOpen={isOpen}
                                      setIsOpen={setIsOpen}
                                      status={status}
-                        />
+                        />*/}
                     </>
                 ) : (
                     <div className="authes">

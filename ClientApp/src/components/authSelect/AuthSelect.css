@@ -28,6 +28,7 @@
     backdrop-filter: blur(4px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 15px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
 }
 
 .left__content {
@@ -47,9 +48,6 @@
 
     border: 1px solid #D6D6D6;
     border-radius: 1000px;
-
-    mix-blend-mode: plus-lighter;
-
 }
 
 .register__text {
@@ -93,6 +91,7 @@
     backdrop-filter: blur(4px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 15px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
 
     opacity: 0;
     height: 0;

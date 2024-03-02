@@ -6,6 +6,7 @@ section.section {
     box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4px);
     border-radius: 20px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
 }
 
 .section__content {
