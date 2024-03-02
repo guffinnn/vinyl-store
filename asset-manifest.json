@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vinyl-store/static/css/main.61c986d7.css",
-    "main.js": "/vinyl-store/static/js/main.9cbba575.js",
+    "main.css": "/vinyl-store/static/css/main.91e0e0e9.css",
+    "main.js": "/vinyl-store/static/js/main.beb8529e.js",
     "static/media/BTW.png": "/vinyl-store/static/media/BTW.ff5eaad87c80f229e499.png",
     "static/media/Chromatica.png": "/vinyl-store/static/media/Chromatica.d9db39c971d5fb4c1d71.png",
     "static/media/Joanne.png": "/vinyl-store/static/media/Joanne.3bf20d7affb93bf5e0f6.png",
@@ -13,6 +13,8 @@
     "static/media/cart-icon.svg": "/vinyl-store/static/media/cart-icon.6175e4d8c36d5f756851f66e3dafa05f.svg",
     "static/media/catalog-icon.svg": "/vinyl-store/static/media/catalog-icon.e667b05ff9fc7b0af1da044b09b3c463.svg",
     "static/media/account-icon.svg": "/vinyl-store/static/media/account-icon.692f4d31445121d9b68823b0680f11d3.svg",
+    "static/media/error-icon.svg": "/vinyl-store/static/media/error-icon.fa74602d2e91eada171452a0ac37d728.svg",
+    "static/media/success-icon.svg": "/vinyl-store/static/media/success-icon.4e3f428bb10c39c555b70b518f9c411d.svg",
     "static/media/plus-icon.svg": "/vinyl-store/static/media/plus-icon.a9d45e9f8d73d86bb95907d6f4594251.svg",
     "static/media/minus-icon.svg": "/vinyl-store/static/media/minus-icon.3385140e93b8f622e3eeebe43b1dd3d8.svg",
     "static/media/search-icon.svg": "/vinyl-store/static/media/search-icon.35d1946c7cceb32ea93965ab202d22b9.svg",
@@ -23,11 +25,11 @@
     "static/media/heart-active-icon.svg": "/vinyl-store/static/media/heart-active-icon.42c30f676de5dc28847ef10284150d1e.svg",
     "static/media/heart-icon.svg": "/vinyl-store/static/media/heart-icon.d4a991a50025ca873a71f2b97d1377f2.svg",
     "static/media/arrow-icon.svg": "/vinyl-store/static/media/arrow-icon.1c810d40f3973f506375ad9ebab2ab98.svg",
-    "main.61c986d7.css.map": "/vinyl-store/static/css/main.61c986d7.css.map",
-    "main.9cbba575.js.map": "/vinyl-store/static/js/main.9cbba575.js.map"
+    "main.91e0e0e9.css.map": "/vinyl-store/static/css/main.91e0e0e9.css.map",
+    "main.beb8529e.js.map": "/vinyl-store/static/js/main.beb8529e.js.map"
   },
   "entrypoints": [
-    "static/css/main.61c986d7.css",
-    "static/js/main.9cbba575.js"
+    "static/css/main.91e0e0e9.css",
+    "static/js/main.beb8529e.js"
   ]
 }
