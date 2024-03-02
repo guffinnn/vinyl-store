@@ -12,6 +12,16 @@
     justify-content: flex-start;
 }
 
+.authes {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 30px;
+}
+
 @media(max-width: 1120px) {
     #account {
         margin-top: -100px;
