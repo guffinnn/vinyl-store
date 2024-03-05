@@ -58,7 +58,7 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
         <div className="auth__type__frame">
             <div className="register__frame">
                 <div className="left__content">
-                    <img className="user__icon" src={account} alt="Пользователь"/>
+                    <img className="user__icon" id="user" src={account} alt="Пользователь"/>
                     <p className="register__text">{type === "register" ? "Зарегистрироваться" : "Авторизоваться"}</p>
                 </div>
                 <div className={`icon__frame ${showForm ? "active__select" : ""}`} onClick={toggleForm}>

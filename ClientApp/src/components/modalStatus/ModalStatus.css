@@ -38,6 +38,7 @@
 
 .status__image {
     width: 25.5px;
+    object-fit: contain;
 }
 
 .modal__text {
@@ -81,9 +82,46 @@
 
 @media(max-width: 800px) {
     .modal__container {
-        width: 100%;
-        top: 20%;
-        left: 20%;
-        transform: translate(-20%, -20%);
+        width: -webkit-fill-available;
+        height: fit-content;
+        margin: 0 20px;
+        top: 50%;
+        left: 0;
+        transform: translate(0%, -50%);
+    }
+}
+
+@media(max-width: 560px) {
+    .modal__container {
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .modal__content {
+        gap: 5px;
+    }
+
+    .text__head {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .text__info {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .status__icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .status__image {
+        width: 18px;
+        margin-top: -4px;
     }
 }

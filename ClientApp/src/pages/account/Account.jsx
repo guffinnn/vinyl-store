@@ -9,6 +9,7 @@ import ModalStatus from "../../components/modalStatus/ModalStatus";
 import * as Img from '../../assets/data';
 import account from "../../assets/account-image.png";
 import exit from "../../assets/exit-icon.svg";
+import Button from "../../components/button/Button";
 
 const ROWS = {
         data: "Данные",
@@ -24,6 +25,20 @@ function Account() {
     const [isOpen, setIsOpen] = useState(false);
     // Storage status of modal
     const [status, setStatus] = useState(1);
+    // Storage a width of user display for adaptive
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = (event) => {
+            setWidth(event.target.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
@@ -68,7 +83,7 @@ function Account() {
                             </nav>
                         </aside>
                         <section className="account__section">
-                            <div className="register__frame">
+                            <div className="register__frame" id="acc__register">
                                 <div className="left__content">
                                     <img className="user__icon" id="user80" src={account} alt="Пользователь"/>
                                     <div className="user__content">
@@ -76,9 +91,15 @@ function Account() {
                                         <p className="user__email">{user.email}</p>
                                     </div>
                                 </div>
-                                <div className="exit__icon" onClick={e => logOut(e)}>
-                                    <img className="exit__image" src={exit} alt="Выйти" />
-                                </div>
+                                {width >= 576 ? (
+                                    <div className="exit__icon" onClick={e => logOut(e)}>
+                                        <img className="exit__image" src={exit} alt="Выйти" />
+                                    </div>
+                                ) : (
+                                    <div className="exit__frame">
+                                        <Button content="Выйти из аккаунта" onEvent={e => logOut(e)}/>
+                                    </div>
+                                )}
                             </div>
                         </section>
 
