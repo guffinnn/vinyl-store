@@ -101,7 +101,7 @@ div.card-icon__frame {
 .card__frame {
     width: 225px;
     height: 150px;
-    transition: transform 0.1s;
+    transition: transform 0.3s;
     cursor: pointer;
 }
 
@@ -111,6 +111,7 @@ div.card-icon__frame {
 
 .card__frame:active {
     transform: scale(0.95);
+    transition: all 0.1s;
 }
 
 .card__background {

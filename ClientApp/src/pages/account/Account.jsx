@@ -10,6 +10,7 @@ import * as Img from '../../assets/data';
 import account from "../../assets/account-image.png";
 import exit from "../../assets/exit-icon.svg";
 import Button from "../../components/button/Button";
+import Payments from "../../components/payments/Payments";
 
 const ROWS = {
         data: "Данные",
@@ -83,7 +84,7 @@ function Account() {
                             </nav>
                         </aside>
                         <section className="account__section">
-                            <div className="register__frame" id="acc__register">
+                            <div id="acc__register">
                                 <div className="left__content">
                                     <img className="user__icon" id="user80" src={account} alt="Пользователь"/>
                                     <div className="user__content">
@@ -100,6 +101,25 @@ function Account() {
                                         <Button content="Выйти из аккаунта" onEvent={e => logOut(e)}/>
                                     </div>
                                 )}
+                            </div>
+                            <div className="orders__history">
+                                <div className="section__div__heading">
+                                    <div className="heading__icon">
+                                        <img className="heading__image" src={Img['orders']} alt="Иконка"/>
+                                    </div>
+                                    <p className="heading__text">История платежей</p>
+                                </div>
+                            </div>
+                            <div className="payments__types">
+                                <div className="section__div__heading">
+                                    <div className="heading__icon">
+                                        <img className="heading__image" src={Img['payments']} alt="Иконка"/>
+                                    </div>
+                                    <p className="heading__text">Способы оплаты</p>
+                                </div>
+                                <div className="payments__block">
+                                    <Payments />
+                                </div>
                             </div>
                         </section>
 

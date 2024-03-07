@@ -89,16 +89,16 @@ section.section {
     border-radius: 10px;
 
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .content__button:hover {
-    scale: 1.05;
+    transform: scale(1.05);
     margin: 0 10px;
 }
 
 .content__button:active {
-    scale: 0.95;
-    transition: all 0.1s ease-in-out;
+    transform: scale(0.95);
 }
 
 .add_to_cart {

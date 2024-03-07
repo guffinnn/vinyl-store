@@ -72,9 +72,10 @@ li.account__list:hover {
 }
 
 .list__image {
-    width: auto;
-    min-width: 15px;
-    max-width: 18px;
+    width: 20px;
+    /* min-width: 15px; */
+    /* max-width: 18px; */
+    object-fit: fill;
 }
 
 .list__text {
@@ -88,12 +89,37 @@ li.account__list:hover {
 
 section.account__section {
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 50px;
+    column-gap: 20px;
+}
+
+#acc__register {
+    width: 100%;
+    height: fit-content;
+
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-start;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: start;
+    padding: 20px;
+    gap: 20px;
+
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-radius: 15px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
+
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-content: center;
 }
 
 #user80 {
@@ -164,6 +190,84 @@ section.account__section {
     gap: 30px;
 }
 
+.orders__history {
+    display: grid;
+    align-content: space-between;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.section__div__heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+}
+
+.heading__icon {
+    width: 24px;
+    height: 24px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.heading__image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.heading__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+
+    color: #000000;
+}
+
+.payments__types {
+    display: grid;
+    align-content: space-between;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.payments__block {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+
+    min-width: 200px;
+    height: fit-content;
+
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 15px;
+    border: rgba(150, 150, 150, 0.22) 1px solid;
+}
+
 @media(max-width: 1120px) {
     #account {
         margin-top: -100px;
@@ -200,6 +304,21 @@ section.account__section {
 
     .user__initials, .user__email {
         max-width: calc(100vw - 250px);
+    }
+
+    .payments__types, .orders__history {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .orders__history {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .payments__types {
+        grid-row-start: 3;
+        grid-row-end: 4;
     }
 }
 
@@ -254,6 +373,25 @@ section.account__section {
 
     .user__initials, .user__email {
         max-width: calc(100vw - 120px);
+    }
+
+    section.account__section {
+        row-gap: 20px;
+    }
+
+    .section__div__heading {
+        gap: 5px;
+    }
+
+    .heading__icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .heading__text {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
     }
 }
 
