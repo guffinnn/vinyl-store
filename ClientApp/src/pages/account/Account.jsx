@@ -11,6 +11,7 @@ import account from "../../assets/account-image.png";
 import exit from "../../assets/exit-icon.svg";
 import Button from "../../components/button/Button";
 import Payments from "../../components/payments/Payments";
+import Order from "../../components/order/Order";
 
 const ROWS = {
         data: "Данные",
@@ -18,6 +19,29 @@ const ROWS = {
         payments: "Оплата",
         likes: "Лайки"
 };
+
+const ORDERS = [
+    {
+        name: "#F123111333",
+        date: "08.03.2024",
+        cost: "336$"
+    },
+    {
+        name: "#F123111334",
+        date: "08.03.2024",
+        cost: "336$"
+    },
+    {
+        name: "#F123111335",
+        date: "08.03.2024",
+        cost: "336$"
+    },
+    {
+        name: "#F123111336",
+        date: "08.03.2024",
+        cost: "336$"
+    }
+];
 
 function Account() {
     // Storage user login status
@@ -109,6 +133,13 @@ function Account() {
                                     </div>
                                     <p className="heading__text">История платежей</p>
                                 </div>
+                                <div className="orders">
+                                    <div className="orders__fluid">
+                                        {ORDERS.map((item, index) => (
+                                            <Order order={item} />
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                             <div className="payments__types">
                                 <div className="section__div__heading">
@@ -123,10 +154,10 @@ function Account() {
                             </div>
                         </section>
 
-                        {/*<ModalStatus isOpen={isOpen}
+                        <ModalStatus isOpen={isOpen}
                                      setIsOpen={setIsOpen}
                                      status={status}
-                        />*/}
+                        />
                     </>
                 ) : (
                     <div className="authes">

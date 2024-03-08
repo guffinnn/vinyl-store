@@ -98,64 +98,8 @@ div.card-icon__frame {
     color: #000000;
 }
 
-.card__frame {
-    width: 225px;
-    height: 150px;
-    transition: transform 0.3s;
-    cursor: pointer;
-}
-
-.card__frame:hover {
-    transform: scale(1.05);
-}
-
-.card__frame:active {
-    transform: scale(0.95);
-    transition: all 0.1s;
-}
-
-.card__background {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 16px 15px;
-    gap: 5px;
-
-    width: 225px;
-    height: 150px;
-
-    background: #272727;
-    border-radius: 10px;
-}
-
-.card__number {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 150%;
-    /* identical to box height, or 36px */
-
-    color: #FFFFFF;
-}
-
-.card__user {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 150%;
-    /* identical to box height, or 15px */
-
-    color: #FFFFFF;
-}
-
 @media(max-width: 750px) {
-    .add_card__frame, .card__frame {
-        width: 165px;
-        height: 110px;
-    }
-
-    .add_card__background, .card__background {
+    .add_card__frame, .add_card__background {
         width: 165px;
         height: 110px;
     }
@@ -180,20 +124,11 @@ div.card-icon__frame {
         font-weight: 500;
         font-size: 12px;
         line-height: 150%;
-
     }
+}
 
-    .card__number {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 150%;
-    }
-
-    .card__user {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 150%;
+@media(max-width: 576px) {
+    .payments__fluid {
+        margin-bottom: 0;
     }
 }

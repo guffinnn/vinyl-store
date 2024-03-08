@@ -1,6 +1,46 @@
 import React from "react";
 import './Payments.css';
 import card from '../../assets/card-icon.svg';
+import CreditCard from "../creditCard/CreditCard";
+
+const CARDS = [
+    {
+        number: "1111 **** **** 1111",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "2222 **** **** 2222",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "3333 **** **** 3333",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "4444 **** **** 4444",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "5555 **** **** 5555",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "6666 **** **** 6666",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "7777 **** **** 7777",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "8888 **** **** 8888",
+        user: "IVANOV IVAN"
+    },
+    {
+        number: "9999 **** **** 9999",
+        user: "IVANOV IVAN"
+    }
+];
 
 function Payments() {
     return (
@@ -16,18 +56,9 @@ function Payments() {
                         </div>
                     </div>
                 </div>
-                <div className="card__frame">
-                    <div className="card__background">
-                        <p className="card__number">1111 **** **** 1111</p>
-                        <p className="card__user">IVANOV IVAN</p>
-                    </div>
-                </div>
-                <div className="card__frame">
-                    <div className="card__background">
-                        <p className="card__number">1111 **** **** 1111</p>
-                        <p className="card__user">IVANOV IVAN</p>
-                    </div>
-                </div>
+                {CARDS.map((item, index) => (
+                    <CreditCard card={item} />
+                ))}
             </div>
         </div>
     );
