@@ -16,9 +16,9 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
     const [login, setLogin] = useState("");
     // Storage user password
     const [password, setPassword] = useState("");
-    // Storage modal view status
+    // Storage modalFunctional view status
     const [isOPEN, setIsOPEN] = useState(false);
-    // Storage status of modal
+    // Storage status of modalFunctional
     const [STATUS, setSTATUS] = useState(1);
 
     // Change a menu-icon by click

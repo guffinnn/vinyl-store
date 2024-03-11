@@ -7,7 +7,7 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 30px;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: flex-start;
     justify-content: flex-start;
 }
@@ -95,7 +95,7 @@ section.account__section {
     column-gap: 20px;
 }
 
-#acc__register {
+#data {
     width: 100%;
     height: fit-content;
 
@@ -315,6 +315,69 @@ section.account__section {
     border: rgba(150, 150, 150, 0.22) 1px solid;
 }
 
+.favorite__vinyls {
+    width: auto;
+    height: fit-content;
+
+    display: grid;
+    gap: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    align-items: start;
+}
+
+.favorite__frame {
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    gap: 20px;
+
+    overflow-x: scroll;
+}
+
+.favorite__frame::-webkit-scrollbar-track  {
+    border-radius: 10px;
+    background-color: rgba(245, 245, 245, 0);
+}
+
+.favorite__frame::-webkit-scrollbar  {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(245, 245, 245, 0);
+}
+
+.favorite__frame::-webkit-scrollbar-thumb  {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media(max-width: 500px) {
+    .favorite__frame::-webkit-scrollbar  {
+        width: 4px;
+        height: 4px;
+        background-color: rgba(245, 245, 245, 0);
+    }
+}
+
+.favorite__frame__fluid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    gap: 15px;
+
+    margin-bottom: 15px;
+
+    width: fit-content;
+    height: fit-content;
+}
+
 @media(max-width: 1120px) {
     #account {
         margin-top: -100px;
@@ -353,6 +416,11 @@ section.account__section {
         max-width: calc(100vw - 250px);
     }
 
+    .favorite__vinyls {
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
     .payments__types, .orders__history {
         grid-column-start: 1;
         grid-column-end: 3;
@@ -380,7 +448,7 @@ section.account__section {
         margin: -50px 20px;
     }
 
-    #acc__register {
+    #data {
         width: 100%;
         display: flex;
         flex-direction: column;

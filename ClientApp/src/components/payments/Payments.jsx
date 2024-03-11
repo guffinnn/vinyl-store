@@ -42,11 +42,11 @@ const CARDS = [
     }
 ];
 
-function Payments() {
+function Payments({ onEvent }) {
     return (
         <div className="payments">
             <div className="payments__fluid">
-                <div className="add_card__frame">
+                <div className="add_card__frame" onClick={onEvent}>
                     <div className="add_card__background">
                         <div className="add_card__content">
                             <div className="card-icon__frame">
