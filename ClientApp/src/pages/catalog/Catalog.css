@@ -78,13 +78,14 @@ section.catalog {
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
         border-radius: 0;
+        border: none;
 
         gap: 20px;
     }
 
     .catalog__group {
         width: 100%;
-        height: 485px;
+        height: 500px;
         box-sizing: border-box;
 
         display: flex;

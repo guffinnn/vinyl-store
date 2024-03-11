@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './Cart.css';
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
@@ -8,8 +8,14 @@ import Position from "../../components/position/Position";
 import Heart from "../../components/heart/Heart";
 import {CART, RECORDS} from "../../assets/records/records";
 import basket from '../../assets/basket-icon.svg';
+import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
 
 function Cart() {
+    // Storage modalPurchase view status
+    const [purchaseIsOpen, setPurchaseIsOpen] = useState(false);
+    // Storage purchase status
+    const [purchaseStatus, setPurchaseStatus] = useState("add");
+
     return (
         <>
             <Header>Cart</Header>
@@ -48,11 +54,18 @@ function Cart() {
                         </article>
                         <article className="payments">
                             <p className="cart__heading">Платежные средства</p>
-                            <Payments/>
+                            <Payments onEvent={() => {
+                                setPurchaseIsOpen(true);
+                                setPurchaseStatus("add");
+                            }} />
                         </article>
                     </aside>
                 )}
             </main>
+            <ModalPurchase isOpen={purchaseIsOpen}
+                           setIsOpen={setPurchaseIsOpen}
+                           status={purchaseStatus}
+            />
             <Footer/>
         </>
     );
