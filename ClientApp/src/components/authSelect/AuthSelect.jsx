@@ -56,12 +56,12 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
 
     return (
         <div className="auth__type__frame">
-            <div className="register__frame">
+            <div className="register__frame" onClick={toggleForm}>
                 <div className="left__content">
                     <img className="user__icon" id="user" src={account} alt="Пользователь"/>
                     <p className="register__text">{type === "register" ? "Зарегистрироваться" : "Авторизоваться"}</p>
                 </div>
-                <div className={`icon__frame ${showForm ? "active__select" : ""}`} onClick={toggleForm}>
+                <div className={`icon__frame ${showForm ? "active__select" : ""}`}>
                     <img className="arrow__icon" src={arrow} alt="Развернуть"/>
                 </div>
             </div>
@@ -100,10 +100,10 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
                                }}
                         />
                     </div>
-                    <div className="button__frame">
-                        <Button content="Войти в аккаунт" onEvent={e => (
-                            type === "register" ? register(e) : logIn(e)
-                        )}/>
+                    <div className="button__frame" onClick={e => (
+                        type === "register" ? register(e) : logIn(e)
+                    )}>
+                        <Button content="Войти в аккаунт"/>
                     </div>
                 </form>
             </div>

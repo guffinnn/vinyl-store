@@ -50,7 +50,14 @@ function Cart() {
                                 <p className="objects__count">Товары (4)</p>
                                 <p className="final__price">$336</p>
                             </div>
-                            <Button id="success" content={"Перейти к оформлению"}/>
+                            <Button
+                                id="success"
+                                content={"Перейти к оформлению"}
+                                onEvent={() => {
+                                    setPurchaseIsOpen(true);
+                                    setPurchaseStatus("purchase");
+                                }}
+                            />
                         </article>
                         <article className="payments">
                             <p className="cart__heading">Платежные средства</p>

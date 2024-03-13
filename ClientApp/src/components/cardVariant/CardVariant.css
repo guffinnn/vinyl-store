@@ -1,0 +1,71 @@
+.payment__variant__frame {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 20px;
+
+    background: rgba(180, 184, 204, 0.14);
+
+    border-radius: 11px;
+    border: 2px solid #F3F4F7;
+
+    cursor: pointer;
+}
+
+.payment__variant__frame:hover {
+    border: 2px solid rgba(20, 52, 203, 0.3);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.active__card {
+    border: 2px solid rgba(20, 52, 203, 0.3);
+    box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.black {
+    color: #000000;
+}
+
+.card__illustration {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 10px;
+
+    width: 75px;
+    height: 50px;
+}
+
+.pay__frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 7px 7px 0;
+    gap: 5px;
+
+    width: 75px;
+    height: 50px;
+
+    border-radius: 6px;
+}
+
+.visa__frame {
+    background: rgba(20, 52, 203, 0.2);
+}
+
+.world__frame {
+    background: rgba(77, 180, 94, 0.2);
+}
+
+.master__frame {
+    background: #272727;
+}
+

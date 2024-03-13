@@ -29,6 +29,8 @@
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 15px;
     border: rgba(150, 150, 150, 0.22) 1px solid;
+
+    cursor: pointer;
 }
 
 .left__content {
