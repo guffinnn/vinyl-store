@@ -4,12 +4,11 @@ import * as Img from "../../assets/records/records";
 import minus from '../../assets/minus-icon.svg';
 import plus from '../../assets/plus-icon.svg';
 
-function Position({ record, image, children }) {
+function Position({ record, image }) {
     return (
         <div className="position__frame">
             <div className="pos__img__group">
                 <img className="pos__record__image" src={Img[`img${image + 1}`]} alt="Изображение"/>
-                {children}
             </div>
             <div className="position__content">
                 <div className="content__heading">

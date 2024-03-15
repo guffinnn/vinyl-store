@@ -5,7 +5,6 @@ import Footer from "../../components/footer/Footer";
 import Payments from "../../components/payments/Payments";
 import Button from "../../components/button/Button";
 import Position from "../../components/position/Position";
-import Heart from "../../components/heart/Heart";
 import {CART, RECORDS} from "../../assets/records/records";
 import basket from '../../assets/basket-icon.svg';
 import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
@@ -25,9 +24,7 @@ function Cart() {
                         <div className="cart__fluid">
                             {CART.length > 0 ? (
                                 RECORDS.map((item, index) => (
-                                    <Position record={item} image={index}>
-                                        <Heart status={1} />
-                                    </Position>
+                                    <Position record={item} image={index} />
                             ))) : (
                                 <div className="error__container">
                                     <div className="error__image">

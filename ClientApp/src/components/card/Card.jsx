@@ -7,7 +7,7 @@ function Card({ record, image, children }) {
     return(
         <div className="service__card">
             <div className="image__group">
-                <img className="record__image" src={Img[`img${image + 1}`]} alt="Изображение"/>
+                <img className="record__image" src={Img[`img${image + 1}`] ??= "https://i.scdn.co/image/ab67616d0000b2738b58d20f1b77295730db15b4"} alt="Изображение"/>
                 {children}
             </div>
             <div className="content__info">

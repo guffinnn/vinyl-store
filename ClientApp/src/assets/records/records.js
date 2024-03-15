@@ -27,6 +27,12 @@ export const RECORDS = [
         year: "2017",
         author: "Lady Gaga",
         price: "$54.99"
+    },
+    {
+        name: "eternal sunshine",
+        year: "2024",
+        author: "Ariana Grande",
+        price: "$209.99"
     }
 ];
 
