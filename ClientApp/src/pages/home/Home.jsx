@@ -17,7 +17,7 @@ function Home() {
                     <div className="catalog__frame">
                         <div className="catalog__frame__fluid">
                             {RECORDS.map((item, index) => (
-                                <Card record={item} image={index} />
+                                <Card record={item} />
                             ))}
                         </div>
                     </div>

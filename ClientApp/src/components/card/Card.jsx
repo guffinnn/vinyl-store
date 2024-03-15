@@ -1,21 +1,21 @@
 import React from "react";
 import './Card.css';
 import play from '../../assets/play-icon.svg';
-import * as Img from "../../assets/records/records";
 
-function Card({ record, image, children }) {
+function Card({ record, children }) {
+
     return(
         <div className="service__card">
             <div className="image__group">
-                <img className="record__image" src={Img[`img${image + 1}`] ??= "https://i.scdn.co/image/ab67616d0000b2738b58d20f1b77295730db15b4"} alt="Изображение"/>
+                <img className="record__image" src={record?.image} alt="Изображение"/>
                 {children}
             </div>
             <div className="content__info">
                 <div className="content__heading">
                     <p className="vinyls__name">{record.name} / {record.year}</p>
-                    <p className="vinyls__author">{record.author}</p>
+                    <p className="vinyls__author">{record.artist}</p>
                 </div>
-                <p className="vinyls__cost">{record.price}</p>
+                <p className="vinyls__cost">{record.genre}</p>
             </div>
             <div className="spotify__link">
                 <a className="music__link" href={{}}>Слушать в Spotify</a>
