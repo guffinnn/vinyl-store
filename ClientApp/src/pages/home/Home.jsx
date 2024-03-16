@@ -16,7 +16,9 @@ function Home() {
                     <h2 className="h2">НОВИНКИ</h2>
                     <div className="catalog__frame">
                         <div className="catalog__frame__fluid">
-                            {RECORDS.map((item, index) => (
+                            {RECORDS.sort((a, b) => {
+                                return b.year - a.year;
+                            }).map((item, index) => (
                                 <Card record={item} />
                             ))}
                         </div>

@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import './Card.css';
 import play from '../../assets/play-icon.svg';
 
 function Card({ record, children }) {
+    // Storage loading image process for output skeleton
+    const [isLoading, setIsLoading] = useState(true);
 
     return(
         <div className="service__card">
             <div className="image__group">
-                <img className="record__image" src={record?.image} alt="Изображение"/>
+                {isLoading && <div className="skeleton"></div>}
+                <img
+                    className="record__image"
+                    src={record.image}
+                    alt={"Винил"}
+                    onLoad={() => setIsLoading(false)}
+                    style={{display: isLoading ? 'none' : 'block'}}
+                />
                 {children}
             </div>
             <div className="content__info">
