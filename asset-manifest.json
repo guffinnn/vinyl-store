@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/vinyl-store/static/css/main.bddddff2.css",
-    "main.js": "/vinyl-store/static/js/main.eaf6a432.js",
+    "main.js": "/vinyl-store/static/js/main.257b6997.js",
     "static/media/BTW.png": "/vinyl-store/static/media/BTW.ff5eaad87c80f229e499.png",
     "static/media/Chromatica.png": "/vinyl-store/static/media/Chromatica.d9db39c971d5fb4c1d71.png",
     "static/media/Joanne.png": "/vinyl-store/static/media/Joanne.3bf20d7affb93bf5e0f6.png",
@@ -31,10 +31,10 @@
     "static/media/heart-icon.svg": "/vinyl-store/static/media/heart-icon.d4a991a50025ca873a71f2b97d1377f2.svg",
     "static/media/arrow-icon.svg": "/vinyl-store/static/media/arrow-icon.1c810d40f3973f506375ad9ebab2ab98.svg",
     "main.bddddff2.css.map": "/vinyl-store/static/css/main.bddddff2.css.map",
-    "main.eaf6a432.js.map": "/vinyl-store/static/js/main.eaf6a432.js.map"
+    "main.257b6997.js.map": "/vinyl-store/static/js/main.257b6997.js.map"
   },
   "entrypoints": [
     "static/css/main.bddddff2.css",
-    "static/js/main.eaf6a432.js"
+    "static/js/main.257b6997.js"
   ]
 }
