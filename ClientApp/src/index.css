@@ -70,6 +70,12 @@ html::-webkit-scrollbar-thumb  {
     }
 }
 
+@media(max-width: 576px) {
+    h1 {
+        margin-top: 4.5rem;
+    }
+}
+
 img {
     cursor: pointer;
 }

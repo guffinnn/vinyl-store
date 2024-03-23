@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import './Header.css';
 import catalog from '../../assets/catalog-icon.svg';
 import cart from '../../assets/cart-icon.svg';
 import account from '../../assets/account-icon.svg';
+import {CartContext} from "../cartProvider/CartProvider";
 
 function Header({ children }) {
-    // Storage a notification status
-    const [notification, setNotification] = useState(false);
     // Storage a width of user display for adaptive
     const [width, setWidth] = useState(window.innerWidth);
+    // Storage a cart status
+    const [cartNotify, setCartNotify] = useContext(CartContext);
 
     useEffect(() => {
         const handleResize = (event) => {
@@ -41,7 +42,7 @@ function Header({ children }) {
                         <Link to="/cart">
                             <li className="header__list">
                                 <a className="header__link" href="/cart">Корзина</a>
-                                {!notification && (
+                                {cartNotify.length > 0 && (
                                     <div className="notify">
                                         <p className="notify__text">1</p>
                                     </div>
@@ -83,7 +84,7 @@ function Header({ children }) {
                                         <img className="icon__image" src={cart} alt="Cart"/>
                                     </div>
                                 </a>
-                                {!notification && (
+                                {cartNotify.length > 0 && (
                                     <div className="notify">
                                         <p className="notify__text">1</p>
                                     </div>

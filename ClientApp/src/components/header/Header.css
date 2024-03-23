@@ -8,7 +8,7 @@ nav.header__nav ul {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: 20px 40px 60px;
+    padding: 20px 40px;
     gap: 20px;
 }
 
@@ -118,12 +118,6 @@ p.info__text {
     }
 }
 
-@media(max-width: 834px) {
-    nav.header__nav ul {
-        padding: 20px 40px 40px;
-    }
-}
-
 @media(max-width: 720px) {
     h1.h1 {
         font-size: 2.5rem;
@@ -141,11 +135,23 @@ p.info__text {
     }
 }
 
-@media(max-width: 360px) {
+@media(max-width: 576px) {
     nav.header__nav ul {
-        padding: 20px;
-    }
+        position: fixed;
 
+        padding: 10px 20px 2px;
+        width: fit-content;
+        border-radius: 10px;
+        right: 20px;
+        top: 10px;
+
+        background-color: #92929220;
+
+        z-index: 100;
+    }
+}
+
+@media(max-width: 360px) {
     h1.h1 {
         font-size: 2rem;
         margin-bottom: 15px;
