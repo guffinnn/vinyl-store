@@ -14,7 +14,7 @@ function Preview() {
                     <p className="preview__cost">$84</p>
                 </div>
                 <div className="content__button">
-                    <a className="add_to_cart" href={{}}>Добавить в корзину</a>
+                    <a className="add_to_cart">Добавить в корзину</a>
                 </div>
             </div>
             <div className="vinyl">

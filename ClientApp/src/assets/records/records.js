@@ -256,8 +256,7 @@ export const RECORDS = [
             description : "The Life of Pablo is the seventh studio album by American rapper and recording artist Kanye West, released on February 14, 2016 by GOOD Music and Def Jam Recordings. Recording sessions took place from 2013 to 2016 in Italy, Mexico, Canada, and the United States. Production on the album was handled by West and a variety of producers, including co-executive producers Rick Rubin and Noah Goldstein, Mike Dean, Metro Boomin, Hudson Mohawke, Plain Pat, and Madlib.",
             num_songs : 20
         }
-    ]
-;
+    ];
 
 export const CART = [];
 

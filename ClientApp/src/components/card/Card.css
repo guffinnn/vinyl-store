@@ -49,7 +49,7 @@
 }
 
 .record__image {
-    width: fit-content;
+    width: auto;
     height: 90%;
     object-fit: contain;
     -webkit-border-radius: 10px;
@@ -185,6 +185,10 @@
 
 .add_to_cart__button:active {
     transform: scale(0.95);
+}
+
+.add_to_cart__button.in__cart {
+    background: rgba(39, 39, 39, 0.6);
 }
 
 .button__text {

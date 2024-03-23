@@ -1,10 +1,26 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import './Card.css';
 import play from '../../assets/play-icon.svg';
+import {CartContext} from "../cartProvider/CartProvider";
 
-function Card({ record, children }) {
+function Card({ record, children, onEvent }) {
     // Storage loading image process for output skeleton
     const [isLoading, setIsLoading] = useState(true);
+    // Storage a cart status
+    const [cart, setCart] = useContext(CartContext);
+    // Storage a status in cart
+    const [inCart, setInCart] = useState(false);
+
+    const addToCart = () => {
+        // In case record in cart
+        if (cart.includes(record)) {
+            setInCart(false);
+            setCart(cart.filter(item => item !== record));
+        } else { // other case
+            setInCart(true);
+            setCart([...cart, record]);
+        }
+    }
 
     return(
         <div className="service__card">
@@ -27,13 +43,15 @@ function Card({ record, children }) {
                 <p className="vinyls__cost">{record.genre}</p>
             </div>
             <div className="spotify__link">
-                <a className="music__link" href={{}}>Слушать в Spotify</a>
+                <a className="music__link">Слушать в Spotify</a>
                 <div className="play__frame">
-                    <img className="play__icon" src={play} alt="Слушать" />
+                    <img className="play__icon" src={play} alt="Слушать"/>
                 </div>
             </div>
-            <div className="add_to_cart__button">
-                <a className="button__text" href={{}}>Добавить в корзину</a>
+            <div className={`add_to_cart__button ${cart.includes(record) ? "in__cart" : ""}`} onClick={addToCart}>
+                <a className="button__text">
+                    {cart.includes(record) ? "В корзине" : "Добавить в корзину"}
+                </a>
             </div>
         </div>
     );

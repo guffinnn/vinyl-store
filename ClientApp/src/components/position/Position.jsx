@@ -8,13 +8,13 @@ function Position({ record, image }) {
     return (
         <div className="position__frame">
             <div className="pos__img__group">
-                <img className="pos__record__image" src={Img[`img${image + 1}`]} alt="Изображение"/>
+                <img className="pos__record__image" src={record.image} alt="Изображение"/>
             </div>
             <div className="position__content">
                 <div className="content__heading">
                     <p className="vinyls__name">{record.name}</p>
-                    <p className="vinyls__author">{record.author}</p>
-                    <p className="vinyls__cost" id="price__text">{record.price}</p>
+                    <p className="vinyls__author">{record.main_artist}</p>
+                    <p className="vinyls__cost" id="price__text">{record.genre}</p>
                 </div>
                 <div className="content__counter">
                     <div className="minus__button">
