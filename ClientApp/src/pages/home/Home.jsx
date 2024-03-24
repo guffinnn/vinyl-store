@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './Home.css';
 import Header from "../../components/header/Header";
 import Preview from "../../components/preview/Preview";
@@ -10,6 +10,13 @@ import {RECORDS} from "../../assets/records/records";
 function Home() {
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
+    /*const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        fetch('api/Albums')
+            .then(response => response.json())
+            .then(data => setCards(data));
+    }, []);*/
 
     const addToCart = (record) => {
         setCart([...cart, record]);
@@ -27,7 +34,7 @@ function Home() {
                             {RECORDS.sort((a, b) => {
                                 return b.year - a.year;
                             }).map((item, index) => (
-                                <Card record={item} onEvent={() => addToCart(item)} />
+                                <Card key={index} record={item} onEvent={() => addToCart(item)} />
                             ))}
                         </div>
                     </div>
