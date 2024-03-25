@@ -1,5 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using vinyl_store;
 
 namespace vinyl_store.Controllers
 {
@@ -14,17 +20,25 @@ namespace vinyl_store.Controllers
             _context = context;
         }
 
-        // GET: api/<AlbumsController>
+        // GET: api/Albums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Album>>> Get()
+        public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
+          if (_context.Albums == null)
+          {
+              return NotFound();
+          }
             return await _context.Albums.ToListAsync();
         }
 
-        // GET api/<AlbumsController>/5
+        // GET: api/Albums/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Album>> Get(int id)
+        public async Task<ActionResult<Album>> GetAlbum(int id)
         {
+          if (_context.Albums == null)
+          {
+              return NotFound();
+          }
             var album = await _context.Albums.FindAsync(id);
 
             if (album == null)
@@ -35,22 +49,75 @@ namespace vinyl_store.Controllers
             return album;
         }
 
-        // POST api/<AlbumsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<AlbumsController>/5
+        // PUT: api/Albums/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> PutAlbum(int id, Album album)
         {
+            if (id != album.AlbumID)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(album).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AlbumExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // DELETE api/<AlbumsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // POST: api/Albums
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Album>> PostAlbum(Album album)
         {
+          if (_context.Albums == null)
+          {
+              return Problem("Entity set 'VinylStoreContext.Albums'  is null.");
+          }
+            _context.Albums.Add(album);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetAlbum", new { id = album.AlbumID }, album);
+        }
+
+        // DELETE: api/Albums/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAlbum(int id)
+        {
+            if (_context.Albums == null)
+            {
+                return NotFound();
+            }
+            var album = await _context.Albums.FindAsync(id);
+            if (album == null)
+            {
+                return NotFound();
+            }
+
+            _context.Albums.Remove(album);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool AlbumExists(int id)
+        {
+            return (_context.Albums?.Any(e => e.AlbumID == id)).GetValueOrDefault();
         }
     }
 }

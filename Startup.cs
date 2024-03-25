@@ -2,46 +2,46 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.SpaServices.Extensions;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.AspNetCore.Mvc;
+using vinyl_store.Controllers;
 
 
-public class Startup
+namespace vinyl_store
 {
-    public IConfiguration Configuration { get; }
-
-    public Startup(IConfiguration configuration)
+    public class Startup
     {
-        Configuration = configuration;
-    }
+        public IConfiguration Configuration { get; }
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddDbContext<VinylStoreContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-        services.AddControllers();
-    }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        app.UseDefaultFiles();
-        app.UseStaticFiles();
-
-        app.UseRouting();
-
-        app.UseEndpoints(endpoints =>
+        public Startup(IConfiguration configuration)
         {
-            endpoints.MapControllers();
-        });
+            Configuration = configuration;
+        }
 
-        app.UseSpa(spa =>
+        public void ConfigureServices(IServiceCollection services)
         {
-            spa.Options.SourcePath = "ClientApp";
+            services.AddControllers();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddDbContext<VinylStoreContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<ControllerBase, AlbumsController>();
+        }
 
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, VinylStoreContext context)
+        {
             if (env.IsDevelopment())
             {
-                spa.UseReactDevelopmentServer(npmScript: "start");
+                app.UseDeveloperExceptionPage();
             }
-        });
-    }
 
+            context.Database.Migrate();
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+    }
 }

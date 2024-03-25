@@ -1,8 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using System;
+using vinyl_store;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddDbContext<VinylStoreContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
