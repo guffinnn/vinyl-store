@@ -24,12 +24,28 @@ namespace vinyl_store.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
-          if (_context.Albums == null)
-          {
-              return NotFound();
-          }
             return await _context.Albums.ToListAsync();
         }
+
+        // GET: api/Albums/Test
+        [HttpGet("Test")]
+        public async Task<ActionResult<IEnumerable<Album>>> TestGetAlbums()
+        {
+            var albums = await _context.Albums.ToListAsync();
+
+            if (albums == null || !albums.Any())
+            {
+                return NotFound("No albums found in the database.");
+            }
+
+            foreach (var album in albums)
+            {
+                Console.WriteLine($"AlbumID: {album.AlbumID}, Name: {album.Name}, Artist: {album.Artist}, Year: {album.Year}, Genre: {album.Genre}, SpotifyID: {album.SpotifyID}, Price: {album.Price}, Image: {album.Image}");
+            }
+
+            return Ok(albums);
+        }
+
 
         // GET: api/Albums/5
         [HttpGet("{id}")]

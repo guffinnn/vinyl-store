@@ -10,13 +10,20 @@ import {RECORDS} from "../../assets/records/records";
 function Home() {
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
-    /*const [cards, setCards] = useState([]);
+    const [cards, setCards] = useState([]);
 
-    useEffect(() => {
-        fetch('api/Albums')
-            .then(response => response.json())
-            .then(data => setCards(data));
-    }, []);*/
+    fetch('https://localhost:7210/api/Albums', {mode: 'cors'})
+        .then(response => {
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                return response.json();
+            } else {
+                throw new TypeError("Oops, we haven't got JSON!");
+            }
+        })
+        .then(data => setCards(data))
+        .catch(error => console.error('Ошибка:', error));
+
 
     const addToCart = (record) => {
         setCart([...cart, record]);

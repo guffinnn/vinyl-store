@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.AspNetCore.Mvc;
 using vinyl_store.Controllers;
 
-
 namespace vinyl_store
 {
     public class Startup
@@ -19,6 +18,26 @@ namespace vinyl_store
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    builder => builder.WithOrigins("https://localhost:7210", "https://localhost:44458")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:44458")
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
+
             services.AddControllers();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddDbContext<VinylStoreContext>(options =>
@@ -36,8 +55,11 @@ namespace vinyl_store
             context.Database.Migrate();
 
             app.UseHttpsRedirection();
-            app.UseRouting();
             app.UseAuthorization();
+
+            app.UseCors("AllowReactApp");
+
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -11,7 +11,7 @@ using vinyl_store;
 namespace vinyl_store.Migrations
 {
     [DbContext(typeof(VinylStoreContext))]
-    [Migration("20240325164411_Initial")]
+    [Migration("20240402100113_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
