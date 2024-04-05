@@ -41,16 +41,14 @@ section.section {
 .preview__title {
     width: 100%;
     box-sizing: border-box;
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 20px 0;
     gap: 10px;
-
     border-width: 2px 0;
     border-style: solid;
-    border-color: #8a522f;
+    border-color: #8e2430;
 }
 
 .title__text {
@@ -84,10 +82,8 @@ section.section {
     align-items: center;
     padding: 24px 50px;
     gap: 10px;
-
-    background: #8a522f;
+    background: #8e2430;
     border-radius: 10px;
-
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -271,7 +267,7 @@ section.section {
     }
 
     .content__text {
-        padding-top: 175px;
+        padding-top: 195px;
     }
 
     .vinyl {

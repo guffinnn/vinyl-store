@@ -105,6 +105,6 @@ h2.h2 {
 @media(max-width: 576px) {
     section.catalog__section {
         width: 310px;
-        gap: 0;
+        gap: 20px;
     }
 }

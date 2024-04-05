@@ -145,20 +145,6 @@ export const RECORDS = [
             num_songs : 18
         },
         {
-            name : "eternal sunshine",
-            artist : "Ariana Grande",
-            main_artist : "Ariana Grande",
-            spotify_id : "5EYKrEDnKhhcNxGedaRQeK",
-            image: "https://i.scdn.co/image/ab67616d0000b2738b58d20f1b77295730db15b4",
-            album_id : null,
-            year : 2024,
-            genre : "Pop",
-            duration : null,
-            label : "Republic Records",
-            description : null,
-            num_songs : 13
-        },
-        {
             name : "Future Nostalgia",
             artist : "Dua Lipa",
             main_artist : "Dua Lipa",
@@ -255,6 +241,48 @@ export const RECORDS = [
             label : "Getting Out Our Dreams",
             description : "The Life of Pablo is the seventh studio album by American rapper and recording artist Kanye West, released on February 14, 2016 by GOOD Music and Def Jam Recordings. Recording sessions took place from 2013 to 2016 in Italy, Mexico, Canada, and the United States. Production on the album was handled by West and a variety of producers, including co-executive producers Rick Rubin and Noah Goldstein, Mike Dean, Metro Boomin, Hudson Mohawke, Plain Pat, and Madlib.",
             num_songs : 20
+        },
+        {
+            name: "COWBOY CARTER",
+            artist: "Beyoncé",
+            main_artist: "Beyoncé",
+            spotify_id: "6BzxX6zkDsYKFJ04ziU5xQ",
+            image: "https://i.scdn.co/image/ab67616d0000b2731572698fff8a1db257a53599",
+            album_id: null,
+            year: 2024,
+            genre: "Country",
+            duration: null,
+            label: null,
+            description: null,
+            num_songs: null
+        },
+        {
+            name: "OKLOSER",
+            artist: "Doja Cat",
+            main_artist: "Doja Cat",
+            spotify_id: "6Dp4fwNoZD6Sum7PEheLrJ",
+            image: "https://i.scdn.co/image/ab67616d0000b27325f77c1f058fbce7c88591c6",
+            album_id: null,
+            year: 2024,
+            genre: "Hip-Hop\/Rap",
+            duration: null,
+            label: null,
+            description: null,
+            num_songs: null
+        },
+        {
+            name: "eternal sunshine",
+            artist: "Ariana Grande",
+            main_artist: "Ariana Grande",
+            spotify_id: "5EYKrEDnKhhcNxGedaRQeK",
+            image: "https://i.scdn.co/image/ab67616d0000b2738b58d20f1b77295730db15b4",
+            album_id: null,
+            year: 2024,
+            genre: "Pop",
+            duration: null,
+            label: "Republic Records",
+            description: null,
+            num_songs: 13
         }
     ];
 
