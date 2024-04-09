@@ -15,7 +15,6 @@ import Card from "../../components/card/Card";
 import Heart from "../../components/heart/Heart";
 import ModalStatus from "../../components/modalStatus/ModalStatus";
 import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
-import {RECORDS} from "../../assets/records/records";
 import {Link} from "react-router-dom";
 
 const ROWS = {
@@ -61,6 +60,21 @@ function Account() {
     const [purchaseIsOpen, setPurchaseIsOpen] = useState(false);
     // Storage purchase status
     const [purchaseStatus, setPurchaseStatus] = useState("add");
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        fetch(' https://localhost:44458/api/Albums')
+            .then(response => {
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    return response.json();
+                } else {
+                    throw new TypeError("Oops, we haven't got JSON!");
+                }
+            })
+            .then(data => setCards(data))
+            .catch(error => console.error('Ошибка:', error));
+    }, []);
 
     useEffect(() => {
         const handleResize = (event) => {
@@ -159,7 +173,9 @@ function Account() {
                                 </div>
                                 <div className="favorite__frame">
                                     <div className="favorite__frame__fluid">
-                                        {RECORDS.map((item, index) => (
+                                        {cards.sort((a, b) => {
+                                            return b.year - a.year;
+                                        }).map((item, index) => (
                                             <Card record={item} image={index}>
                                                 <Heart status={0}/>
                                             </Card>

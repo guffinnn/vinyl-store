@@ -106,7 +106,7 @@ section.section {
 }
 
 .vinyl {
-    width: 500px;
+    width: 420px;
     height: auto;
     position: absolute;
     top: 50%;
@@ -135,10 +135,11 @@ section.section {
     }
 
     .content__text {
-        width: 375px;
+        width: 475px;
     }
 
     .vinyl {
+        width: 500px;
         scale: 0.7;
         top: 50%;
         right: 0;

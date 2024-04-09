@@ -1,10 +1,9 @@
 import React from "react";
 import './Position.css';
-import * as Img from "../../assets/records/records";
 import minus from '../../assets/minus-icon.svg';
 import plus from '../../assets/plus-icon.svg';
 
-function Position({ record, image }) {
+function Position({ record }) {
     return (
         <div className="position__frame">
             <div className="pos__img__group">
@@ -13,8 +12,8 @@ function Position({ record, image }) {
             <div className="position__content">
                 <div className="content__heading">
                     <p className="vinyls__name">{record.name}</p>
-                    <p className="vinyls__author">{record.main_artist}</p>
-                    <p className="vinyls__cost" id="price__text">{record.genre}</p>
+                    <p className="vinyls__author">{record.artist}</p>
+                    <p className="vinyls__cost" id="price__text">{record.price}</p>
                 </div>
                 <div className="content__counter">
                     <div className="minus__button">
