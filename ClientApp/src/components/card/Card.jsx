@@ -40,7 +40,7 @@ function Card({ record, children, onEvent }) {
                     <p className="vinyls__name">{record.name} / {record.year}</p>
                     <p className="vinyls__author">{record.artist}</p>
                 </div>
-                <p className="vinyls__cost">{record.price}</p>
+                <p className="vinyls__cost">{record.price}$</p>
             </div>
             <div className="spotify__link">
                 <a className="music__link">Слушать в Spotify</a>

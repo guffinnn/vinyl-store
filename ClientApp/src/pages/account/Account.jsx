@@ -50,6 +50,8 @@ const ORDERS = [
 function Account() {
     // Storage user login status
     const [user, setUser] = useState({});
+    // Storage user initials
+    const [name, setName] = useState("");
     // Storage modalStatus view status
     const [isOpen, setIsOpen] = useState(false);
     // Storage status of modalFunctional
@@ -60,10 +62,11 @@ function Account() {
     const [purchaseIsOpen, setPurchaseIsOpen] = useState(false);
     // Storage purchase status
     const [purchaseStatus, setPurchaseStatus] = useState("add");
+    // Storage cards information from API
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        fetch(' https://localhost:44458/api/Albums')
+        fetch('https://localhost:44458/api/Albums')
             .then(response => {
                 const contentType = response.headers.get("content-type");
                 if (contentType && contentType.indexOf("application/json") !== -1) {
@@ -92,6 +95,16 @@ function Account() {
         onAuthStateChanged(auth, user => {
             if (user) {
                 setUser(user);
+
+                // Read user name from API
+                fetch('https://localhost:44458/api/Users')
+                    .then(response => response.json())
+                    .then(data => {
+                        const filteredData = data.filter(item => item.email === user.email);
+                        setName(filteredData[0].name);
+                    })
+                    .catch(error => console.error(error));
+
                 setStatus(1);
                 setIsOpen(true);
             } else {
@@ -121,7 +134,7 @@ function Account() {
                                 <div className="left__content">
                                     <img className="user__icon" id="user80" src={account} alt="Пользователь"/>
                                     <div className="user__content">
-                                        <p className="user__initials">{user.uid}</p>
+                                        <p className="user__initials">{name}</p>
                                         <p className="user__email">{user.email}</p>
                                     </div>
                                 </div>

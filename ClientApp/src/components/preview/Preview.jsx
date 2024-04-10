@@ -13,7 +13,7 @@ function Preview() {
                         <p className="title__text">{RECORDS.name}</p>
                     </div>
                     <p className="preview__info">{RECORDS.description}</p>
-                    <p className="preview__cost">{RECORDS.price}</p>
+                    <p className="preview__cost">{RECORDS.price}$</p>
                 </div>
                 <div className="content__button">
                     <a className="add_to_cart">Добавить в корзину</a>

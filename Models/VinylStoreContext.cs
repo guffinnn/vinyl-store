@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using vinyl_store;
 
 namespace vinyl_store
 {
@@ -19,6 +20,8 @@ namespace vinyl_store
         }
 
         public DbSet<Album> Albums { get; set; }
+
+        public DbSet<User> User { get; set; }
     }
 
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<VinylStoreContext>

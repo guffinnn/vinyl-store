@@ -30,7 +30,25 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
     const register = async (e) => {
         e.preventDefault();
         try {
-            const user = createUserWithEmailAndPassword(auth, login, password);
+            const user = await createUserWithEmailAndPassword(auth, login, password);
+
+            if (user) {
+                let userForDB = {
+                    name: name,
+                    email: login,
+                    password: password
+                };
+
+                // Write a new user autrhorization data
+                fetch('https://localhost:44458/api/Users', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify(userForDB)
+                });
+            }
+
             setStatus(1);
             setIsOpen(true);
         } catch(error) {

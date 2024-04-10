@@ -13,7 +13,7 @@ function Position({ record }) {
                 <div className="content__heading">
                     <p className="vinyls__name">{record.name}</p>
                     <p className="vinyls__author">{record.artist}</p>
-                    <p className="vinyls__cost" id="price__text">{record.price}</p>
+                    <p className="vinyls__cost" id="price__text">{record.price}$</p>
                 </div>
                 <div className="content__counter">
                     <div className="minus__button">
