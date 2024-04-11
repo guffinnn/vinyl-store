@@ -42,6 +42,10 @@
     transition: none;
 }
 
+.button.in__cart {
+    background: rgba(39, 39, 39, 0.6);
+}
+
 @media(max-width: 570px) {
     .buttons__text {
         font-size: 10px;

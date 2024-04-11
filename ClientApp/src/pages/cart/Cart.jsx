@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import './Cart.css';
 import basket from '../../assets/basket-icon.svg';
 import Header from "../../components/header/Header";
@@ -16,6 +16,22 @@ function Cart() {
     const [purchaseStatus, setPurchaseStatus] = useState("add");
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
+    // Storage total price of cart
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    function getPrice() {
+        // Count summary price of cart
+        let sum = 0;
+        cart.forEach((item) => {
+            sum += (item.count * item.price)
+        });
+
+        setTotalPrice(sum.toFixed(2));
+    };
+
+    useEffect(() => {
+        getPrice();
+    }, []);
 
     return (
         <>
@@ -26,7 +42,7 @@ function Cart() {
                         <div className="cart__fluid">
                             {cart.length > 0 ? (
                                 cart.map((item, index) => (
-                                    <Position record={item} image={index} />
+                                    <Position record={item} image={index} onChange={getPrice} />
                             ))) : (
                                 <div className="error__container">
                                     <div className="error__image">
@@ -46,8 +62,8 @@ function Cart() {
                         <article className="cart__price">
                             <p className="cart__heading">Ваша корзина</p>
                             <div className="cart__status">
-                                <p className="objects__count">Товары (4)</p>
-                                <p className="final__price">$336</p>
+                                <p className="objects__count">Товары ({cart.length})</p>
+                                <p className="final__price">{totalPrice}$</p>
                             </div>
                             <Button
                                 id="success"
@@ -70,7 +86,8 @@ function Cart() {
             </main>
             <ModalPurchase isOpen={purchaseIsOpen}
                            setIsOpen={setPurchaseIsOpen}
-                           status={purchaseStatus}
+                           status={purchaseStatus} 
+                           totalPrice={totalPrice}
             />
             <Footer/>
         </>

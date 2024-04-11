@@ -6,7 +6,7 @@ import CardVariant from "../cardVariant/CardVariant";
 import master from "../../assets/master.svg";
 import add from "../../assets/add-icon.svg";
 
-function ModalPurchase({ isOpen, setIsOpen, status }) {
+function ModalPurchase({ isOpen, setIsOpen, status, totalPrice }) {
     // Storage a card number data
     const [number, setNumber] = useState("");
     // Storage a user initials
@@ -15,6 +15,8 @@ function ModalPurchase({ isOpen, setIsOpen, status }) {
     const [cardExpiry, setCardExpiry] = useState("");
     // Storage a cvv number
     const [cvv, setCVV] = useState("");
+    // Storage status of input
+    const [isChoosed, setIsChoosed] = useState(false);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -106,7 +108,7 @@ function ModalPurchase({ isOpen, setIsOpen, status }) {
                         </div>
                         <div className="cart__cost">
                             <p className="cart__text">Итого</p>
-                            <p className="cart__text">$336</p>
+                            <p className="cart__text">{totalPrice}$</p>
                         </div>
                         <div className="cart__cost">
                             <p className="cart__text">Доставка</p>
@@ -114,7 +116,7 @@ function ModalPurchase({ isOpen, setIsOpen, status }) {
                         </div>
                         <div className="purchase__frame">
                             <div className="checkbox-wrapper-46">
-                                <input type="checkbox" id="cbx-46" className="inp-cbx"/>
+                                <input type="checkbox" id="cbx-46" className="inp-cbx" onClick={(e) => setIsChoosed(e.target.checked)} />
                                 <label htmlFor="cbx-46" className="cbx">
                                     <span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
@@ -126,7 +128,7 @@ function ModalPurchase({ isOpen, setIsOpen, status }) {
                                     </p>
                                 </label>
                             </div>
-                            <Button content={"Оплатить корзину"}/>
+                            <Button content={"Оплатить корзину"} className={`${(isChoosed !== true) ? "in__cart" : ""}`} />
                         </div>
                     </>
                 )}

@@ -1,10 +1,10 @@
 import React from "react";
 import './Button.css';
 
-function Button({ id, content, onEvent }) {
+function Button({ id, content, onEvent, className }) {
     return (
         <div
-            className="button"
+            className={`button ${className}`}
             id={id}
             onClick={(e) => {
                 e.preventDefault();

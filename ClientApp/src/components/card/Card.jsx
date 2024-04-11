@@ -14,9 +14,19 @@ function Card({ record, children, onEvent }) {
     const addToCart = () => {
         // In case record in cart
         if (cart.includes(record)) {
+            // Delete vinyl record
+            record.count = 0;
+
             setInCart(false);
             setCart(cart.filter(item => item !== record));
-        } else { // other case
+        } else {
+            // Add vinyl record
+            if (record.count >= 1) {
+                record.count++;
+            } else {
+                record.count = 1;
+            }
+
             setInCart(true);
             setCart([...cart, record]);
         }
@@ -43,7 +53,7 @@ function Card({ record, children, onEvent }) {
                 <p className="vinyls__cost">{record.price}$</p>
             </div>
             <div className="spotify__link">
-                <a className="music__link">Слушать в Spotify</a>
+                <a className="music__link" href={record.spotifyID}>Слушать в Spotify</a>
                 <div className="play__frame">
                     <img className="play__icon" src={play} alt="Слушать"/>
                 </div>
