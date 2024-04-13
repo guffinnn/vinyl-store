@@ -4,7 +4,8 @@ import Header from "../../components/header/Header";
 import Preview from "../../components/preview/Preview";
 import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
-import {CartContext} from "../../components/cartProvider/CartProvider";
+import { CartContext } from '../../providers/CartProvider';
+
 function Home() {
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);

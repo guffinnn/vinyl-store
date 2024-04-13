@@ -1,7 +1,7 @@
 import React, {useState, useContext} from "react";
 import './Card.css';
 import play from '../../assets/play-icon.svg';
-import {CartContext} from "../cartProvider/CartProvider";
+import { CartContext } from "../../providers/CartProvider";
 
 function Card({ record, children, onEvent }) {
     // Storage loading image process for output skeleton

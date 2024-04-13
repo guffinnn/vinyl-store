@@ -4,7 +4,7 @@ import './Header.css';
 import catalog from '../../assets/catalog-icon.svg';
 import cart from '../../assets/cart-icon.svg';
 import account from '../../assets/account-icon.svg';
-import {CartContext} from "../cartProvider/CartProvider";
+import { CartContext } from "../../providers/CartProvider";
 
 function Header({ children }) {
     // Storage a width of user display for adaptive

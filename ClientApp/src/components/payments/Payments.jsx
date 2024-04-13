@@ -1,48 +1,32 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './Payments.css';
 import card from '../../assets/card-icon.svg';
 import CreditCard from "../creditCard/CreditCard";
-
-const CARDS = [
-    {
-        number: "1111 **** **** 1111",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "2222 **** **** 2222",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "3333 **** **** 3333",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "4444 **** **** 4444",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "5555 **** **** 5555",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "6666 **** **** 6666",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "7777 **** **** 7777",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "8888 **** **** 8888",
-        user: "IVANOV IVAN"
-    },
-    {
-        number: "9999 **** **** 9999",
-        user: "IVANOV IVAN"
-    }
-];
+import { UserContext } from "../../providers/UserProvider";
 
 function Payments({ onEvent }) {
+    // Storage a user credit cards
+    const [cards, setCards] = useState([]);
+    // Storage a user status
+    const [user, setUser] = useContext(UserContext);
+
+    useEffect(() => {
+        // Read user name from API
+        fetch('https://localhost:44458/api/Payments')
+            .then(response => response.json())
+            .then(data => {
+                let filteredData = [];
+                data.forEach((card) => {
+                    if (card.userID === user.email) {
+                        filteredData.push(card);
+                    }
+                })
+
+                setCards(filteredData);
+            })
+            .catch(error => console.error(error));
+    }, []);
+
     return (
         <div className="payments">
             <div className="payments__fluid">
@@ -56,7 +40,7 @@ function Payments({ onEvent }) {
                         </div>
                     </div>
                 </div>
-                {CARDS.map((item, index) => (
+                {cards.map((item) => (
                     <CreditCard card={item} />
                 ))}
             </div>

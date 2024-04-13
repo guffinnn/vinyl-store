@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {onAuthStateChanged, signOut} from 'firebase/auth';
 import {auth} from "../../firebase";
 import './Account.css';
@@ -15,6 +15,7 @@ import Card from "../../components/card/Card";
 import Heart from "../../components/heart/Heart";
 import ModalStatus from "../../components/modalStatus/ModalStatus";
 import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
+import { UserContext } from "../../providers/UserProvider";
 import {Link} from "react-router-dom";
 
 const ROWS = {
@@ -48,8 +49,8 @@ const ORDERS = [
 ];
 
 function Account() {
-    // Storage user login status
-    const [user, setUser] = useState({});
+    // Storage a user status
+    const [user, setUser] = useContext(UserContext);
     // Storage user initials
     const [name, setName] = useState("");
     // Storage modalStatus view status
@@ -171,10 +172,13 @@ function Account() {
                                     <p className="heading__text">Способы оплаты</p>
                                 </div>
                                 <div className="payments__block">
-                                    <Payments onEvent={() => {
-                                        setPurchaseIsOpen(true);
-                                        setPurchaseStatus("add");
-                                    }}/>
+                                    <Payments
+                                        user={user}
+                                        onEvent={() => {
+                                            setPurchaseIsOpen(true);
+                                            setPurchaseStatus("add");
+                                        }}
+                                    />
                                 </div>
                             </div>
                             <div id={`${Object.keys(ROWS)[3]}`} className="favorite__vinyls">

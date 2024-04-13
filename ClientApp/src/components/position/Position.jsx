@@ -2,7 +2,7 @@ import React, {useState, useContext} from "react";
 import './Position.css';
 import minus from '../../assets/minus-icon.svg';
 import plus from '../../assets/plus-icon.svg';
-import { CartContext } from "../cartProvider/CartProvider";
+import { CartContext } from "../../providers/CartProvider";
 
 function Position({ record, onChange }) {
     // Storage a number of record

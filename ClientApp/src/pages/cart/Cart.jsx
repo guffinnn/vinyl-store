@@ -7,7 +7,8 @@ import Payments from "../../components/payments/Payments";
 import Button from "../../components/button/Button";
 import Position from "../../components/position/Position";
 import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
-import {CartContext} from "../../components/cartProvider/CartProvider";
+import { CartContext } from "../../providers/CartProvider";
+import { UserContext } from "../../providers/UserProvider";
 
 function Cart() {
     // Storage modalPurchase view status
@@ -18,6 +19,8 @@ function Cart() {
     const [cart, setCart] = useContext(CartContext);
     // Storage total price of cart
     const [totalPrice, setTotalPrice] = useState(0);
+    // Storage a user status
+    const [user, setUser] = useContext(UserContext);
 
     function getPrice() {
         // Count summary price of cart
@@ -76,10 +79,13 @@ function Cart() {
                         </article>
                         <article className="payments">
                             <p className="cart__heading">Платежные средства</p>
-                            <Payments onEvent={() => {
-                                setPurchaseIsOpen(true);
-                                setPurchaseStatus("add");
-                            }} />
+                            <Payments
+                                user={user}
+                                onEvent={() => {
+                                    setPurchaseIsOpen(true);
+                                    setPurchaseStatus("add");
+                                }}
+                            />
                         </article>
                     </aside>
                 )}
