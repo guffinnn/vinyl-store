@@ -16,6 +16,7 @@ import Heart from "../../components/heart/Heart";
 import ModalStatus from "../../components/modalStatus/ModalStatus";
 import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
 import { UserContext } from "../../providers/UserProvider";
+import { PaymentsContext } from "../../providers/PaymentsProvider";
 import {Link} from "react-router-dom";
 
 const ROWS = {
@@ -63,8 +64,10 @@ function Account() {
     const [purchaseIsOpen, setPurchaseIsOpen] = useState(false);
     // Storage purchase status
     const [purchaseStatus, setPurchaseStatus] = useState("add");
-    // Storage cards information from API
-    const [cards, setCards] = useState([]);
+    // Storage a likes
+    const [likes, setLikes] = useState([]);
+    // Storage a user cards
+    const [payments, setPayments] = useContext(PaymentsContext);
 
     useEffect(() => {
         fetch('https://localhost:44458/api/Albums')
@@ -76,8 +79,25 @@ function Account() {
                     throw new TypeError("Oops, we haven't got JSON!");
                 }
             })
-            .then(data => setCards(data))
+            .then(data => setLikes(data))
             .catch(error => console.error('Ошибка:', error));
+    }, []);
+
+    useEffect(() => {
+        // Read user name from API
+        fetch('https://localhost:44458/api/Payments')
+            .then(response => response.json())
+            .then(data => {
+                let filteredData = [];
+                data.forEach((card) => {
+                    if (card.userID === user.email) {
+                        filteredData.push(card);
+                    }
+                })
+
+                setPayments(filteredData);
+            })
+            .catch(error => console.error(error));
     }, []);
 
     useEffect(() => {
@@ -190,7 +210,7 @@ function Account() {
                                 </div>
                                 <div className="favorite__frame">
                                     <div className="favorite__frame__fluid">
-                                        {cards.sort((a, b) => {
+                                        {likes.sort((a, b) => {
                                             return b.year - a.year;
                                         }).map((item, index) => (
                                             <Card record={item} image={index}>

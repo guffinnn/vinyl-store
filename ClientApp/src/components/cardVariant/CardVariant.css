@@ -1,4 +1,4 @@
-.payment__variant__frame {
+.payment__variant__frame, .payment__add__frame {
     width: 100%;
 
     display: flex;
@@ -14,6 +14,8 @@
     border: 2px solid #F3F4F7;
 
     cursor: pointer;
+
+    transition: all 0.3s ease;
 }
 
 .payment__variant__frame:hover {
@@ -22,10 +24,20 @@
     backdrop-filter: blur(4px);
 }
 
+.payment__variant__frame:active {
+    transform: scale(0.95);
+}
+
 .active__card {
     border: 2px solid rgba(20, 52, 203, 0.3);
     box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4px);
+}
+
+.payment__variant__frame.active__card:active {
+    border: 2px solid #F3F4F7;
+    box-shadow: none;
+    backdrop-filter: none;
 }
 
 .black {

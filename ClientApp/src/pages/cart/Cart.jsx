@@ -92,7 +92,8 @@ function Cart() {
             </main>
             <ModalPurchase isOpen={purchaseIsOpen}
                            setIsOpen={setPurchaseIsOpen}
-                           status={purchaseStatus} 
+                           status={purchaseStatus}
+                           setStatus={setPurchaseStatus}
                            totalPrice={totalPrice}
             />
             <Footer/>

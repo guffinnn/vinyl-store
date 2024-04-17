@@ -30,12 +30,16 @@
 }
 
 .card__number {
+    width: 100%;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-
     color: #FFFFFF;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .card__user {

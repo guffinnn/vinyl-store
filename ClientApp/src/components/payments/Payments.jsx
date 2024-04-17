@@ -3,29 +3,11 @@ import './Payments.css';
 import card from '../../assets/card-icon.svg';
 import CreditCard from "../creditCard/CreditCard";
 import { UserContext } from "../../providers/UserProvider";
+import { PaymentsContext } from "../../providers/PaymentsProvider";
 
 function Payments({ onEvent }) {
-    // Storage a user credit cards
-    const [cards, setCards] = useState([]);
-    // Storage a user status
-    const [user, setUser] = useContext(UserContext);
-
-    useEffect(() => {
-        // Read user name from API
-        fetch('https://localhost:44458/api/Payments')
-            .then(response => response.json())
-            .then(data => {
-                let filteredData = [];
-                data.forEach((card) => {
-                    if (card.userID === user.email) {
-                        filteredData.push(card);
-                    }
-                })
-
-                setCards(filteredData);
-            })
-            .catch(error => console.error(error));
-    }, []);
+    // Storage a user credit payments
+    const [payments, setPayments] = useContext(PaymentsContext);
 
     return (
         <div className="payments">
@@ -40,7 +22,9 @@ function Payments({ onEvent }) {
                         </div>
                     </div>
                 </div>
-                {cards.map((item) => (
+                {payments.sort((a, b) => {
+                    return a.number - b.number;
+                }).map((item) => (
                     <CreditCard card={item} />
                 ))}
             </div>

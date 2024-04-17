@@ -27,13 +27,41 @@
 }
 
 .payments__frame {
+    height: auto;
+    max-height: 300px;
     width: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0;
+    padding: 0 5px 0 0;
     gap: 10px;
+
+    overflow-y: auto;
+}
+
+.payments__frame::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgba(245, 245, 245, 0);
+}
+
+.payments__frame::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(245, 245, 245, 0);
+}
+
+.payments__frame::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media(max-width: 500px) {
+    .payments__frame::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+        background-color: rgba(245, 245, 245, 0);
+    }
 }
 
 .add__info {

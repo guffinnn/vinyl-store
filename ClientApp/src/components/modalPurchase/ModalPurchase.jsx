@@ -1,12 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import './ModalPurchase.css';
 import {IMaskInput} from 'react-imask';
 import Button from "../button/Button";
 import CardVariant from "../cardVariant/CardVariant";
 import master from "../../assets/master.svg";
 import add from "../../assets/add-icon.svg";
+import { PaymentsContext } from "../../providers/PaymentsProvider";
 
-function ModalPurchase({ isOpen, setIsOpen, status, totalPrice }) {
+function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     // Storage a card number data
     const [number, setNumber] = useState("");
     // Storage a user initials
@@ -17,7 +18,11 @@ function ModalPurchase({ isOpen, setIsOpen, status, totalPrice }) {
     const [cvv, setCVV] = useState("");
     // Storage status of input
     const [isChoosed, setIsChoosed] = useState(false);
-
+    // Storage a user credit payments
+    const [payments, setPayments] = useContext(PaymentsContext);
+    // Storage a active cardPosition component
+    const [activeIndex, setActiveIndex] = useState(null);
+    
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
@@ -92,9 +97,21 @@ function ModalPurchase({ isOpen, setIsOpen, status, totalPrice }) {
                 {status === "purchase" && (
                     <>
                         <div className="payments__frame">
-                            <CardVariant status={0} method={"visa"}/>
-                            <CardVariant status={0} method={"world"}/>
-                            <div className="payment__variant__frame">
+                            {payments.sort((a, b) => {
+                                return a.number - b.number;
+                            }).map((item, index) => (
+                                <CardVariant
+                                    key={index}
+                                    status={index === activeIndex ? 1 : 0}
+                                    card={item}
+                                    onClick={() => setActiveIndex(index)}
+                                />
+                            ))}
+                            <div className="payment__add__frame"
+                                 onClick={() => {
+                                     setStatus("add");
+                                 }}
+                            >
                                 <div className="add__info">
                                     <img className="add__img" src={add} alt="Добавить"/>
                                     <p className="add__text">Добавить способ оплаты</p>
