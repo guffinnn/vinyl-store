@@ -11,25 +11,31 @@ function Card({ record, children, onEvent }) {
     // Storage a status in cart
     const [inCart, setInCart] = useState(false);
 
-    const addToCart = () => {
+    function clickHandle() {
         // In case record in cart
         if (cart.includes(record)) {
-            // Delete vinyl record
-            record.count = 0;
-
-            setInCart(false);
-            setCart(cart.filter(item => item !== record));
+            removeFromCart();
         } else {
-            // Add vinyl record
-            if (record.count >= 1) {
-                record.count++;
-            } else {
-                record.count = 1;
-            }
-
-            setInCart(true);
-            setCart([...cart, record]);
+            addToCart();
         }
+    }
+
+    function removeFromCart() {
+        record.count = 0;
+
+        setInCart(false);
+        setCart(cart.filter(item => item !== record));
+    }
+
+    function addToCart() {
+        if (record.count >= 1) {
+            record.count++;
+        } else {
+            record.count = 1;
+        }
+
+        setInCart(true);
+        setCart([...cart, record]);
     }
 
     return (
@@ -58,7 +64,10 @@ function Card({ record, children, onEvent }) {
                     <img className="play__icon" src={play} alt="Слушать"/>
                 </div>
             </div>
-            <div className={`add_to_cart__button ${cart.includes(record) ? "in__cart" : ""}`} onClick={addToCart}>
+            <div
+                className={`add_to_cart__button ${cart.includes(record) ? "in__cart" : ""}`}
+                onClick={() => clickHandle()}
+            >
                 <a className="button__text">
                     {cart.includes(record) ? "В корзине" : "Добавить в корзину"}
                 </a>

@@ -2,10 +2,11 @@ import React, {useState, useEffect, useContext} from "react";
 import {onAuthStateChanged, signOut} from 'firebase/auth';
 import {auth} from "../../firebase";
 import './Account.css';
-import * as Img from '../../assets/data';
+import * as Img from '../../assets/exports/data';
+import { ROWS } from '../../assets/exports/records';
 import account from "../../assets/account-image.png";
 import exit from "../../assets/exit-icon.svg";
-import Header from "../../components/header/Header";
+import Header, { PHONE_WIDTH, resizeHandle } from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import AuthSelect from "../../components/authSelect/AuthSelect";
 import Button from "../../components/button/Button";
@@ -17,14 +18,7 @@ import ModalStatus from "../../components/modalStatus/ModalStatus";
 import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
 import { UserContext } from "../../providers/UserProvider";
 import { PaymentsContext } from "../../providers/PaymentsProvider";
-import {Link} from "react-router-dom";
-
-const ROWS = {
-        data: "Данные",
-        orders: "Заказы",
-        payments: "Оплата",
-        likes: "Лайки"
-};
+import { Link } from "react-router-dom";
 
 const ORDERS = [
     {
@@ -66,10 +60,47 @@ function Account() {
     const [purchaseStatus, setPurchaseStatus] = useState("add");
     // Storage a likes
     const [likes, setLikes] = useState([]);
-    // Storage a user cards
+    // Storage a user credentials
     const [payments, setPayments] = useContext(PaymentsContext);
 
     useEffect(() => {
+        checkAuthorization();
+    }, []);
+
+    function checkAuthorization() {
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                setUser(user);
+                getUserName();
+                openModal();
+            } else {
+                setUser(null);
+            }
+        });
+    }
+
+    function getUserName() {
+        fetch('https://localhost:44458/api/Users')
+            .then(response => response.json())
+            .then(data => {
+                const filteredData = data.filter(item => item.email === user.email);
+                setName(filteredData[0].name);
+            })
+            .catch(error => console.error(error));
+    }
+
+    function openModal() {
+        setStatus(1);
+        setIsOpen(true);
+    }
+
+    useEffect(() => {
+        getPayments();
+        getLikes();
+    }, [user]);
+
+    function getLikes() {
+        // Working with API - Likes
         fetch('https://localhost:44458/api/Albums')
             .then(response => {
                 const contentType = response.headers.get("content-type");
@@ -81,10 +112,10 @@ function Account() {
             })
             .then(data => setLikes(data))
             .catch(error => console.error('Ошибка:', error));
-    }, []);
+    }
 
-    useEffect(() => {
-        // Read user name from API
+    function getPayments() {
+        // Working with API - Payments
         fetch('https://localhost:44458/api/Payments')
             .then(response => response.json())
             .then(data => {
@@ -98,41 +129,23 @@ function Account() {
                 setPayments(filteredData);
             })
             .catch(error => console.error(error));
-    }, []);
+    }
 
+    // Handle resize
     useEffect(() => {
         const handleResize = (event) => {
             setWidth(event.target.innerWidth);
         };
 
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        resizeHandle(handleResize);
     }, []);
 
-    useEffect(() => {
-        onAuthStateChanged(auth, user => {
-            if (user) {
-                setUser(user);
-
-                // Read user name from API
-                fetch('https://localhost:44458/api/Users')
-                    .then(response => response.json())
-                    .then(data => {
-                        const filteredData = data.filter(item => item.email === user.email);
-                        setName(filteredData[0].name);
-                    })
-                    .catch(error => console.error(error));
-
-                setStatus(1);
-                setIsOpen(true);
-            } else {
-                setUser(null);
-            }
-        });
-    }, []);
+    function scrollEvent(item) {
+        const element = document.getElementById(item);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 
     // Exit from user account
     const logOut = async (e) => {
@@ -159,7 +172,7 @@ function Account() {
                                         <p className="user__email">{user.email}</p>
                                     </div>
                                 </div>
-                                {width >= 576 ? (
+                                {width >= PHONE_WIDTH ? (
                                     <div className="exit__icon" onClick={e => logOut(e)}>
                                         <img className="exit__image" src={exit} alt="Выйти"/>
                                     </div>
@@ -227,17 +240,17 @@ function Account() {
                                     {Object.keys(ROWS).map((item, index) => (
                                         <Link to={`#${item}`}
                                               className="list__text"
-                                              onClick={(event) => {
-                                                  event.preventDefault();
-                                                  const element = document.getElementById(item);
-                                                  if (element) {
-                                                      element.scrollIntoView({behavior: 'smooth'});
-                                                  }
-                                              }}
-                                        >
+                                              onClick={(e) => {
+                                                  e.preventDefault();
+                                                  scrollEvent(item);
+                                              }}>
                                             <li className="account__list" key={index}>
                                                 <div className="list__icon">
-                                                    <img className="list__image" src={Img[`${item}`]} alt="Иконка"/>
+                                                    <img
+                                                        className="list__image"
+                                                        src={Img[`${item}`]}
+                                                        alt="Иконка"
+                                                    />
                                                 </div>
                                                 <p className="list__text">{ROWS[item]}</p>
                                             </li>

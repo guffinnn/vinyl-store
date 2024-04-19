@@ -1,9 +1,8 @@
 import React from "react";
 import './Preview.css';
-import { RECORDS } from '../../assets/records/records';
+import { RECORDS } from '../../assets/exports/records';
 
 function Preview() {
-
     return (
         <section className="section" id="prev">
             <div className="section__content">

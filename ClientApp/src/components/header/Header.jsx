@@ -6,25 +6,31 @@ import cart from '../../assets/cart-icon.svg';
 import account from '../../assets/account-icon.svg';
 import { CartContext } from "../../providers/CartProvider";
 
+export const PHONE_WIDTH = 576;
+
+export function resizeHandle(width)  {
+    window.addEventListener('resize', width);
+
+    return () => {
+        window.removeEventListener('resize', width);
+    };
+} 
+
 function Header({ children }) {
     // Storage a width of user display for adaptive
     const [width, setWidth] = useState(window.innerWidth);
     // Storage a cart status
-    const [cartNotify, setCartNotify] = useContext(CartContext);
+    const [notify, setNotify] = useContext(CartContext);
 
     useEffect(() => {
         const handleResize = (event) => {
             setWidth(event.target.innerWidth);
         };
 
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        resizeHandle(handleResize);
     }, []);
 
-    return width >= 576 ? (
+    return width >= PHONE_WIDTH ? (
         <>
             <header className="header">
                 <nav className="header__nav">
@@ -42,7 +48,7 @@ function Header({ children }) {
                         <Link to="/cart">
                             <li className="header__list">
                                 <a className="header__link" href="/cart">Корзина</a>
-                                {cartNotify.length > 0 && (
+                                {notify.length > 0 && (
                                     <div className="notify">
                                         <p className="notify__text">1</p>
                                     </div>
@@ -84,7 +90,7 @@ function Header({ children }) {
                                         <img className="icon__image" src={cart} alt="Cart"/>
                                     </div>
                                 </a>
-                                {cartNotify.length > 0 && (
+                                {notify.length > 0 && (
                                     <div className="notify">
                                         <p className="notify__text">1</p>
                                     </div>

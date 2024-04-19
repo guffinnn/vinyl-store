@@ -33,29 +33,40 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
             const user = await createUserWithEmailAndPassword(auth, login, password);
 
             if (user) {
-                let userForDB = {
-                    name: name,
-                    email: login,
-                    password: password
-                };
-
-                // Write a new user autrhorization data
-                fetch('https://localhost:44458/api/Users', {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8'
-                    },
-                    body: JSON.stringify(userForDB)
-                });
+                getUserNameFromDB();
             }
 
-            setStatus(1);
-            setIsOpen(true);
-        } catch(error) {
-            setSTATUS(0);
-            setIsOPEN(true);
-            console.log(error.message);
+            setSuccessModal();
+        } catch (error) {
+            setErrorModal();
         }
+    }
+
+    function getUserNameFromDB() {
+        let userForDB = {
+            name: name,
+            email: login,
+            password: password
+        };
+
+        // Write a new user authorization data
+        fetch('https://localhost:44458/api/Users', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(userForDB)
+        });
+    }
+
+    function setSuccessModal() {
+        setStatus(1);
+        setIsOpen(true);
+    }
+
+    function setErrorModal() {
+        setSTATUS(0);
+        setIsOPEN(true);
     }
 
     // Auth an exist user
@@ -63,12 +74,9 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
         e.preventDefault();
         try {
             const user = await signInWithEmailAndPassword(auth, login, password);
-            setStatus(1);
-            setIsOpen(true);
+            setSuccessModal();
         } catch (error) {
-            setSTATUS(0);
-            setIsOPEN(true);
-            console.log(error.message);
+            setErrorModal();
         }
     }
 

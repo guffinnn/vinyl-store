@@ -8,10 +8,10 @@ import add from "../../assets/add-icon.svg";
 import { PaymentsContext } from "../../providers/PaymentsProvider";
 
 function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
+    // Storage a user initials
+    const [initials, setInitials] = useState("");
     // Storage a card number data
     const [number, setNumber] = useState("");
-    // Storage a user initials
-    const [user, setUser] = useState("");
     // Storage a card expiry
     const [cardExpiry, setCardExpiry] = useState("");
     // Storage a cvv number
@@ -25,16 +25,10 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
-        // Save the form data here
-        const formData = {
-            number,
-            user,
-            cardExpiry,
-            cvv
-        };
-
-        console.log(formData);
+        
+        //
+        // TODO: Add functionality for placing an order
+        //
     };
 
     return isOpen ? (
@@ -62,12 +56,13 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                                 value={number}
                                 onChange={(e) => setNumber(e.target.value)}
                             />
-                            <input className="input"
-                                   type="text"
-                                   id="2"
-                                   placeholder="IVANOV IVAN"
-                                   value={user}
-                                   onChange={(e) => setUser(e.target.value)}
+                            <input
+                                className="input"
+                                type="text"
+                                id="2"
+                                placeholder="IVANOV IVAN"
+                                value={initials}
+                                onChange={(e) => setInitials(e.target.value)}
                             />
                             <IMaskInput
                                 mask="00/00"
@@ -90,7 +85,10 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                             />
                         </div>
                         <div className="button__frame" id="submit">
-                            <Button content="Привязать карту" type="submit" onEvent={(e) => handleFormSubmit(e)}/>
+                            <Button
+                                content="Привязать карту"
+                                type="submit" onEvent={(e) => handleFormSubmit(e)}
+                            />
                         </div>
                     </form>
                 )}
@@ -107,10 +105,11 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                                     onClick={() => setActiveIndex(index)}
                                 />
                             ))}
-                            <div className="payment__add__frame"
-                                 onClick={() => {
-                                     setStatus("add");
-                                 }}
+                            <div
+                                className="payment__add__frame"
+                                onClick={() => {
+                                    setStatus("add");
+                                }}
                             >
                                 <div className="add__info">
                                     <img className="add__img" src={add} alt="Добавить"/>
@@ -133,7 +132,12 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                         </div>
                         <div className="purchase__frame">
                             <div className="checkbox-wrapper-46">
-                                <input type="checkbox" id="cbx-46" className="inp-cbx" onClick={(e) => setIsChoosed(e.target.checked)} />
+                                <input
+                                    type="checkbox"
+                                    id="cbx-46"
+                                    className="inp-cbx"
+                                    onClick={(e) => setIsChoosed(e.target.checked)}
+                                />
                                 <label htmlFor="cbx-46" className="cbx">
                                     <span>
                                         <svg viewBox="0 0 12 10" height="10px" width="12px">
@@ -145,7 +149,10 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                                     </p>
                                 </label>
                             </div>
-                            <Button content={"Оплатить корзину"} className={`${(isChoosed !== true) ? "in__cart" : ""}`} />
+                            <Button
+                                content={"Оплатить корзину"}
+                                className={`${(isChoosed !== true) ? "in__cart" : ""}`}
+                            />
                         </div>
                     </>
                 )}

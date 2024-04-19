@@ -10,23 +10,26 @@ function Position({ record, onChange }) {
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
 
-    const decreaseCount = () => {
+    function decreaseCount() {
         // Delete record while count now is 1
         if (record.count <= 1) {
             setCart(cart.filter(item => item !== record));
             onChange()
         } else {
             record.count -= 1;
-            setCount(record.count);
-            onChange();
+            updateCount();
         }
     };
 
-    const increaseCount = () => {
+    function increaseCount() {
         record.count += 1;
+        updateCount();
+    };
+
+    function updateCount() {
         setCount(record.count);
         onChange();
-    };
+    }
 
     return (
         <div className="position__frame">

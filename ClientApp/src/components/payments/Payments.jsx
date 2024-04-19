@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import './Payments.css';
 import card from '../../assets/card-icon.svg';
 import CreditCard from "../creditCard/CreditCard";
-import { UserContext } from "../../providers/UserProvider";
 import { PaymentsContext } from "../../providers/PaymentsProvider";
 
 function Payments({ onEvent }) {

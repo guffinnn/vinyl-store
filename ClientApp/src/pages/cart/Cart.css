@@ -186,13 +186,15 @@ article.cart__price {
     align-self: stretch;
 }
 
-.error__image {}
+.error__image {
+    width: 24px;
+    height: 32px;
+}
 
 .image__content {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    margin: 4px 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 .error__info {
@@ -214,9 +216,25 @@ article.cart__price {
 .error__text {
     font-style: normal;
     font-weight: 500;
-    font-size: 14.8331px;
+    font-size: 14px;
     line-height: 130%;
     color: rgba(0, 0, 0, 0.6);
+}
+
+@media(max-width: 576px) {
+    .error__image {
+        width: 18px;
+        height: 24px;
+    }
+
+    .error__head {
+        font-size: 18px;
+    }
+
+    .error__text {
+        font-size: 12px;
+        max-width: 250px;
+    }
 }
 
 @media(max-width: 1300px) {

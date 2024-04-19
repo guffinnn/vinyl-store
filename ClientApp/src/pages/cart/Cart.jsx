@@ -17,24 +17,24 @@ function Cart() {
     const [purchaseStatus, setPurchaseStatus] = useState("add");
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
-    // Storage total price of cart
-    const [totalPrice, setTotalPrice] = useState(0);
     // Storage a user status
     const [user, setUser] = useContext(UserContext);
+    // Storage total price of cart
+    const [totalPrice, setTotalPrice] = useState(getPrice);
 
+    useEffect(() => {
+        setTotalPrice(getPrice);
+    }, [cart]);
+
+    // Count summary price of cart
     function getPrice() {
-        // Count summary price of cart
         let sum = 0;
         cart.forEach((item) => {
             sum += (item.count * item.price)
         });
 
-        setTotalPrice(sum.toFixed(2));
-    };
-
-    useEffect(() => {
-        getPrice();
-    }, []);
+        return sum.toFixed(2);
+    }; 
 
     return (
         <>
@@ -45,7 +45,11 @@ function Cart() {
                         <div className="cart__fluid">
                             {cart.length > 0 ? (
                                 cart.map((item, index) => (
-                                    <Position record={item} image={index} onChange={getPrice} />
+                                    <Position
+                                        record={item}
+                                        image={index}
+                                        onChange={() => setTotalPrice(getPrice)}
+                                    />
                             ))) : (
                                 <div className="error__container">
                                     <div className="error__image">
@@ -90,11 +94,12 @@ function Cart() {
                     </aside>
                 )}
             </main>
-            <ModalPurchase isOpen={purchaseIsOpen}
-                           setIsOpen={setPurchaseIsOpen}
-                           status={purchaseStatus}
-                           setStatus={setPurchaseStatus}
-                           totalPrice={totalPrice}
+            <ModalPurchase
+                isOpen={purchaseIsOpen}
+                setIsOpen={setPurchaseIsOpen}
+                status={purchaseStatus}
+                setStatus={setPurchaseStatus}
+                totalPrice={totalPrice}
             />
             <Footer/>
         </>

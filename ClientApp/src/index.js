@@ -5,15 +5,18 @@ import App from './App';
 import { CartProvider } from "./providers/CartProvider";
 import { UserProvider } from "./providers/UserProvider";
 import { PaymentsProvider } from "./providers/PaymentsProvider";
+import { RecordProvider } from './providers/RecordProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <UserProvider>
         <PaymentsProvider>
             <CartProvider>
-                <React.StrictMode>
-                    <App />
-                </React.StrictMode>
+                <RecordProvider>
+                    <React.StrictMode>
+                        <App />
+                    </React.StrictMode>
+                </RecordProvider>
             </CartProvider>
         </PaymentsProvider>
     </UserProvider>

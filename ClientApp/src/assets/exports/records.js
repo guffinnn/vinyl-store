@@ -1,8 +1,3 @@
-import img1 from './BTW.png';
-import img2 from './Chromatica.png';
-import img3 from './TFM.png';
-import img4 from './Joanne.png';
-
 export const RECORDS = {
     name: "COWBOY CARTER",
     artist: "Beyoncé",
@@ -15,6 +10,9 @@ export const RECORDS = {
     description: "Этот альбом перенесет вас на дикий запад и заставит вас почувствовать аутентичный дух кантри музыки. Откройте для себя новое лицо Beyonce и погрузитесь в мир COWBOY CARTER прямо сейчас!"
 };
 
-export const CART = [];
-
-export { img1, img2, img3, img4 };
+export const ROWS = {
+    data: "Данные",
+    orders: "Заказы",
+    payments: "Оплата",
+    likes: "Лайки"
+};

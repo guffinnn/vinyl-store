@@ -1,6 +1,6 @@
 import React from "react";
 import './Order.css';
-import * as Img from '../../assets/records/records';
+import * as Img from '../../assets/exports/data';
 
 function Order({ order }) {
     return (
