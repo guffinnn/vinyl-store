@@ -47,7 +47,7 @@ function Account() {
     // Storage a user status
     const [user, setUser] = useContext(UserContext);
     // Storage user initials
-    const [name, setName] = useState("");
+    const [name, setName] = useState(getUserName);
     // Storage modalStatus view status
     const [isOpen, setIsOpen] = useState(false);
     // Storage status of modalFunctional
@@ -168,8 +168,8 @@ function Account() {
                                 <div className="left__content">
                                     <img className="user__icon" id="user80" src={account} alt="Пользователь"/>
                                     <div className="user__content">
-                                        <p className="user__initials">{name}</p>
-                                        <p className="user__email">{user.email}</p>
+                                        <p className="user__initials">{name ?? "Имя пользователя"}</p>
+                                        <p className="user__email">{user.email ?? "Почта пользователя"}</p>
                                     </div>
                                 </div>
                                 {width >= PHONE_WIDTH ? (

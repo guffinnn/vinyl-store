@@ -75,10 +75,6 @@
     cursor: pointer;
 }
 
-.active__select {
-    transform: rotate(180deg);
-}
-
 .form__frame {
     width: 100%;
 

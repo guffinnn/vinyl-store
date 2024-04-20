@@ -49,11 +49,16 @@
 }
 
 .record__image {
+    position: relative;
     width: auto;
     height: 90%;
     object-fit: contain;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+}
+
+.record__image.unseen {
+    opacity: 0.25;
 }
 
 .record__image:hover {
@@ -144,6 +149,38 @@
 
     width: 24px;
     height: 24px;
+}
+
+.spotify__link {
+    position: relative;
+    width: 100%;
+}
+
+.active__select {
+    transform: rotate(180deg);
+}
+
+.spotify__iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 12px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.spotify__iframe.active__iframe {
+    width: 100%;
+    height: 152px;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.play__frame.active__spotify {
+    transform: rotate(-90deg);
 }
 
 .play__icon {
