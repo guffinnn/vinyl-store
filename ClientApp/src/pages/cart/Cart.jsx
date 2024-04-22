@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext, useCallback} from "react";
 import './Cart.css';
 import basket from '../../assets/basket-icon.svg';
 import Header from "../../components/header/Header";
@@ -34,7 +34,7 @@ function Cart() {
         });
 
         return sum.toFixed(2);
-    }; 
+    }
 
     return (
         <>

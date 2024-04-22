@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import './Order.css';
 import * as Img from '../../assets/exports/data';
 
-function Order({ order }) {
+const Order = memo(({ order }) => {
     return (
         <div className="order__frame">
             <div className="order__info">
@@ -15,6 +15,6 @@ function Order({ order }) {
             <p className="order__cost">–{order.cost}</p>
         </div>
     );
-}
+});
 
 export default Order;

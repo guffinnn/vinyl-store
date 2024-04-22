@@ -62,14 +62,6 @@ section.cart {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-@media(max-width: 500px) {
-    .cart__frame::-webkit-scrollbar  {
-        width: 4px;
-        height: 4px;
-        background-color: rgba(245, 245, 245, 0);
-    }
-}
-
 .cart__fluid {
     display: flex;
     flex-direction: row;
@@ -221,22 +213,6 @@ article.cart__price {
     color: rgba(0, 0, 0, 0.6);
 }
 
-@media(max-width: 576px) {
-    .error__image {
-        width: 18px;
-        height: 24px;
-    }
-
-    .error__head {
-        font-size: 18px;
-    }
-
-    .error__text {
-        font-size: 12px;
-        max-width: 250px;
-    }
-}
-
 @media(max-width: 1300px) {
     #cart {
         flex-direction: column-reverse;
@@ -347,10 +323,25 @@ article.cart__price {
     }
 }
 
-
 @media(max-width: 720px) {
     #cart {
         margin: -50px 20px 20px;
+    }
+}
+
+@media(max-width: 576px) {
+    .error__image {
+        width: 18px;
+        height: 24px;
+    }
+
+    .error__head {
+        font-size: 18px;
+    }
+
+    .error__text {
+        font-size: 12px;
+        max-width: 250px;
     }
 }
 
@@ -361,6 +352,14 @@ article.cart__price {
 
     .objects__count, .final__price {
         font-size: 12px;
+    }
+}
+
+@media(max-width: 500px) {
+    .cart__frame::-webkit-scrollbar  {
+        width: 4px;
+        height: 4px;
+        background-color: rgba(245, 245, 245, 0);
     }
 }
 

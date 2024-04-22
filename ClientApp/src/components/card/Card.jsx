@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useCallback} from "react";
 import './Card.css';
 import play from '../../assets/play-icon.svg';
 import { CartContext } from "../../providers/CartProvider";
@@ -9,27 +9,27 @@ function Card({ record, children, onEvent }) {
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
     // Storage a status in cart
-    const [inCart, setInCart] = useState(false);
+    const [inCart, setInCart] = useState(cart.includes(record));
     // Storage a status of user click on spotify link
     const [showIframe, setShowIframe] = useState(false);
 
     function clickHandle() {
         // In case record in cart
-        if (cart.includes(record)) {
+        if (inCart === true) {
             removeFromCart();
         } else {
             addToCart();
         }
     }
 
-    function removeFromCart() {
+    const removeFromCart = useCallback(() => {
         record.count = 0;
 
         setInCart(false);
         setCart(cart.filter(item => item !== record));
-    }
+    }, [record, cart, setInCart, setCart]);
 
-    function addToCart() {
+    const addToCart = useCallback(() => {
         if (record.count >= 1) {
             record.count++;
         } else {
@@ -38,7 +38,7 @@ function Card({ record, children, onEvent }) {
 
         setInCart(true);
         setCart([...cart, record]);
-    }
+    }, [record, cart, setInCart, setCart]);
 
     // Change a play-icon by click
     const toggleIframe = () => {
@@ -80,11 +80,11 @@ function Card({ record, children, onEvent }) {
                 </div>
             </div>
             <div
-                className={`add_to_cart__button ${cart.includes(record) ? "in__cart" : ""}`}
+                className={`add_to_cart__button ${(inCart === true) ? "in__cart" : ""}`}
                 onClick={() => clickHandle()}
             >
                 <a className="button__text">
-                    {cart.includes(record) ? "В корзине" : "Добавить в корзину"}
+                    {(inCart === true) ? "В корзине" : "Добавить в корзину"}
                 </a>
             </div>
         </div>

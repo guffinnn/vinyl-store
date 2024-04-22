@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from "../../firebase";
 import './AuthSelect.css';
@@ -42,7 +42,7 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
         }
     }
 
-    function getUserNameFromDB() {
+    const getUserNameFromDB = useCallback(() => {
         let userForDB = {
             name: name,
             email: login,
@@ -57,7 +57,7 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
             },
             body: JSON.stringify(userForDB)
         });
-    }
+    }, [name, login, password]);
 
     function setSuccessModal() {
         setStatus(1);
@@ -100,42 +100,46 @@ function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
                     </div>
                     <div className="inputs__frame">
                         {type === "register" &&
-                            <input className="input"
-                                   type="text"
-                                   id="1"
-                                   placeholder="Иванов Иван Иванович"
-                                   onChange={(e) => {
-                                       setName(e.target.value)
-                                   }}
+                            <input
+                                className="input"
+                                type="text"
+                                id="1"
+                                placeholder="Иванов Иван Иванович"
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }}
                             />
                         }
-                        <input className="input"
-                               type="email"
-                               id="2"
-                               placeholder="user@gmail.com"
-                               onChange={(e) => {
-                                   setLogin(e.target.value)
-                               }}
+                        <input
+                            className="input"
+                            type="email"
+                            id="2"
+                            placeholder="user@gmail.com"
+                            onChange={(e) => {
+                                setLogin(e.target.value)
+                            }}
                         />
-                        <input className="input"
-                               type="password"
-                               id="3"
-                               placeholder="password123"
-                               onChange={(e) => {
-                                   setPassword(e.target.value)
-                               }}
+                        <input
+                            className="input"
+                            type="password"
+                            id="3"
+                            placeholder="password123"
+                            onChange={(e) => {
+                                setPassword(e.target.value)
+                            }}
                         />
                     </div>
                     <div className="button__frame" onClick={e => (
                         type === "register" ? register(e) : logIn(e)
                     )}>
-                        <Button content="Войти в аккаунт"/>
+                        <Button content="Войти в аккаунт" />
                     </div>
                 </form>
             </div>
-            <ModalStatus isOpen={isOPEN}
-                         setIsOpen={setIsOPEN}
-                         status={STATUS}
+            <ModalStatus
+                isOpen={isOPEN}
+                setIsOpen={setIsOPEN}
+                status={STATUS}
             />
         </div>
     )

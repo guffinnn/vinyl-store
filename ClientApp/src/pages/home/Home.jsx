@@ -17,7 +17,7 @@ function Home() {
         getAlbums();
     }, []);
 
-    function getAlbums() {
+    const getAlbums = useCallback(() => {
         fetch(' https://localhost:44458/api/Albums')
             .then(response => {
                 const contentType = response.headers.get("content-type");
@@ -29,7 +29,7 @@ function Home() {
             })
             .then(data => setRecords(data))
             .catch(error => console.error('Ошибка:', error));
-    }
+    }, [setRecords]);
 
     const addToCart = useCallback((record) => {
         setCart(prevCart => [...prevCart, record]);

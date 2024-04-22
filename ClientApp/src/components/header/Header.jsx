@@ -64,7 +64,7 @@ function Header({ children }) {
                 </nav>
             </header>
             <div className="heading">
-            <h1 className="h1">{children}</h1>
+                <h1 className="h1">{children}</h1>
                 <p className="info__text">МУЗЫКА ВСЕХ ВРЕМЕН НА ЛЮБОЙ ВКУС.</p>
             </div>
         </>
@@ -78,7 +78,7 @@ function Header({ children }) {
                             <li className="header__list">
                                 <a className="header__link" href="/catalog">
                                     <div className="icon">
-                                        <img className="icon__image" src={catalog} alt="Catalog"/>
+                                        <img className="icon__image" src={catalog} alt="Catalog" />
                                     </div>
                                 </a>
                             </li>
@@ -87,7 +87,7 @@ function Header({ children }) {
                             <li className="header__list">
                                 <a className="header__link" href="/cart">
                                     <div className="icon">
-                                        <img className="icon__image" src={cart} alt="Cart"/>
+                                        <img className="icon__image" src={cart} alt="Cart" />
                                     </div>
                                 </a>
                                 {notify.length > 0 && (
@@ -101,7 +101,7 @@ function Header({ children }) {
                             <li className="header__list">
                                 <a className="header__link" href="/account">
                                     <div className="icon">
-                                        <img className="icon__image" src={account} alt="Account"/>
+                                        <img className="icon__image" src={account} alt="Account" />
                                     </div>
                                 </a>
                             </li>

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import './Preview.css';
 import { RECORDS } from '../../assets/exports/records';
 
-function Preview() {
+const Preview = memo(() => {
     return (
         <section className="section" id="prev">
             <div className="section__content">
@@ -23,6 +23,6 @@ function Preview() {
             </div>
         </section>
     );
-}
+});
 
 export default Preview;

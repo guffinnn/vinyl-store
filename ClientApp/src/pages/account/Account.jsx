@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext, useCallback} from "react";
 import {onAuthStateChanged, signOut} from 'firebase/auth';
 import {auth} from "../../firebase";
 import './Account.css';
@@ -113,7 +113,6 @@ function Account() {
             .then(data => setLikes(data))
             .catch(error => console.error('Ошибка:', error));
     }
-
     function getPayments() {
         // Working with API - Payments
         fetch('https://localhost:44458/api/Payments')
@@ -177,8 +176,8 @@ function Account() {
                                         <img className="exit__image" src={exit} alt="Выйти"/>
                                     </div>
                                 ) : (
-                                    <div className="exit__frame">
-                                        <Button content="Выйти из аккаунта" onEvent={e => logOut(e)}/>
+                                    <div className="exit__frame" onClick={e => logOut(e)}>
+                                        <Button content="Выйти из аккаунта" />
                                     </div>
                                 )}
                             </div>
@@ -269,17 +268,19 @@ function Account() {
                     </>
                 ) : (
                     <div className="authes">
-                        <AuthSelect type="register"
-                                    isOpen={isOpen}
-                                    setIsOpen={setIsOpen}
-                                    status={status}
-                                    setStatus={setStatus}
+                        <AuthSelect
+                            type="register"
+                            isOpen={isOpen}
+                            setIsOpen={setIsOpen}
+                            status={status}
+                            setStatus={setStatus}
                         />
-                        <AuthSelect type="login"
-                                    isOpen={isOpen}
-                                    setIsOpen={setIsOpen}
-                                    status={status}
-                                    setStatus={setStatus}
+                        <AuthSelect
+                            type="login"
+                            isOpen={isOpen}
+                            setIsOpen={setIsOpen}
+                            status={status}
+                            setStatus={setStatus}
                         />
                     </div>
                 )}

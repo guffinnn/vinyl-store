@@ -18,8 +18,8 @@
 }
 
 .button:hover {
-    transform: scale(1.05);
     margin: 0 10px;
+    transform: translate(0%, 0%) scale(1.05);
 }
 
 .button:active {

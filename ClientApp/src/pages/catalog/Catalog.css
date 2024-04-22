@@ -59,14 +59,6 @@ section.catalog {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-@media(max-width: 500px) {
-    .catalog__group::-webkit-scrollbar  {
-        width: 4px;
-        height: 4px;
-        background-color: rgba(245, 245, 245, 0);
-    }
-}
-
 @media(max-width: 720px) {
     section.catalog {
         width: 100%;
@@ -107,5 +99,13 @@ section.catalog {
 
     #main {
         margin-top: -60px;
+    }
+}
+
+@media(max-width: 500px) {
+    .catalog__group::-webkit-scrollbar  {
+        width: 4px;
+        height: 4px;
+        background-color: rgba(245, 245, 245, 0);
     }
 }
