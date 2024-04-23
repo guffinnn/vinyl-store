@@ -146,7 +146,6 @@ function Account() {
         }
     }
 
-    // Exit from user account
     const logOut = async (e) => {
         e.preventDefault();
         try {
@@ -270,16 +269,12 @@ function Account() {
                     <div className="authes">
                         <AuthSelect
                             type="register"
-                            isOpen={isOpen}
                             setIsOpen={setIsOpen}
-                            status={status}
                             setStatus={setStatus}
                         />
                         <AuthSelect
                             type="login"
-                            isOpen={isOpen}
                             setIsOpen={setIsOpen}
-                            status={status}
                             setStatus={setStatus}
                         />
                     </div>

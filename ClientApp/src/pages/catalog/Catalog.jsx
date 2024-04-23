@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import './Catalog.css';
 import '../home/Home.css';
 import catalog from '../../assets/catalog-icon.svg';
@@ -10,24 +10,32 @@ import Heart from "../../components/heart/Heart";
 import { RecordContext } from "../../providers/RecordProvider";
 
 function Catalog() {
-    // Storage a records
+    // Storage a records from database
     const [records, setRecords] = useContext(RecordContext);
+    // Storage a records sorted by user request
+    const [filteredRecords, setFilteredRecords] = useState(records);
 
     return records.length > 0 ? (
         <>
             <Header>Catalog</Header>
             <main className="main" id="main">
                 <section className="catalog">
-                    <SearchBox />
+                    <SearchBox records={records} setFilteredRecords={setFilteredRecords} />
                     <div className="catalog__group">
                         <div className="catalog__group__fluid">
-                            {records.sort((a, b) => {
+                            {filteredRecords.sort((a, b) => {
                                 return b.year - a.year;
                             }).map((item, index) => (
                                 <Card record={item} image={index}>
                                     <Heart status={1} />
                                 </Card>
                             ))}
+                            {filteredRecords.length < 1 && (
+                                <div className="error__info">
+                                    <p className="error__head">Совпадения не найдены</p>
+                                    <p className="error__text">Похоже, что у нас нет такого товара в ассортименте</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>

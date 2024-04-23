@@ -7,7 +7,7 @@ import arrow from '../../assets/arrow-icon.svg';
 import Button from "../button/Button";
 import ModalStatus from "../modalStatus/ModalStatus";
 
-function AuthSelect({ type, isOpen, setIsOpen, status, setStatus }) {
+function AuthSelect({ type, setIsOpen, setStatus }) {
     // Storage a status of user click
     const [showForm, setShowForm] = useState(false);
     // Storage user initials
