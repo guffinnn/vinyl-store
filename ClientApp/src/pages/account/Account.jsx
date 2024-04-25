@@ -20,29 +20,6 @@ import { UserContext } from "../../providers/UserProvider";
 import { PaymentsContext } from "../../providers/PaymentsProvider";
 import { Link } from "react-router-dom";
 
-const ORDERS = [
-    {
-        name: "#F123111333",
-        date: "08.03.2024",
-        cost: "336$"
-    },
-    {
-        name: "#F123111334",
-        date: "08.03.2024",
-        cost: "336$"
-    },
-    {
-        name: "#F123111335",
-        date: "08.03.2024",
-        cost: "336$"
-    },
-    {
-        name: "#F123111336",
-        date: "08.03.2024",
-        cost: "336$"
-    }
-];
-
 function Account() {
     // Storage a user status
     const [user, setUser] = useContext(UserContext);
@@ -62,6 +39,8 @@ function Account() {
     const [likes, setLikes] = useState([]);
     // Storage a user credentials
     const [payments, setPayments] = useContext(PaymentsContext);
+    // Strorage a user orders history
+    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         checkAuthorization();
@@ -72,6 +51,9 @@ function Account() {
             if (user) {
                 setUser(user);
                 getUserName();
+                getPayments();
+                getLikes();
+                getOrders();
                 openModal();
             } else {
                 setUser(null);
@@ -88,17 +70,6 @@ function Account() {
             })
             .catch(error => console.error(error));
     }
-
-    function openModal() {
-        setStatus(1);
-        setIsOpen(true);
-    }
-
-    useEffect(() => {
-        getPayments();
-        getLikes();
-    }, [user]);
-
     function getLikes() {
         // Working with API - Likes
         fetch('https://localhost:44458/api/Albums')
@@ -128,6 +99,20 @@ function Account() {
                 setPayments(filteredData);
             })
             .catch(error => console.error(error));
+    }
+    function getOrders() {
+        fetch(`https://localhost:44458/api/Users/15/Orders`)
+            .then(response => response.json())
+            .then(data => {
+                console.dir(user);
+                setOrders(data);
+            })
+            .catch(error => console.error(error));
+    }
+
+    function openModal() {
+        setStatus(1);
+        setIsOpen(true);
     }
 
     // Handle resize
@@ -189,7 +174,7 @@ function Account() {
                                 </div>
                                 <div className="orders">
                                     <div className="orders__fluid">
-                                        {ORDERS.map((item, index) => (
+                                        {orders.map((item, index) => (
                                             <Order order={item}/>
                                         ))}
                                     </div>

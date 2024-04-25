@@ -49,6 +49,20 @@ namespace vinyl_store.Controllers
             return user;
         }
 
+        // GET: api/Users/5/Orders
+        [HttpGet("{id}/Orders")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetUserOrders(int id)
+        {
+            var user = await _context.User.Include(u => u.Orders).FirstOrDefaultAsync(u => u.UserID == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user.Orders.ToList();
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

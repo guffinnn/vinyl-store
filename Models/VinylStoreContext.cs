@@ -20,10 +20,10 @@ namespace vinyl_store
         }
 
         public DbSet<Album> Albums { get; set; }
-
         public DbSet<User> User { get; set; }
-
         public DbSet<Payment> Payment { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderAlbum> OrderAlbum { get; set; }
     }
 
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<VinylStoreContext>

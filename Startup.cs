@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SpaServices.Extensions;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.AspNetCore.Mvc;
 using vinyl_store.Controllers;
+using System.Text.Json.Serialization;
 
 namespace vinyl_store
 {
@@ -38,7 +39,10 @@ namespace vinyl_store
                     });
             });
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddDbContext<VinylStoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

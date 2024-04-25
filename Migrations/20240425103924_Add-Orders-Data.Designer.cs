@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vinyl_store;
 
@@ -11,9 +12,11 @@ using vinyl_store;
 namespace vinyl_store.Migrations
 {
     [DbContext(typeof(VinylStoreContext))]
-    partial class VinylStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240425103924_Add-Orders-Data")]
+    partial class AddOrdersData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,6 +45,9 @@ namespace vinyl_store.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OrderID")
+                        .HasColumnType("int");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -52,6 +58,8 @@ namespace vinyl_store.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("AlbumID");
+
+                    b.HasIndex("OrderID");
 
                     b.ToTable("Album");
                 });
@@ -67,41 +75,15 @@ namespace vinyl_store.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserID")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderID");
 
-                    b.HasIndex("UserID");
-
                     b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("vinyl_store.OrderAlbum", b =>
-                {
-                    b.Property<int>("OrderAlbumID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderAlbumID"));
-
-                    b.Property<int>("AlbumID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderAlbumID");
-
-                    b.HasIndex("AlbumID");
-
-                    b.HasIndex("OrderID");
-
-                    b.ToTable("OrderAlbum");
                 });
 
             modelBuilder.Entity("vinyl_store.Payment", b =>
@@ -155,47 +137,16 @@ namespace vinyl_store.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("vinyl_store.Order", b =>
-                {
-                    b.HasOne("vinyl_store.User", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("vinyl_store.OrderAlbum", b =>
-                {
-                    b.HasOne("vinyl_store.Album", "Album")
-                        .WithMany("OrderAlbums")
-                        .HasForeignKey("AlbumID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("vinyl_store.Order", "Order")
-                        .WithMany("OrderAlbums")
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Album");
-
-                    b.Navigation("Order");
-                });
-
             modelBuilder.Entity("vinyl_store.Album", b =>
                 {
-                    b.Navigation("OrderAlbums");
+                    b.HasOne("vinyl_store.Order", null)
+                        .WithMany("Products")
+                        .HasForeignKey("OrderID");
                 });
 
             modelBuilder.Entity("vinyl_store.Order", b =>
                 {
-                    b.Navigation("OrderAlbums");
-                });
-
-            modelBuilder.Entity("vinyl_store.User", b =>
-                {
-                    b.Navigation("Orders");
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

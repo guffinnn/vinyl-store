@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vinyl_store;
 
@@ -11,9 +12,11 @@ using vinyl_store;
 namespace vinyl_store.Migrations
 {
     [DbContext(typeof(VinylStoreContext))]
-    partial class VinylStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240425105633_Change-Orders-Structure")]
+    partial class ChangeOrdersStructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,16 +70,13 @@ namespace vinyl_store.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
-
-                    b.HasIndex("UserID");
 
                     b.ToTable("Order");
                 });
@@ -155,15 +155,6 @@ namespace vinyl_store.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("vinyl_store.Order", b =>
-                {
-                    b.HasOne("vinyl_store.User", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("vinyl_store.OrderAlbum", b =>
                 {
                     b.HasOne("vinyl_store.Album", "Album")
@@ -191,11 +182,6 @@ namespace vinyl_store.Migrations
             modelBuilder.Entity("vinyl_store.Order", b =>
                 {
                     b.Navigation("OrderAlbums");
-                });
-
-            modelBuilder.Entity("vinyl_store.User", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

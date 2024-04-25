@@ -26,7 +26,7 @@ namespace vinyl_store.Migrations
                 oldClrType: typeof(int),
                 oldType: "int");
 
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.AlterColumn<string>(
                 name: "Initials",
                 table: "Payment",
                 type: "nvarchar(max)",
@@ -36,10 +36,6 @@ namespace vinyl_store.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Initials",
-                table: "Payment");
-
             migrationBuilder.AlterColumn<int>(
                 name: "UserID",
                 table: "Payment",
