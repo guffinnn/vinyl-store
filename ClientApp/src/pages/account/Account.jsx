@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext, useCallback} from "react";
-import {onAuthStateChanged, signOut} from 'firebase/auth';
+import React, {useState, useEffect, useContext} from "react";
+import {signOut} from 'firebase/auth';
 import {auth} from "../../firebase";
 import './Account.css';
 import * as Img from '../../assets/exports/data';
@@ -17,14 +17,12 @@ import Heart from "../../components/heart/Heart";
 import ModalStatus from "../../components/modalStatus/ModalStatus";
 import ModalPurchase from "../../components/modalPurchase/ModalPurchase";
 import { UserContext } from "../../providers/UserProvider";
-import { PaymentsContext } from "../../providers/PaymentsProvider";
 import { Link } from "react-router-dom";
 
 function Account() {
-    // Storage a user status
-    const [user, setUser] = useContext(UserContext);
-    // Storage user initials
-    const [name, setName] = useState(getUserName);
+    // Используйте UserDataContext для получения данных пользователя
+    const { user, name, likes, orders, isLoading } = useContext(UserContext);
+
     // Storage modalStatus view status
     const [isOpen, setIsOpen] = useState(false);
     // Storage status of modalFunctional
@@ -35,85 +33,6 @@ function Account() {
     const [purchaseIsOpen, setPurchaseIsOpen] = useState(false);
     // Storage purchase status
     const [purchaseStatus, setPurchaseStatus] = useState("add");
-    // Storage a likes
-    const [likes, setLikes] = useState([]);
-    // Storage a user credentials
-    const [payments, setPayments] = useContext(PaymentsContext);
-    // Strorage a user orders history
-    const [orders, setOrders] = useState([]);
-
-    useEffect(() => {
-        checkAuthorization();
-    }, []);
-
-    function checkAuthorization() {
-        onAuthStateChanged(auth, user => {
-            if (user) {
-                setUser(user);
-                getUserName();
-                getPayments();
-                getLikes();
-                getOrders();
-                openModal();
-            } else {
-                setUser(null);
-            }
-        });
-    }
-
-    function getUserName() {
-        fetch('https://localhost:44458/api/Users')
-            .then(response => response.json())
-            .then(data => {
-                const filteredData = data.filter(item => item.email === user.email);
-                setName(filteredData[0].name);
-            })
-            .catch(error => console.error(error));
-    }
-    function getLikes() {
-        // Working with API - Likes
-        fetch('https://localhost:44458/api/Albums')
-            .then(response => {
-                const contentType = response.headers.get("content-type");
-                if (contentType && contentType.indexOf("application/json") !== -1) {
-                    return response.json();
-                } else {
-                    throw new TypeError("Oops, we haven't got JSON!");
-                }
-            })
-            .then(data => setLikes(data))
-            .catch(error => console.error('Ошибка:', error));
-    }
-    function getPayments() {
-        // Working with API - Payments
-        fetch('https://localhost:44458/api/Payments')
-            .then(response => response.json())
-            .then(data => {
-                let filteredData = [];
-                data.forEach((card) => {
-                    if (card.userID === user.email) {
-                        filteredData.push(card);
-                    }
-                })
-
-                setPayments(filteredData);
-            })
-            .catch(error => console.error(error));
-    }
-    function getOrders() {
-        fetch(`https://localhost:44458/api/Users/15/Orders`)
-            .then(response => response.json())
-            .then(data => {
-                console.dir(user);
-                setOrders(data);
-            })
-            .catch(error => console.error(error));
-    }
-
-    function openModal() {
-        setStatus(1);
-        setIsOpen(true);
-    }
 
     // Handle resize
     useEffect(() => {
@@ -140,7 +59,7 @@ function Account() {
         }
     };
 
-    return (
+    return !isLoading && (
         <>
             <Header>Account</Header>
             <main className="main" id="account">
@@ -242,13 +161,16 @@ function Account() {
                                 </ul>
                             </nav>
                         </aside>
-                        <ModalStatus isOpen={isOpen}
-                                     setIsOpen={setIsOpen}
-                                     status={status}
+                        <ModalStatus
+                            isOpen={isOpen}
+                            setIsOpen={setIsOpen}
+                            status={status}
                         />
-                        <ModalPurchase isOpen={purchaseIsOpen}
-                                       setIsOpen={setPurchaseIsOpen}
-                                       status={purchaseStatus}/>
+                        <ModalPurchase
+                            isOpen={purchaseIsOpen}
+                            setIsOpen={setPurchaseIsOpen}
+                            status={purchaseStatus}
+                        />
                     </>
                 ) : (
                     <div className="authes">

@@ -5,9 +5,12 @@ import Button from "../button/Button";
 import CardVariant from "../cardVariant/CardVariant";
 import master from "../../assets/master.svg";
 import add from "../../assets/add-icon.svg";
-import { PaymentsContext } from "../../providers/PaymentsProvider";
+import { UserContext } from "../../providers/UserProvider";
 
 function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
+    // Storage a user credit payments
+    const { payments } = useContext(UserContext);
+
     // Storage a user initials
     const [initials, setInitials] = useState("");
     // Storage a card number data
@@ -18,8 +21,6 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     const [cvv, setCVV] = useState("");
     // Storage status of input
     const [isChoosed, setIsChoosed] = useState(false);
-    // Storage a user credit payments
-    const [payments, setPayments] = useContext(PaymentsContext);
     // Storage a active cardPosition component
     const [activeIndex, setActiveIndex] = useState(null);
     

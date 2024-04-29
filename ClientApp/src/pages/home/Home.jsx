@@ -6,36 +6,33 @@ import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
 import { CartContext } from '../../providers/CartProvider';
 import { RecordContext } from '../../providers/RecordProvider';
+import { getVinylsFrom, ALBUMS } from '../api';
 
 function Home() {
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
     // Storage a records
     const [records, setRecords] = useContext(RecordContext);
+    // Strorage status when page is loading
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        getAlbums();
+        settingValues();
+
+        setIsLoading(false);
     }, []);
 
-    const getAlbums = useCallback(() => {
-        fetch(' https://localhost:44458/api/Albums')
-            .then(response => {
-                const contentType = response.headers.get("content-type");
-                if (contentType && contentType.indexOf("application/json") !== -1) {
-                    return response.json();
-                } else {
-                    throw new TypeError("Oops, we haven't got JSON!");
-                }
-            })
-            .then(data => setRecords(data))
-            .catch(error => console.error('Ошибка:', error));
-    }, [setRecords]);
+    const settingValues = async () => {
+        const vinyls = await getVinylsFrom(ALBUMS);
+
+        setRecords(vinyls);
+    }
 
     const addToCart = useCallback((record) => {
         setCart(prevCart => [...prevCart, record]);
     }, [setCart]);
 
-    return (
+    return !isLoading && (
         <>
             <Header>Vinyl records</Header>
             <main className="main">

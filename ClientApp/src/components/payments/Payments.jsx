@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import './Payments.css';
 import card from '../../assets/card-icon.svg';
 import CreditCard from "../creditCard/CreditCard";
-import { PaymentsContext } from "../../providers/PaymentsProvider";
+import { UserContext } from "../../providers/UserProvider";
 
 function Payments({ onEvent }) {
     // Storage a user credit payments
-    const [payments, setPayments] = useContext(PaymentsContext);
+    const { payments } = useContext(UserContext);
 
     return (
         <div className="payments">

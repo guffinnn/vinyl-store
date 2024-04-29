@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, useCallback} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import './Cart.css';
 import basket from '../../assets/basket-icon.svg';
 import Header from "../../components/header/Header";
@@ -11,14 +11,15 @@ import { CartContext } from "../../providers/CartProvider";
 import { UserContext } from "../../providers/UserProvider";
 
 function Cart() {
+    // Storage a user status
+    const { user } = useContext(UserContext);
+
     // Storage modalPurchase view status
     const [purchaseIsOpen, setPurchaseIsOpen] = useState(false);
     // Storage purchase status
     const [purchaseStatus, setPurchaseStatus] = useState("add");
     // Storage a cart status
     const [cart, setCart] = useContext(CartContext);
-    // Storage a user status
-    const [user, setUser] = useContext(UserContext);
     // Storage total price of cart
     const [totalPrice, setTotalPrice] = useState(getPrice);
 
