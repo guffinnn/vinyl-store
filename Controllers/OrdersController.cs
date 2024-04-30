@@ -45,14 +45,24 @@ namespace vinyl_store.Controllers
             return order;
         }
 
-        // TODO: ИСПРАВИТЬ ЗАПРОС!!!
         // GET: api/Orders/User/5
         [HttpGet("User/{userId}")]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByUser(int userId)
         {
+            var orders = await _context.Order
+                .Where(o => o.UserID == userId)
+                .Select(o => new Order
+                {
+                    OrderID = o.OrderID,
+                    UserID = o.UserID,
+                    OrderDate = o.OrderDate,// Get OrderDate without Time
+                    Status = o.Status,
+                    AlbumID = o.AlbumID,
+                    OrderAlbums = o.OrderAlbums
+                })
+                .ToListAsync();
 
-            Console.WriteLine(_context.Order.ToListAsync());
-            return await _context.Order.Where(o => o.UserID == userId).ToListAsync();
+            return orders;
         }
 
         // PUT: api/Orders/5

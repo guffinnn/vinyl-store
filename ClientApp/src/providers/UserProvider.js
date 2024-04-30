@@ -1,7 +1,9 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from "../firebase";
-import { getVinylsFrom, LIKES, ORDERS, getPayments, getUserName } from '../pages/api';
+import { getVinylsFrom, LIKES, getPayments, getUserName, getUserID } from '../pages/api';
+
+ 
 
 // Use hook - context
 export const UserContext = createContext();
@@ -11,6 +13,8 @@ export const UserProvider = (props) => {
     const [user, setUser] = useState(null);
     // Storage user initials
     const [name, setName] = useState("");
+    // Storage userID from database
+    const [userID, setUserID] = useState(null);
     // Storage a likes
     const [likes, setLikes] = useState([]);
     // Storage a user credentials
@@ -42,16 +46,24 @@ export const UserProvider = (props) => {
 
     async function settingValues() {
         const userName = getUserName(user),
+              userID = await getUserID(user),
               payments = getPayments(user),
-              likes = getVinylsFrom(LIKES),
-              orders = getVinylsFrom(ORDERS);
+              likes = getVinylsFrom(LIKES);
 
-        const values = await Promise.all([userName, payments, likes, orders]);
+        console.log(userID);
+
+        const ORDERS = await `Users/${userID}/Orders`; 
+        const orders = getVinylsFrom(ORDERS);
+
+        console.log(orders);
+
+        const values = await Promise.all([userName, userID, payments, likes, orders]);
 
         setName(values[0]);
-        setPayments(values[1]);
-        setLikes(values[2]);
-        setOrders(values[3]);
+        setUserID(values[1]);
+        setPayments(values[2]);
+        setLikes(values[3]);
+        setOrders(values[4]);
 
         setIsLoading(false);
     }

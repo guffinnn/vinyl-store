@@ -93,9 +93,18 @@ function Account() {
                                 </div>
                                 <div className="orders">
                                     <div className="orders__fluid">
-                                        {orders.map((item, index) => (
+                                        {orders.length > 0 ? orders.map((item, index) => (
                                             <Order order={item}/>
-                                        ))}
+                                        )) : (
+                                            <div className="order__frame">
+                                                <div className="order__info">
+                                                    <div className="order__text">
+                                                        <p className="order__name">Заказов пока нет</p>
+                                                        <p className="order__date">Чтобы приобрести пластинки, перейдите на страницу каталога</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

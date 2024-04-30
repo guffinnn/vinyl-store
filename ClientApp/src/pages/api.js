@@ -1,6 +1,5 @@
 export const ALBUMS = 'Albums',
              LIKES = ALBUMS,
-             ORDERS = 'Users/15/Orders',
              USERS = 'Users',
              PAYMENTS = 'Payments';
 
@@ -25,6 +24,15 @@ export function getUserName(user) {
         .then((data) => {
             const filteredData = data.filter(item => item.email === user.email);
             return filteredData[0].name;
+        })
+        .catch(console.log)
+}
+
+export function getUserID(user) {
+    return fetchData(USERS)
+        .then((data) => {
+            const filteredData = data.filter(item => item.email === user.email);
+            return filteredData[0].userID;
         })
         .catch(console.log)
 }

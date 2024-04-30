@@ -6,7 +6,6 @@ import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
 import { CartContext } from '../../providers/CartProvider';
 import { RecordContext } from '../../providers/RecordProvider';
-import { getVinylsFrom, ALBUMS } from '../api';
 
 function Home() {
     // Storage a cart status
@@ -17,16 +16,8 @@ function Home() {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        settingValues();
-
         setIsLoading(false);
     }, []);
-
-    const settingValues = async () => {
-        const vinyls = await getVinylsFrom(ALBUMS);
-
-        setRecords(vinyls);
-    }
 
     const addToCart = useCallback((record) => {
         setCart(prevCart => [...prevCart, record]);
