@@ -2,8 +2,9 @@ section.section {
     width: 1300px;
     margin: auto;
 
-    background: radial-gradient(29.49% 50% at 73.44% 50%, rgba(39, 39, 39, 0.8) 0%, rgba(39, 39, 39, 0.11) 100%);
+    background: radial-gradient(29.49% 50% at 73.44% 50%, rgb(40 121 124 / 60%) 0%, rgba(39, 39, 39, 0.11) 100%);
     box-shadow: 0 32px 32px -24px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     border-radius: 20px;
     border: rgba(150, 150, 150, 0.22) 1px solid;
@@ -48,7 +49,7 @@ section.section {
     gap: 10px;
     border-width: 2px 0;
     border-style: solid;
-    border-color: #8e2430;
+    border-color: #28797c;
 }
 
 .title__text {
@@ -82,7 +83,7 @@ section.section {
     align-items: center;
     padding: 24px 50px;
     gap: 10px;
-    background: #8e2430;
+    background: #28797c;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s;
@@ -114,12 +115,8 @@ section.section {
     right: 25%;
 }
 
-.content__button:hover .vinyl {
-    filter: drop-shadow(2px 2px 4px black);
-}
-
-.vinyl:hover {
-    filter: drop-shadow(2px 2px 4px black);
+.vinyl:hover .vinyl__image {
+    scale: 1.05;
 }
 
 .vinyl__image {

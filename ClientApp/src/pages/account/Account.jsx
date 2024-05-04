@@ -135,7 +135,11 @@ function Account() {
                                 <div className="favorite__frame">
                                     <div className="favorite__frame__fluid">
                                         {likes.sort((a, b) => {
-                                            return b.year - a.year;
+                                            if (b.year - a.year === 0) {
+                                                return b.albumID - a.albumID;
+                                            } else {
+                                                return b.year - a.year;
+                                            }
                                         }).map((item, index) => (
                                             <Card record={item} image={index}>
                                                 <Heart status={0}/>

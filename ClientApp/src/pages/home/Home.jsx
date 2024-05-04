@@ -33,7 +33,11 @@ function Home() {
                     <div className="catalog__frame">
                         <div className="catalog__frame__fluid">
                             {records.sort((a, b) => {
-                                return b.year - a.year;
+                                if (b.year - a.year === 0) {
+                                    return b.albumID - a.albumID;
+                                } else {
+                                    return b.year - a.year;
+                                }
                             }).map((item, index) => (
                                 <Card key={index} record={item} onEvent={() => addToCart(item)} />
                             ))}

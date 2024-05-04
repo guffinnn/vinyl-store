@@ -1,13 +1,13 @@
 export const RECORDS = {
-    name: "COWBOY CARTER",
-    artist: "Beyoncé",
-    main_artist: "Beyoncé",
-    spotify_id: "6BzxX6zkDsYKFJ04ziU5xQ",
-    image: "https://i.scdn.co/image/ab67616d0000b2731572698fff8a1db257a53599",
+    name: "Radical Optimism",
+    artist: "Dua Lipa",
+    main_artist: "Dua Lipa",
+    spotify_id: "1Mo92916G2mmG7ajpmSVrc",
+    image: "https://i.scdn.co/image/ab67616d0000b273361debc2873b3aa493304b6d",
     year: 2024,
-    genre: "Country",
-    price: 289.99,
-    description: "Этот альбом перенесет вас на дикий запад и заставит вас почувствовать аутентичный дух кантри музыки. Откройте для себя новое лицо Beyonce и погрузитесь в мир COWBOY CARTER прямо сейчас!"
+    genre: "Pop",
+    price: 319.99,
+    description: "Новый альбом Dua Lipa, который является гимном радикального оптимизма, воплощенным в мелодичных поп-композициях. Синглы “Houdini”, “Training Season” и “Illusion” уже завоевали сердца поклонников, предвещая альбом, полный светлых мелодий и вдохновляющих текстов"
 };
 
 export const ROWS = {
