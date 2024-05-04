@@ -44,7 +44,7 @@ function Cart() {
                 <section className="cart">
                     <div className="cart__frame">
                         <div className="cart__fluid">
-                            {cart.length > 0 ? (
+                            {cart && cart.length > 0 ? (
                                 cart.map((item, index) => (
                                     <Position
                                         record={item}
@@ -65,7 +65,7 @@ function Cart() {
                         </div>
                     </div>
                 </section>
-                {cart.length > 0 && (
+                {cart && cart.length > 0 && (
                     <aside className="cart">
                         <article className="cart__price">
                             <p className="cart__heading">Ваша корзина</p>

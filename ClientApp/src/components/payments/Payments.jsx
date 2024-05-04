@@ -21,11 +21,13 @@ function Payments({ onEvent }) {
                         </div>
                     </div>
                 </div>
-                {payments.sort((a, b) => {
-                    return a.number - b.number;
-                }).map((item) => (
-                    <CreditCard card={item} />
-                ))}
+                {payments && payments.length > 0 ? (
+                    payments.sort((a, b) => {
+                        return a.number - b.number;
+                    }).map((item) => (
+                        <CreditCard card={item} />
+                    ))
+                ) : null}
             </div>
         </div>
     );

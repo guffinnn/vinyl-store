@@ -6,6 +6,7 @@ import Card from "../../components/card/Card";
 import Footer from "../../components/footer/Footer";
 import { CartContext } from '../../providers/CartProvider';
 import { RecordContext } from '../../providers/RecordProvider';
+import { RECORDS } from '../../assets/exports/records';
 
 function Home() {
     // Storage a cart status
@@ -32,15 +33,17 @@ function Home() {
                     <h2 className="h2">НОВИНКИ</h2>
                     <div className="catalog__frame">
                         <div className="catalog__frame__fluid">
-                            {records.sort((a, b) => {
-                                if (b.year - a.year === 0) {
-                                    return b.albumID - a.albumID;
-                                } else {
-                                    return b.year - a.year;
-                                }
-                            }).map((item, index) => (
-                                <Card key={index} record={item} onEvent={() => addToCart(item)} />
-                            ))}
+                            {records && records.length > 0 ? (
+                                records.sort((a, b) => {
+                                    if (b.year - a.year === 0) {
+                                        return b.albumID - a.albumID;
+                                    } else {
+                                        return b.year - a.year;
+                                    }
+                                }).map((item, index) => (
+                                    <Card key={index} record={item} onEvent={() => addToCart(item)} />
+                                ))
+                            ) : setRecords(RECORDS)}
                         </div>
                     </div>
                 </section>

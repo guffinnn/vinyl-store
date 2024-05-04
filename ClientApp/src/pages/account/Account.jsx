@@ -93,9 +93,11 @@ function Account() {
                                 </div>
                                 <div className="orders">
                                     <div className="orders__fluid">
-                                        {orders.length > 0 ? orders.map((item, index) => (
-                                            <Order order={item}/>
-                                        )) : (
+                                        {orders && orders.length > 0 ? (
+                                            orders.map((item, index) => (
+                                                <Order order={item}/>
+                                            ))
+                                        ) : (
                                             <div className="order__frame">
                                                 <div className="order__info">
                                                     <div className="order__text">
@@ -134,17 +136,19 @@ function Account() {
                                 </div>
                                 <div className="favorite__frame">
                                     <div className="favorite__frame__fluid">
-                                        {likes.sort((a, b) => {
-                                            if (b.year - a.year === 0) {
-                                                return b.albumID - a.albumID;
-                                            } else {
-                                                return b.year - a.year;
-                                            }
-                                        }).map((item, index) => (
-                                            <Card record={item} image={index}>
-                                                <Heart status={0}/>
-                                            </Card>
-                                        ))}
+                                        {likes && likes.length > 0 ? (
+                                            likes.sort((a, b) => {
+                                                if (b.year - a.year === 0) {
+                                                    return b.albumID - a.albumID;
+                                                } else {
+                                                    return b.year - a.year;
+                                                }
+                                            }).map((item, index) => (
+                                                <Card record={item} image={index}>
+                                                    <Heart status={0} />
+                                                </Card>
+                                            ))
+                                        ): null}
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { getVinylsFrom, ALBUMS } from '../pages/api';
+import { RECORDS } from '../assets/exports/records';
 
 // Use hook - context
 export const RecordContext = createContext();
@@ -14,7 +15,13 @@ export const RecordProvider = (props) => {
     const settingValues = async () => {
         const vinyls = await getVinylsFrom(ALBUMS);
 
-        setRecords(vinyls);
+
+        if (vinyls && vinyls.length > 0) {
+            setRecords(vinyls);
+        } else {
+            setRecords([RECORDS]);
+        }
+        
     }
 
     return (

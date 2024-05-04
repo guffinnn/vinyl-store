@@ -15,7 +15,7 @@ function Catalog() {
     // Storage a records sorted by user request
     const [filteredRecords, setFilteredRecords] = useState(records);
 
-    return records.length > 0 ? (
+    return records && records.length > 0 ? (
         <>
             <Header>Catalog</Header>
             <main className="main" id="main">
@@ -23,14 +23,15 @@ function Catalog() {
                     <SearchBox records={records} setFilteredRecords={setFilteredRecords} />
                     <div className="catalog__group">
                         <div className="catalog__group__fluid">
-                            {filteredRecords.sort((a, b) => {
-                                return b.year - a.year;
-                            }).map((item, index) => (
-                                <Card record={item} image={index}>
-                                    <Heart status={1} />
-                                </Card>
-                            ))}
-                            {filteredRecords.length < 1 && (
+                            {filteredRecords && filteredRecords.length > 0 ? (
+                                filteredRecords.sort((a, b) => {
+                                    return b.year - a.year;
+                                }).map((item, index) => (
+                                    <Card record={item} image={index}>
+                                        <Heart status={1} />
+                                    </Card>
+                                ))
+                            ) : (
                                 <div className="error__info">
                                     <p className="error__head">Совпадения не найдены</p>
                                     <p className="error__text">Похоже, что у нас нет такого товара в ассортименте</p>

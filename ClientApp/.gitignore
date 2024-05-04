@@ -19,3 +19,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+[core]
+    symlinks = false
+    autocrlf = true
+    fscache = true
+    longpaths = true
