@@ -45,7 +45,7 @@ function Card({ record, children, onEvent }) {
         setShowIframe(!showIframe);
     }
 
-    return (
+    return record !== undefined ? (
         <div className="service__card">
             <div className="image__group">
                 {isLoading && <div className="skeleton"></div>}
@@ -88,7 +88,7 @@ function Card({ record, children, onEvent }) {
                 </a>
             </div>
         </div>
-    );
+    ) : null;
 }
 
 export default Card;

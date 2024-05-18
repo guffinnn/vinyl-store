@@ -5,7 +5,7 @@ namespace vinyl_store
     [Table("OrderAlbum")]
     public class OrderAlbum
     {
-        public int OrderAlbumID {  get; set; }
+        public int OrderAlbumID { get; set; }
 
         public int OrderID { get; set; }
         public Order Order { get; set; }

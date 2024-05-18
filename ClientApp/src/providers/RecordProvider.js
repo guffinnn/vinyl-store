@@ -21,7 +21,6 @@ export const RecordProvider = (props) => {
         } else {
             setRecords([RECORDS]);
         }
-        
     }
 
     return (

@@ -24,6 +24,7 @@ namespace vinyl_store
         public DbSet<Payment> Payment { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderAlbum> OrderAlbum { get; set; }
+        public DbSet<Like> Likes { get; set; }
     }
 
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<VinylStoreContext>

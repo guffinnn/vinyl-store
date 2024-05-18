@@ -6,10 +6,14 @@ import CardVariant from "../cardVariant/CardVariant";
 import master from "../../assets/master.svg";
 import add from "../../assets/add-icon.svg";
 import { UserContext } from "../../providers/UserProvider";
+import { CartContext } from "../../providers/CartProvider";
+import { postOrders } from '../../pages/api';
 
 function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     // Storage a user credit payments
-    const { payments } = useContext(UserContext);
+    const { payments, userID } = useContext(UserContext);
+    // Storage a cart
+    const [cart, setCart] = useContext(CartContext);
 
     // Storage a user initials
     const [initials, setInitials] = useState("");
@@ -22,7 +26,7 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     // Storage status of input
     const [isChoosed, setIsChoosed] = useState(false);
     // Storage a active cardPosition component
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [activeIndex, setActiveIndex] = useState("");
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -30,6 +34,13 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
         //
         // TODO: Add functionality for placing an order
         //
+    };
+
+    const handleOrderConfirmed = () => {
+        if (isChoosed === true && !isNaN(activeIndex)) {
+            console.log(userID);
+            postOrders(userID, cart);
+        }
     };
 
     return isOpen ? (
@@ -85,10 +96,11 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                                 onChange={(e) => setCVV(e.target.value)}
                             />
                         </div>
-                        <div className="button__frame" id="submit">
+                        <div className="button__frame" id="submit" >
                             <Button
                                 content="Привязать карту"
-                                type="submit" onEvent={(e) => handleFormSubmit(e)}
+                                type="submit"
+                                onEvent={(e) => handleFormSubmit(e)}
                             />
                         </div>
                     </form>
@@ -153,6 +165,7 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                             <Button
                                 content={"Оплатить корзину"}
                                 className={`${(isChoosed !== true) ? "in__cart" : ""}`}
+                                onEvent={() => handleOrderConfirmed()}
                             />
                         </div>
                     </>

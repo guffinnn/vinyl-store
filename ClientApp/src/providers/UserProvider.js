@@ -1,9 +1,8 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from "../firebase";
 import { getVinylsFrom, LIKES, getPayments, getUserName, getUserID } from '../pages/api';
-
- 
+import { RecordContext } from './RecordProvider';
 
 // Use hook - context
 export const UserContext = createContext();
@@ -23,6 +22,8 @@ export const UserProvider = (props) => {
     const [orders, setOrders] = useState([]);
     // Storage status of loading data from API
     const [isLoading, setIsLoading] = useState(true);
+    // Storage global records (for likes)
+    const [records, setRecords] = useContext(RecordContext);
 
     useEffect(() => {
         checkAuthorization();
@@ -48,21 +49,22 @@ export const UserProvider = (props) => {
         const userName = getUserName(user),
               userID = await getUserID(user),
               payments = getPayments(user),
-              likes = getVinylsFrom(LIKES);
-
-        console.log(userID);
+              likes = getVinylsFrom(LIKES);   
 
         const ORDERS = await `Users/${userID}/Orders`; 
         const orders = getVinylsFrom(ORDERS);
-
-        console.log(orders);
 
         const values = await Promise.all([userName, userID, payments, likes, orders]);
 
         setName(values[0]);
         setUserID(values[1]);
         setPayments(values[2]);
-        setLikes(values[3]);
+
+        const filteredLikes = values[3].map((item, index) => (
+            records.find(album => album.albumID === item.albumID)
+        ));
+        setLikes(filteredLikes);
+
         setOrders(values[4]);
 
         setIsLoading(false);

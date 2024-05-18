@@ -20,7 +20,7 @@ import { UserContext } from "../../providers/UserProvider";
 import { Link } from "react-router-dom";
 
 function Account() {
-    // Используйте UserDataContext для получения данных пользователя
+    // Storage UserContext data
     const { user, name, likes, orders, isLoading } = useContext(UserContext);
 
     // Storage modalStatus view status
@@ -58,6 +58,8 @@ function Account() {
             console.error(error);
         }
     };
+
+    console.log(likes);
 
     return !isLoading && (
         <>
@@ -137,18 +139,12 @@ function Account() {
                                 <div className="favorite__frame">
                                     <div className="favorite__frame__fluid">
                                         {likes && likes.length > 0 ? (
-                                            likes.sort((a, b) => {
-                                                if (b.year - a.year === 0) {
-                                                    return b.albumID - a.albumID;
-                                                } else {
-                                                    return b.year - a.year;
-                                                }
-                                            }).map((item, index) => (
-                                                <Card record={item} image={index}>
+                                            likes.map((item, index) => (
+                                                <Card record={item}>
                                                     <Heart status={0} />
                                                 </Card>
                                             ))
-                                        ): null}
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>

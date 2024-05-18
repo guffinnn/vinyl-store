@@ -8,13 +8,13 @@ import { RecordProvider } from './providers/RecordProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <UserProvider>
-        <CartProvider>
-            <RecordProvider>
+    <RecordProvider>
+        <UserProvider>
+            <CartProvider>
                 <React.StrictMode>
                     <App />
                 </React.StrictMode>
-            </RecordProvider>
-        </CartProvider>
-    </UserProvider>
+            </CartProvider>
+        </UserProvider>
+    </RecordProvider>
 );

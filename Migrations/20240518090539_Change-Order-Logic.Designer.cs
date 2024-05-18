@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vinyl_store;
 
@@ -11,9 +12,11 @@ using vinyl_store;
 namespace vinyl_store.Migrations
 {
     [DbContext(typeof(VinylStoreContext))]
-    partial class VinylStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240518090539_Change-Order-Logic")]
+    partial class ChangeOrderLogic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,30 +57,6 @@ namespace vinyl_store.Migrations
                     b.HasKey("AlbumID");
 
                     b.ToTable("Album");
-                });
-
-            modelBuilder.Entity("vinyl_store.Like", b =>
-                {
-                    b.Property<int>("LikeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LikeID"));
-
-                    b.Property<DateTime>("AddedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("AlbumID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("LikeID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("Like");
                 });
 
             modelBuilder.Entity("vinyl_store.Order", b =>
@@ -179,15 +158,6 @@ namespace vinyl_store.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("vinyl_store.Like", b =>
-                {
-                    b.HasOne("vinyl_store.User", null)
-                        .WithMany("Likes")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("vinyl_store.Order", b =>
                 {
                     b.HasOne("vinyl_store.User", null)
@@ -228,8 +198,6 @@ namespace vinyl_store.Migrations
 
             modelBuilder.Entity("vinyl_store.User", b =>
                 {
-                    b.Navigation("Likes");
-
                     b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618

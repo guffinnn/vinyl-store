@@ -57,7 +57,6 @@ namespace vinyl_store.Controllers
                     UserID = o.UserID,
                     OrderDate = o.OrderDate,// Get OrderDate without Time
                     Status = o.Status,
-                    AlbumID = o.AlbumID,
                     OrderAlbums = o.OrderAlbums
                 })
                 .ToListAsync();
@@ -97,14 +96,10 @@ namespace vinyl_store.Controllers
         }
 
         // POST: api/Orders
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-          if (_context.Order == null)
-          {
-              return Problem("Entity set 'VinylStoreContext.Orders'  is null.");
-          }
+            order.OrderAlbums = null;
             _context.Order.Add(order);
             await _context.SaveChangesAsync();
 

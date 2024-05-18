@@ -1,15 +1,27 @@
 export const ALBUMS = 'Albums',
-             LIKES = ALBUMS,
+             LIKES = 'Likes',
              USERS = 'Users',
-             PAYMENTS = 'Payments';
+             PAYMENTS = 'Payments',
+             ORDERS = 'Orders';
 
-async function fetchData(apiName) {
-    const response = await fetch(`https://localhost:44458/api/${apiName}`);
+async function fetchData(apiName, method="GET", body) {
+    const response = await fetch(`https://localhost:44458/api/${apiName}`, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body)
+    });
 
     if (!response.ok) {
+        console.log(body);
         throw new Error(`HTTP error! ${response.status}`);
     } else {
-        return await response.json();
+        try {
+            return await response.json();
+        } catch (error) {
+            console.error('Ошибка при обработке JSON:', error);
+        }
     }
 }
 
@@ -51,4 +63,35 @@ export function getPayments(user) {
             return filteredData;
         })
         .catch(console.log)
+}
+
+export function postOrders(userID, cart) {
+    cart.forEach((item, index) => {
+        let order = {
+            userID: 14,
+            orderDate: new Date().toISOString(),
+            status: "Оформлен",
+            albumID: Number(item.albumID)
+        };
+
+        return fetchData(ORDERS, "POST", order)
+            .then((response) => {
+                console.log(`Заказ ${index + 1} успешно оформлен`);
+                postOrderAlbums(response.orderID, item.albumID);
+            })
+            .catch(console.log);
+    });
+}
+
+export function postOrderAlbums(orderID, albumID) {
+    let orderAlbum = {
+        orderID: orderID,
+        albumID: albumID
+    };
+
+    return fetchData('OrderAlbums', "POST", orderAlbum)
+        .then(() => {
+            console.log(`Заказ-альбом для заказа ${orderID} успешно создан`);
+        })
+        .catch(console.log);
 }

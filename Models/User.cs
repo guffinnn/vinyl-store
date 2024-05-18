@@ -10,5 +10,6 @@ namespace vinyl_store
         public string? Email { get; set; }
         public string? Password { get; set; }
         public ICollection<Order> Orders { get; set; }
+        public ICollection<Like> Likes { get; set; }
     }
 }
