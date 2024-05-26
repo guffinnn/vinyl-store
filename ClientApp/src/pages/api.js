@@ -85,13 +85,37 @@ export function postOrders(userID, cart) {
 
 export function postOrderAlbums(orderID, albumID) {
     let orderAlbum = {
-        orderID: orderID,
-        albumID: albumID
+        orderID,
+        albumID
     };
 
     return fetchData('OrderAlbums', "POST", orderAlbum)
         .then(() => {
             console.log(`Заказ-альбом для заказа ${orderID} успешно создан`);
+        })
+        .catch(console.log);
+}
+
+export function postLike(userID, albumID) {
+    let like = {
+        userID: Number(userID),
+        albumID: Number(albumID),
+        addedAt: new Date().toISOString(),
+    };
+
+    return fetchData(LIKES, "POST", like)
+        .then((response) => {
+            console.log(`Пластинка ${like.albumID} добавлена в Избранное`);
+        })
+        .catch(console.log);
+}
+
+export function deleteLike(likeID) {
+    const url = `${LIKES}/${likeID}`;
+
+    return fetchData(url, "DELETE")
+        .then((response) => {
+            console.log(`Пластинка ${likeID} удалена из Избранного`);
         })
         .catch(console.log);
 }

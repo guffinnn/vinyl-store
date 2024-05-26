@@ -15,7 +15,6 @@ export const RecordProvider = (props) => {
     const settingValues = async () => {
         const vinyls = await getVinylsFrom(ALBUMS);
 
-
         if (vinyls && vinyls.length > 0) {
             setRecords(vinyls);
         } else {

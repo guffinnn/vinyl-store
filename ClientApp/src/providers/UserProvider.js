@@ -60,9 +60,11 @@ export const UserProvider = (props) => {
         setUserID(values[1]);
         setPayments(values[2]);
 
-        const filteredLikes = values[3].map((item, index) => (
-            records.find(album => album.albumID === item.albumID)
-        ));
+        const filteredLikes = values[3].map((item, index) => {
+            let album = records.find(album => album.albumID === item.albumID);
+            album.likeID = item.likeID;
+            return album;
+        });
         setLikes(filteredLikes);
 
         setOrders(values[4]);

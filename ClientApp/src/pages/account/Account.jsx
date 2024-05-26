@@ -141,7 +141,7 @@ function Account() {
                                         {likes && likes.length > 0 ? (
                                             likes.map((item, index) => (
                                                 <Card record={item}>
-                                                    <Heart status={0} />
+                                                    <Heart album={item} />
                                                 </Card>
                                             ))
                                         ) : null}

@@ -28,7 +28,7 @@ function Catalog() {
                                     return b.year - a.year;
                                 }).map((item, index) => (
                                     <Card record={item} image={index}>
-                                        <Heart status={1} />
+                                        <Heart album={item} />
                                     </Card>
                                 ))
                             ) : (
