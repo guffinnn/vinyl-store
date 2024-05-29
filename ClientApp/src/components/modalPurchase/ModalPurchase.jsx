@@ -7,11 +7,12 @@ import master from "../../assets/master.svg";
 import add from "../../assets/add-icon.svg";
 import { UserContext } from "../../providers/UserProvider";
 import { CartContext } from "../../providers/CartProvider";
-import { postOrders } from '../../pages/api';
+import { postPayments } from '../../pages/api';
+import success from '../../assets/success-icon.svg';
 
 function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     // Storage a user credit payments
-    const { payments, userID } = useContext(UserContext);
+    const { payments, user } = useContext(UserContext);
     // Storage a cart
     const [cart, setCart] = useContext(CartContext);
 
@@ -30,16 +31,26 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        
-        //
-        // TODO: Add functionality for placing an order
-        //
+
+        let payment = {
+            userID: user.email,
+            number: number.split(' ').join(''),
+            expiry: cardExpiry.split('/').join(''),
+            cvv: Number(cvv),
+            initials: initials.toUpperCase()
+        };
+
+        postPayments(payment); // Call post API function
+        payments.push(payment);
+
+        setStatus("success");
     };
 
     const handleOrderConfirmed = () => {
         if (isChoosed === true && !isNaN(activeIndex)) {
-            console.log(userID);
-            postOrders(userID, cart);
+            /*
+            TODO: Add realization
+            */
         }
     };
 
@@ -97,13 +108,22 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                             />
                         </div>
                         <div className="button__frame" id="submit" >
-                            <Button
-                                content="Привязать карту"
-                                type="submit"
-                                onEvent={(e) => handleFormSubmit(e)}
-                            />
+                            <input type="submit" value="Привязать карту" class="add__pay__button" />
                         </div>
                     </form>
+                )}
+                {status === "success" && (
+                    <div className="modal__container">
+                        <div className="modal__content">
+                            <div className="status__icon">
+                                <img className="status__image" src={success} alt="Статус" />
+                            </div>
+                            <div className="modal__text">
+                                <p className="text__head">{"Успешно"}</p>
+                                <p className="text__info">{"Новый способ оплаты добавлен"}</p>
+                            </div>
+                        </div>
+                    </div>
                 )}
                 {status === "purchase" && (
                     <>

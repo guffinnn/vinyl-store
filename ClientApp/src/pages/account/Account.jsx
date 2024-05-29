@@ -59,8 +59,6 @@ function Account() {
         }
     };
 
-    console.log(likes);
-
     return !isLoading && (
         <>
             <Header>Account</Header>

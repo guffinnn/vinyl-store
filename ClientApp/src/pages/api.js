@@ -65,6 +65,22 @@ export function getPayments(user) {
         .catch(console.log)
 }
 
+export function postPayments(payment) {
+    let card = {
+        userID: String(payment.userID),
+        number: String(payment.number),
+        expiry: String(payment.expiry),
+        cvv: Number(payment.cvv),
+        initials: String(payment.initials).toUpperCase()
+    };
+
+    return fetchData(PAYMENTS, "POST", card)
+        .then((response) => {
+            console.log(`Карточка ${card.initials} добавлена`);
+        })
+        .catch(console.log);
+}
+
 export function postOrders(userID, cart) {
     cart.forEach((item, index) => {
         let order = {
@@ -96,6 +112,13 @@ export function postOrderAlbums(orderID, albumID) {
         .catch(console.log);
 }
 
+export function getLikes(userID) {
+    const url = `api/Likes`; /*user/${userID}*/
+
+    return fetchData(url)
+        .then((data) => data)
+        .catch(console.log)
+}
 export function postLike(userID, albumID) {
     let like = {
         userID: Number(userID),

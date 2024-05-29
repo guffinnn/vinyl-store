@@ -25,7 +25,7 @@ function Heart({ album }) {
         // Not liked, add to favorites
         let userID = await getUserID(user);
 
-        postLike(userID, album.albumID); // Call your post API function
+        postLike(userID, album.albumID); // Call post API function
         likes.push(album);
 
         setIsLiked(prevLike => (prevLike === 0 ? 1 : 0));
@@ -34,7 +34,7 @@ function Heart({ album }) {
     const removeFromLikes = async () => {
         // Always liked, delete from favourites
         const likeToRemove = likes.find(likeItem => likeItem.albumID === album.albumID);
-        deleteLike(likeToRemove.likeID); // Call your delete API function with the correct likeID
+        deleteLike(likeToRemove.likeID); // Call delete API function with the correct likeID
 
         const favourites = await Promise.all([getVinylsFrom(LIKES)]);
         const filteredLikes = favourites[0].map((item, index) => {

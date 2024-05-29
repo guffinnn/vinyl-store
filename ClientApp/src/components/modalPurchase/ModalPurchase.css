@@ -26,17 +26,46 @@
     margin-top: 15px;
 }
 
+.add__pay__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: center;
+    padding: 10px 0;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    background: #272727;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+
+    color: #FFFFFF;
+}
+
+.add__pay__button:hover {
+    margin: 0 10px;
+    transform: translate(0%, 0%) scale(1.05);
+}
+
+.add__pay__button:active {
+    transform: scale(0.95);
+}
+
 .payments__frame {
     height: auto;
     max-height: 300px;
     width: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0 5px 0 0;
     gap: 10px;
-
     overflow-y: auto;
 }
 
