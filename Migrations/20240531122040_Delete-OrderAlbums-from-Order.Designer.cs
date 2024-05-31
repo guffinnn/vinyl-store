@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vinyl_store;
 
@@ -11,9 +12,11 @@ using vinyl_store;
 namespace vinyl_store.Migrations
 {
     [DbContext(typeof(VinylStoreContext))]
-    partial class VinylStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240531122040_Delete-OrderAlbums-from-Order")]
+    partial class DeleteOrderAlbumsfromOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,6 +108,27 @@ namespace vinyl_store.Migrations
                     b.ToTable("Order");
                 });
 
+            modelBuilder.Entity("vinyl_store.OrderAlbum", b =>
+                {
+                    b.Property<int>("OrderAlbumID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderAlbumID"));
+
+                    b.Property<int>("AlbumID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderAlbumID");
+
+                    b.HasIndex("AlbumID");
+
+                    b.ToTable("OrderAlbum");
+                });
+
             modelBuilder.Entity("vinyl_store.Payment", b =>
                 {
                     b.Property<int>("CardID")
@@ -194,6 +218,17 @@ namespace vinyl_store.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("vinyl_store.OrderAlbum", b =>
+                {
+                    b.HasOne("vinyl_store.Album", "Album")
+                        .WithMany()
+                        .HasForeignKey("AlbumID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Album");
                 });
 
             modelBuilder.Entity("vinyl_store.User", b =>

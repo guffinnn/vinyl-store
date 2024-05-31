@@ -51,7 +51,7 @@ export const UserProvider = (props) => {
               payments = getPayments(user),
               likes = getVinylsFrom(LIKES);   
 
-        const ORDERS = await `Users/${userID}/Orders`; 
+        const ORDERS = await `Orders/User/${userID}`; 
         const orders = getVinylsFrom(ORDERS);
 
         const values = await Promise.all([userName, userID, payments, likes, orders]);

@@ -45,23 +45,31 @@ namespace vinyl_store.Controllers
             return order;
         }
 
-        // GET: api/Orders/User/5
+        // GET: api/Orders/User/14
         [HttpGet("User/{userId}")]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByUser(int userId)
         {
             var orders = await _context.Order
+                .AsNoTracking()
                 .Where(o => o.UserID == userId)
-                .Select(o => new Order
-                {
-                    OrderID = o.OrderID,
-                    UserID = o.UserID,
-                    OrderDate = o.OrderDate,// Get OrderDate without Time
-                    Status = o.Status,
-                    OrderAlbums = o.OrderAlbums
-                })
                 .ToListAsync();
 
             return orders;
+        }
+
+        // POST: api/Orders/User/14
+        [HttpPost("User/{userId}")]
+        public async Task<ActionResult<Order>> PostOrderForUser(int userId, Order order)
+        {
+            if (userId != order.UserID)
+            {
+                return BadRequest();
+            }
+
+            _context.Order.Add(order);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetOrder", new { id = order.OrderID }, order);
         }
 
         // PUT: api/Orders/5
@@ -99,7 +107,6 @@ namespace vinyl_store.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            order.OrderAlbums = null;
             _context.Order.Add(order);
             await _context.SaveChangesAsync();
 

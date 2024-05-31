@@ -1,14 +1,26 @@
-import React, { memo, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import './Order.css';
 import { RecordContext } from "../../providers/RecordProvider";
 
-const Order = memo(({ order }) => {
+const ORDERS = [
+    {
+        orderID: 13,
+        albumID: 35
+    },
+    {
+        orderID: 14,
+        albumID: 40
+    }
+];
+
+const Order = ({ order }) => {
     const [records] = useContext(RecordContext);
 
     let recordInfo = getRecordInfo();
-
+    
     function getRecordInfo() {
-        const record = records.find((record) => record.albumID === order.albumID);
+        const object = ORDERS.filter((item) => item.orderID === order.orderID);
+        const record = records.filter((item) => item.albumID === object[0].albumID);
 
         // Formatting date string
         const dateString = order.orderDate;
@@ -16,8 +28,8 @@ const Order = memo(({ order }) => {
         const formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}`;
 
         return record ? {
-            image: record.image,
-            price: record.price,
+            image: record[0].image,
+            price: record[0].price,
             date: formattedDate // Date of order, NOT RECORD
         } : '';
     }
@@ -38,6 +50,6 @@ const Order = memo(({ order }) => {
             <p className="order__cost">{recordInfo ? `-${recordInfo.price}` : null}</p>
         </div>
     );
-});
+};
 
 export default Order;

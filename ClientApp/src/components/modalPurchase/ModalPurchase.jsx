@@ -7,7 +7,7 @@ import master from "../../assets/master.svg";
 import add from "../../assets/add-icon.svg";
 import { UserContext } from "../../providers/UserProvider";
 import { CartContext } from "../../providers/CartProvider";
-import { postPayments } from '../../pages/api';
+import { postPayments, postOrders, getUserID } from '../../pages/api';
 import success from '../../assets/success-icon.svg';
 
 function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
@@ -46,11 +46,11 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
         setStatus("success");
     };
 
-    const handleOrderConfirmed = () => {
+    const handleOrderConfirmed = async () => {
         if (isChoosed === true && !isNaN(activeIndex)) {
-            /*
-            TODO: Add realization
-            */
+            let userID = await Promise.resolve(getUserID(user));
+
+            postOrders(userID, cart);
         }
     };
 

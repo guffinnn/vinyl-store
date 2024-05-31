@@ -13,6 +13,5 @@ namespace vinyl_store
         public string? SpotifyID { get; set; }
         public double Price { get; set; }
         public string? Image { get; set; }
-        public ICollection<OrderAlbum> OrderAlbums { get; set; }
     }
 }

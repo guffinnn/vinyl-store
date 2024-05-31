@@ -84,16 +84,15 @@ export function postPayments(payment) {
 export function postOrders(userID, cart) {
     cart.forEach((item, index) => {
         let order = {
-            userID: 14,
-            orderDate: new Date().toISOString(),
-            status: "Оформлен",
-            albumID: Number(item.albumID)
+            userID: userID,
+            orderDate: new Date().toISOString().split('.')[0],
+            status: "Оформлен"
         };
 
-        return fetchData(ORDERS, "POST", order)
+        return fetchData(`Orders/User/${userID}`, "POST", order)
             .then((response) => {
                 console.log(`Заказ ${index + 1} успешно оформлен`);
-                postOrderAlbums(response.orderID, item.albumID);
+                /*postOrderAlbums(response.orderID, item.albumID);*/
             })
             .catch(console.log);
     });
@@ -105,7 +104,7 @@ export function postOrderAlbums(orderID, albumID) {
         albumID
     };
 
-    return fetchData('OrderAlbums', "POST", orderAlbum)
+    return fetchData("OrderAlbums", "POST", orderAlbum)
         .then(() => {
             console.log(`Заказ-альбом для заказа ${orderID} успешно создан`);
         })
@@ -119,6 +118,7 @@ export function getLikes(userID) {
         .then((data) => data)
         .catch(console.log)
 }
+
 export function postLike(userID, albumID) {
     let like = {
         userID: Number(userID),

@@ -11,19 +11,11 @@ namespace vinyl_store
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("DefaultConnection");
-            }
-        }
-
         public DbSet<Album> Albums { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Payment> Payment { get; set; }
         public DbSet<Order> Order { get; set; }
-        public DbSet<OrderAlbum> OrderAlbum { get; set; }
+        public DbSet<UserOrder> UserOrders { get; set; }
         public DbSet<Like> Likes { get; set; }
     }
 
