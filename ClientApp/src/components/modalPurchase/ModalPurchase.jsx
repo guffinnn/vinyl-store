@@ -1,14 +1,15 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import './ModalPurchase.css';
 import {IMaskInput} from 'react-imask';
 import Button from "../button/Button";
 import CardVariant from "../cardVariant/CardVariant";
+import Order from "../../components/order/Order";
 import master from "../../assets/master.svg";
 import add from "../../assets/add-icon.svg";
+import success from '../../assets/success-icon.svg';
 import { UserContext } from "../../providers/UserProvider";
 import { CartContext } from "../../providers/CartProvider";
 import { postPayments, postOrders, getUserID } from '../../pages/api';
-import success from '../../assets/success-icon.svg';
 
 function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     // Storage a user credit payments
@@ -28,6 +29,16 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
     const [isChoosed, setIsChoosed] = useState(false);
     // Storage a active cardPosition component
     const [activeIndex, setActiveIndex] = useState("");
+    // Storage cuurent date
+    const [currentDate, setCurrentDate] = useState([]);
+
+    useEffect(() => {
+        const date = new Date().toISOString();
+        const dateParts = date.split('T')[0].split('-');
+        const formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}`;
+
+        setCurrentDate(formattedDate);
+    }, [currentDate]);
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -51,12 +62,54 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
             let userID = await Promise.resolve(getUserID(user));
 
             postOrders(userID, cart);
+
+            setStatus("orderConfirmed");
         }
     };
 
     return isOpen ? (
         <>
-            <div className="modal__purchase">
+            {status === "orderConfirmed" ? (
+                <div className="modal__purchase">
+                    <div className="modal__content">
+                        <div className="status__icon">
+                            <img className="status__image" src={success} alt="Статус" />
+                        </div>
+                        <div className="modal__text">
+                            <p className="text__head">{"Успешно"}</p>
+                            <p className="text__info">{"Ваш заказ оформлен"}</p>
+                        </div>
+                    </div>
+                    {cart && cart.length > 0 && (
+                        cart.map((item, index) => (
+                            <div className="order__frame">
+                                <div className="order__info">
+                                    <img
+                                        className="order__image"
+                                        src={item.image}
+                                        alt="Пластинка"
+                                    />
+                                    <div className="order__text">
+                                        <p className="order__name">{"Оформлено"}</p>
+                                        <p className="order__date">{`${currentDate}`}</p>
+                                    </div>
+                                </div>
+                                <p className="order__cost">{`-${item.price}`}</p>
+                            </div>
+                        ))
+                    )}
+                    <div className="cart__cost">
+                        <p className="cart__text">Доставка</p>
+                        <p className="cart__text deliver">Бесплатно</p>
+                    </div>
+                    <div className="checkbox-wrapper-46">
+                        <p className="label__text" style={{ margin: "0", fontSize: "12px" }}>
+                            Подтверждено согласие с условиями <p style={{ margin: "0", fontSize: "13px" }}>Правил пользования</p> и <p style={{ margin: "0", fontSize: "13px" }}>Правилами возврата</p>
+                        </p>
+                    </div>
+                </div>
+            ) : (
+                <div className="modal__purchase">
                 <div className="modal__text">
                     <p className="text__head">{status === "add" ? "Добавление способа оплаты" : "Оформление заказа"}</p>
                     <p className="text__info">{status === "add" ? "Введите информацию с карты" : "Подтвердите действия перед оплатой"}</p>
@@ -178,7 +231,7 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                                         </svg>
                                     </span>
                                     <p className="label__text">
-                                        Согласен с условиями <p>Правил пользования</p> и <p>правилами возврата</p>
+                                        Согласен с условиями <p>Правил пользования</p> и <p>Правилами возврата</p>
                                     </p>
                                 </label>
                             </div>
@@ -191,6 +244,7 @@ function ModalPurchase({ isOpen, setIsOpen, status, setStatus, totalPrice }) {
                     </>
                 )}
             </div>
+            )}
             <div className="modal__wrapper" onClick={() => setIsOpen(false)}></div>
         </>
     ) : null;

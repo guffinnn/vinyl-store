@@ -4,13 +4,37 @@ import { RecordContext } from "../../providers/RecordProvider";
 
 const ORDERS = [
     {
-        orderID: 13,
-        albumID: 35
+        orderID: 17,
+        albumID: 36 // Future Nostalgia
     },
     {
-        orderID: 14,
-        albumID: 40
-    }
+        orderID: 18,
+        albumID: 40 // Radical Optimism
+    },
+    {
+        orderID: 19,
+        albumID: 39 // Scarlet 2 CLAUDE
+    },
+    {
+        orderID: 20,
+        albumID: 38 // COWBOY CARTER
+    },
+    {
+        orderID: 21,
+        albumID: 31 // Chromatica
+    },
+    {
+        orderID: 22,
+        albumID: 32 // Dawn of Chromatica
+    },
+    {
+        orderID: 23,
+        albumID: 36 // Future Nostalgia
+    },
+    {
+        orderID: 24,
+        albumID: 40 // Radical Optimism
+    },
 ];
 
 const Order = ({ order }) => {
